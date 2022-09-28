@@ -358,6 +358,15 @@ ru-blockquote {
   -webkit-border-radius: 5px;
 }
 
+rect-block {
+    display: inline-block;
+    border-style: solid;
+    border-color: #054B28;
+    border-radius: 10px;
+    padding: 0.5em;
+    border-spacing: 1px;
+}
+
 .large { font-size: 120% }
 .small { font-size: 90% }
 

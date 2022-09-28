@@ -1,0 +1,96 @@
+---
+title: "Revisão de Integrais"
+subtitle: "Lista de Exercícios"
+author: "Rafael Bressan"
+date: "UDESC/Esag </br> `r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Questão 1
+
+Calcule a integral definida
+
+1. $\int_{-1}^2\left(x^3-2 x\right) d x$ R.: 3/4
+
+1. $\int_{-1}^1 x^{100} d x$
+
+1. $\int_1^4\left(5-2 t+3 t^2\right) d t$ R.: 63
+
+1. $\int_0^1\left(1+\frac{1}{2} u^4-\frac{2}{5} u^9\right) d u$
+1. $\int_0^1 x^{4 / 5} d x$ R.: 5/9
+1. $\int_1^8 \sqrt[3]{x} d x$
+1. $\int_1^2 \frac{3}{t^4} d t$ R.: 7/8
+1. $\int_0^2 x\left(2+x^5\right) d x$ R.: 156/7
+1. $\int_0^1(3+x \sqrt{x}) d x$ 
+1. $\int_1^9 \frac{x-1}{\sqrt{x}} d x$ R.: 40/3
+1. $\int_0^2(y-1)(2 y+1) d y$
+1. $\int_1^2(1+2 y)^2 d y$ R.: 49/3
+1. $\int_0^3\left(2 \operatorname{sen} x-e^x\right) d x$
+1. $\int_1^2 \frac{v^3+3 v^6}{v^4} d v$ R.: log 2 + 7
+1. $\int_1^{18} \sqrt{\frac{3}{z}} d z$
+1. $\int_0^1\left(x^e+e^x\right) d x$ R.: $(e+1)^{-1} + e - 1$
+1. $\int_1^2 \frac{4+u^2}{u^3} d u$
+1. $\int_{-1}^1 e^{u+1} d u$ R.: $e^2 - 1$
+
+# Questão 2
+
+Encontre a integral indefinida
+
+1. $\int\left(x^2+x^{-2}\right) d x$ R.: $\frac{1}{3} x^3-(1 / x)+C$
+
+1. $\int\left(\sqrt{x^3}+\sqrt[3]{x^2}\right) d x$ 
+
+1. $\int\left(x^4-\frac{1}{2} x^3+\frac{1}{4} x-2\right) d x$ R.: $\frac{1}{5} x^5-\frac{1}{8} x^4+\frac{1}{8} x^2-2 x+C$
+1. $\int\left(y^3+1,8 y^2-2,4 y\right) d y$
+1. $\int(u+4)(2 u+1) d u$ R.: $\frac{2}{3} u^3+\frac{9}{2} u^2+4 u+C$
+1. $\int v\left(v^2+2\right)^2 d v$
+1. $\int \frac{x^3-2 \sqrt{x}}{x} d x$ R.: $\frac{1}{3} x^3-4 \sqrt{x}+C$
+1. $\int\left(x^2+1+\frac{1}{x^2+1}\right) d x$
+
+# Questão 3
+
+Calcule a integral indefinida pela regra da substituição
+
+1. $\int x^2 e^{x^3} d x$ 
+
+1. $\int(3 x-2)^{20} d x$ R.: $\frac{1}{63}(3 x-2)^{21}+C$
+
+1. $\int(3 t+2)^{2,4} d t$
+1. $\int(x+1) \sqrt{2 x+x^2} d x$ R.: $\frac{1}{3}\left(2 x+x^2\right)^{3 / 2}+C$
+1. $\int \frac{d x}{5-3 x}$ R.: $-\frac{1}{3} \ln |5-3 x|+C$
+1. $\int u \sqrt{1-u^2} d u$
+1. $\int e^x \operatorname{sen}\left(e^x\right) d x$
+1. $\int \frac{e^u}{\left(1-e^u\right)^2} d u$ R.: $\frac{1}{1-e^u}+C$
+1. $\int \frac{a+b x^2}{\sqrt{3 a x+b x^3}} d x$ R.: $\frac{2}{3} \sqrt{3 a x+b x^3}+C$
+1. $\int \frac{z^2}{z^3+1} d z$
+1. $\int \frac{(\ln x)^2}{x} d x$ R.: $\frac{1}{3}(\ln x)^3+C$
+1. $\int e^x \sqrt{1+e^x} d x$ R.: $\frac{2}{3}\left(1+e^x\right)^{3 / 2}+C$
+1. $\int \frac{d x}{a x+b} \quad(a \neq 0)$
+1. $\int\left(x^2+1\right)\left(x^3+3 x\right)^4 d x$ R.: $\frac{1}{15}\left(x^3+3 x\right)^5+C$
+
+# Questão 4
+
+Calcule as integrais utilizando integração por partes
+
+3. $\int x\operatorname{cos}(5x)\,dx$
+
+4. $\int xe^{-x}\,dx$
+
+5. $\int re^{r/2}\,dr$
+9. $\int \log(\sqrt[3]{x}),dx$
+12. $\int p^5\log(p),dp$
+15. $\int (\log(x))^2,dx$
+19. $\int z^3e^z\,dz$
+21. $\int\frac{xe^{2x}}{(1+2x)^2}\,dx$
+24. $\int_0^1(x^2+1)e^{-x}\,dx$
+
+Demonstre que:
+
+12. $\int (\log(x))^n\,dx=x(\log(x))^n-n\int(\log(x))^{n-1}\,dx$
+13. $\int x^ne^x\,dx=x^ne^x-n\int x^{n-1}e^x\,dx$
+
