@@ -1,0 +1,130 @@
+---
+title: "Estatística I"
+subtitle: "VA Discretas - Variância"
+author: "Rafael Bressan"
+date: "Esag </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: indice
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+```
+
+
+# Variável Aleatória Discreta
+
+## Variância
+
+$Var[X]=E[(X-E[X])^2]$
+
+--
+
+Podemos expandir e então simplificar esta expressão
+
+$$
+\begin{align*}
+Var[X]&=E[X^2-2XE[X]+(E[X])^2]\\
+&=E[X^2]-2E[X]E[X]+(E[X])^2\\
+&=E[X^2]-(E[X])^2
+\end{align*}
+$$
+
+---
+name: propriedades
+# Variância
+
+## Propriedades
+
+Sendo $X$ uma variável aleatória e $a$ e $b$ constantes arbitrárias:
+
+- $Var[X+a]=Var[X]$
+
+- $Var[aX]=a^2Var[X]$
+
+- $Var[aX+b]=a^2Var[X]$
+
+--
+
+`r emo::ji("warning")` Variância **não é** um operador linear!
+
+---
+# Variância
+
+## Propriedades
+
+$Var[X+a]=Var[X]$
+
+--
+
+
+\begin{align*}
+E[(X+a)^2]&=E[X^2]+2aE[X]+a^2\\
+(E[X+a])^2&=(E[X])^2+2aE[X]+a^2\\
+Var[X+a]&=E[X^2]-(E[X])^2\\
+&=Var[X]
+\end{align*}
+
+
+---
+# Variância
+
+## Propriedades
+
+$Var[aX]=a^2Var[X]$
+
+--
+
+
+\begin{align*}
+E[(aX)^2]&=E[a^2X^2]\\
+(E[aX])^2&=(aE[X])^2\\
+Var[aX]&=a^2E[X^2]-a^2(E[X])^2\\
+&=a^2\left[E[X^2]-(E[X])^2\right]\\
+&=a^2Var[X]
+\end{align*}
+
+---
+# Variância
+
+## Propriedades
+
+$Var[aX+b]=a^2Var[X]$
+
+\begin{align*}
+E[(aX+b)^2]&=E[a^2X^2+2abX+b^2]\\
+&=a^2E[X^2]+2abE[X]+b^2\tag{1}\\
+(E[aX+b])^2&=(aE[X])^2+2abE[X]+b^2\\
+&=a^2(E[X])^2+2abE[X]+b^2\tag{2}\\
+Var[aX+b]&=(1)-(2)\\
+&=a^2E[X^2]-a^2(E[X])^2\\
+&=a^2Var[X]
+\end{align*}
