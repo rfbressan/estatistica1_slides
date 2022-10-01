@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## VA Discretas - Demonstrações
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 2022-10-01
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+
+# Índice
+
+- [Uniforme](#uniforme)
+
+- [Bernoulli](#bernoulli)
+
+- [Binomial](#binomial)
+
+- [Geométrica](#geometrica)
+
+- [Poisson](#poisson)
+
+---
+name: uniforme
+# Uniforme
+
+Uma variável aleatória `\(X\)` tem distribuição uniforme discreta(1,N) se:
+
+`$$P(X=x)=1/N, \qquad x=1, \ldots, N$$`
+
+--
+## Valor Esperado
+
+
+`\begin{align*}
+E[X]&amp;=\sum_{x=1}^N x P(X=x)\\
+&amp;=\frac{1}{N}\sum_{x=1}^N x\\
+&amp;=\frac{N+1}{2} \qquad \left(\text{pois, } \sum_{i=1}^k i =\frac{k(k+1)}{2}\right)
+\end{align*}`
+
+
+---
+# Uniforme
+
+## Variância
+
+`\begin{align*}
+E[X^2]&amp;=\sum_{x=1}^N x^2 P(X=x)\\
+&amp;=\frac{1}{N}\sum_{x=1}^N x^2\\
+&amp;=\frac{(N+1)(2N+1)}{6} \qquad \left(\text{pois, } \sum_{i=1}^k i^2=\frac{k(k+1)(2k+1)}{6}\right)
+\end{align*}`
+
+--
+
+`\begin{align*}
+Var[X]&amp;=E[X^2]-(E[X])^2 = \frac{(N+1)(2N+1)}{6} - \left(\frac{N+1}{2}\right)^2\\
+&amp;=\frac{(N+1)(N-1)}{12}
+\end{align*}`
+
+---
+name: bernoulli
+# Bernoulli
+
+Um experimento de Bernoulli é uma variável aleatória discreta com 2, e somente 2, resultados possíveis (0 ou 1). O evento 1 ocorre com probabilidade `\(p\)`.
+
+
+`$$X=\begin{cases}
+1 \qquad\text{com probabilidade }p\\
+0 \qquad\text{com probabilidade }(1-p)
+\end{cases}$$`
+
+--
+
+`\(E[X]=\sum_{x=0}^1 x p(x)= 0\cdot (1-p)+1\cdot p = p\)`
+
+--
+
+`\(Var[X]=\sum_{x=0}^1 x^2 p(x) - (E[X])^2= 0^2\cdot (1-p)+1^2\cdot p - p^2 = p(1-p)\)`
+
+
+---
+name: binomial
+# Binomial
+
+Se **repetirmos** de forma independente `\(n\)` vezes um experimento de **Bernoulli** e contarmos o número de ocorrências de sucesso, teremos então uma variável aleatória discreta com distribuição **Binomial**.
+
+Logo, se `\(X_i\)` é um experimento de Bernoulli, `\(Y=\sum_{i=1}^n X_i\)` terá uma distribuição binomial.
+
+--
+
+A função ***densidade*** de probabilidade é: 
+
+`\(P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}\)`, onde `\(x=0, \ldots, n\)`.
+
+---
+# Binomial
+
+## Valor Esperado
+
+Sabemos que `\(x\binom{n}{x}=n\binom{n-1}{x-1}\)`.
+
+
+`\begin{align*}
+E[X]&amp;=\sum_{\color{red}{x=1}}^n x \binom{n}{x}p^x(1-p)^{n-x} &amp;\text{x=0 implica termo=0}\\
+&amp;=\sum_{x=1}^n n\binom{n-1}{x-1}p^x(1-p)^{n-x}\\
+&amp;=np \underbrace{\sum_{y=0}^{n-1}\binom{n-1}{y}p^y(1-p)^{n-1-y}}_{=1} &amp;\text{y=x-1}\\
+&amp;= np
+\end{align*}`
+
+---
+# Binomial
+
+## Variância
+
+Sabemos que `\(x^2\binom{n}{x}=xn\binom{n-1}{x-1}\)`
+
+
+`\begin{align*}
+E[X^2]&amp;=n\sum_{\color{red}{x=1}}^n x \binom{n-1}{x-1}p^x(1-p)^{n-x}\qquad\qquad\text{x=0 implica termo=0}\\
+&amp;=n\sum_{y=0}^{n-1}(y+1)\binom{n-1}{y}p^{y+1}(1-p)^{n-1-y} &amp;\text{y=x-1}\\
+&amp;=np\sum_{y=0}^{n-1}y\binom{n-1}{y}p^{y}(1-p)^{n-1-y}+np\sum_{y=0}^{n-1}\binom{n-1}{y}p^{y}(1-p)^{n-1-y}\\
+&amp;=n(n-1)p^2+np
+\end{align*}`
+
+---
+# Binomial
+
+## Variância
+
+
+`\begin{align*}
+Var[X]&amp;=E[X^2]-(E[X])^2\\
+&amp;=n(n-1)p^2+np - n^2p^2\\
+&amp;=np(1-p)
+\end{align*}`
+
+
+---
+name: geometrica
+# Geométrica
+
+É uma distribuição também derivada do experimento de Bernoulli. Em uma sequência de experimentos independentes, quando ocorre o primeiro sucesso?
+
+`$$P(X=x)=p(1-p)^{x-1},$$`
+onde `\(x=1,2,\ldots\)` denota a ocorrência do primeiro successo (e.g. na terceira tentativa, `\(x=3\)`).
+
+---
+# Geométrica
+
+## Valor Esperado
+
+`\begin{align*}
+E[X]&amp;=\sum_{x=1}^\infty x p(1-p)^{x-1}\\
+&amp;=p\sum_{x=1}^\infty x (1-p)^{x-1}
+\end{align*}`
+
+--
+
+Definimos então `\(g(p):=x(1-p)^{x-1}\)`, e observamos que `\(g(p)=-\frac{d}{dp}(1-p)^x\)`. Substituímos na equação acima
+
+---
+# Geométrica
+
+## Valor Esperado
+
+
+`\begin{align*}
+E[X]&amp;=p\sum_{x=1}^\infty -\frac{d}{dp}(1-p)^x\\
+&amp;=-p\frac{d}{dp}\sum_{x=1}^\infty (1-p)^x\\
+&amp;=-p\frac{d}{dp}\frac{1-p}{p}\\
+&amp;=\frac{-p[-p-(1-p)]}{p^2}\\
+&amp;=1/p
+\end{align*}`
+
+---
+# Geométrica
+
+## Variância
+
+
+`\begin{align*}
+E[X^2]&amp;=\sum_{x=1}^\infty x^2p(1-p)^{x-1}\\
+&amp;=p \sum_{x=1}^\infty [x(x-1) + x](1-p)^{x-1}\\
+&amp;=p \sum_{x=1}^\infty x(x-1)q^{x-1} + \underbrace{\sum_{x=1}^\infty x pq^{x-1}}_{=1/p} \qquad\qquad q:=(1-p)\\
+&amp;=pq \sum_{x=1}^\infty x(x-1)q^{x-2} + 1/p
+\end{align*}`
+
+
+---
+# Geométrica
+
+## Variância
+
+Veja que se `\(g(q)=x(x-1)q^{x-2}\)`, então `\(\frac{d^2}{dq^2}q^x = g(q)\)`.
+
+
+`\begin{align*}
+E[X^2]&amp;=pq \sum_{x=1}^\infty \frac{d^2}{dq^2}q^x + 1/p\\
+&amp;=pq\frac{d^2}{dq^2}\left(\frac{q}{1-q}\right) + 1/p\\
+&amp;=pq\frac{2}{(1-q)^3} + 1/p\\
+&amp;=\frac{2-p}{p^2}
+\end{align*}`
+
+---
+
+# Geométrica
+
+## Variância
+
+Finalmente, temos que:
+
+`\(Var[X]=E[X^2]-(E[X])^2=\frac{2-p}{p^2}-\frac{1}{p^2}=\frac{1-p}{p^2}\)`
+
+--
+
+.center[
+&lt;img src="https://media.giphy.com/media/8du24IW5k6fimUSeU5/giphy.gif", width="200"/&gt;
+]
+
+---
+name: poisson
+# Poisson
+
+É uma distribuição discreta, tipicamente utilizada para modelar um ***processo de contagem*** de ocorrências em um determinado intervalo de tempo. 
+
+Exemplo: número de ônibus que passam no ponto da UDESC em 1 minuto¹.
+
+--
+
+A função densidade de probabilidade de uma `\(Poisson(\lambda)\)` é:
+
+`$$P(X=x)=\frac{e^{-\lambda}\lambda^x}{x!},$$` 
+onde `\(x=0,1, \ldots\)` denota a contagem do evento.
+
+.footnote[&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;1: Se condicionarmos no fato de estarmos no ponto, o resultado é zero! &lt;img src="https://media.giphy.com/media/RPfW9Yz9bixi4xGHii/giphy.gif", width="30" /&gt;]
+
+---
+# Poisson
+
+## Valor Esperado
+
+Sabemos que a expansão em série de Taylor de `\(e^y=\sum_{i=0}^\infty \frac{y^i}{i!}\)`.
+
+`\begin{align*}
+E[X]&amp;=\sum_{x=0}^\infty x\cdot P(X=x)\\
+&amp;= \sum_{x=0}^\infty x \frac{e^{-\lambda}\lambda^x}{x!}\\
+&amp;= \lambda e^{-\lambda}\sum_{x=1}^\infty \frac{\lambda^{x-1}}{(x-1)!}\\
+&amp;= \lambda e^{-\lambda} e^{\lambda}\\
+&amp;= \lambda
+\end{align*}`
+
+---
+# Poisson
+
+## Variância
+
+
+`\begin{align*}
+E[X^2]&amp;=\sum_{x=0}^\infty x^2\cdot P(X=x)\\
+&amp;= \sum_{x=1}^\infty x \frac{e^{-\lambda}\lambda^x}{(x-1)!}\\
+&amp;= \lambda e^{-\lambda}\sum_{y=0}^\infty (y+1)\frac{\lambda^{y}}{y!}\\
+&amp;= \lambda \underbrace{\sum_{y=0}^\infty y e^{-\lambda}\frac{\lambda^{y}}{y!}}_{=\lambda} + \lambda e^{-\lambda}\underbrace{\sum_{y=0}^\infty \frac{\lambda^{y}}{y!}}_{=e^\lambda}\\
+&amp;= \lambda^2 + \lambda
+\end{align*}`
+
+---
+# Poisson
+
+## Variância
+
+`\(Var[X]=E[X^2]-(E[X])^2=\lambda^2 + \lambda - \lambda^2= \lambda\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

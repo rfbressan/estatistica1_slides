@@ -1,0 +1,303 @@
+---
+title: "Estatística I"
+subtitle: "VA Discretas - Demonstrações"
+author: "Rafael Bressan"
+date: "Esag </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: indice
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+```
+
+
+# Índice
+
+- [Uniforme](#uniforme)
+
+- [Bernoulli](#bernoulli)
+
+- [Binomial](#binomial)
+
+- [Geométrica](#geometrica)
+
+- [Poisson](#poisson)
+
+---
+name: uniforme
+# Uniforme
+
+Uma variável aleatória $X$ tem distribuição uniforme discreta(1,N) se:
+
+$$P(X=x)=1/N, \qquad x=1, \ldots, N$$
+
+--
+## Valor Esperado
+
+
+\begin{align*}
+E[X]&=\sum_{x=1}^N x P(X=x)\\
+&=\frac{1}{N}\sum_{x=1}^N x\\
+&=\frac{N+1}{2} \qquad \left(\text{pois, } \sum_{i=1}^k i =\frac{k(k+1)}{2}\right)
+\end{align*}
+
+
+---
+# Uniforme
+
+## Variância
+
+\begin{align*}
+E[X^2]&=\sum_{x=1}^N x^2 P(X=x)\\
+&=\frac{1}{N}\sum_{x=1}^N x^2\\
+&=\frac{(N+1)(2N+1)}{6} \qquad \left(\text{pois, } \sum_{i=1}^k i^2=\frac{k(k+1)(2k+1)}{6}\right)
+\end{align*}
+
+--
+
+\begin{align*}
+Var[X]&=E[X^2]-(E[X])^2 = \frac{(N+1)(2N+1)}{6} - \left(\frac{N+1}{2}\right)^2\\
+&=\frac{(N+1)(N-1)}{12}
+\end{align*}
+
+---
+name: bernoulli
+# Bernoulli
+
+Um experimento de Bernoulli é uma variável aleatória discreta com 2, e somente 2, resultados possíveis (0 ou 1). O evento 1 ocorre com probabilidade $p$.
+
+
+$$X=\begin{cases}
+1 \qquad\text{com probabilidade }p\\
+0 \qquad\text{com probabilidade }(1-p)
+\end{cases}$$
+
+--
+
+$E[X]=\sum_{x=0}^1 x p(x)= 0\cdot (1-p)+1\cdot p = p$
+
+--
+
+$Var[X]=\sum_{x=0}^1 x^2 p(x) - (E[X])^2= 0^2\cdot (1-p)+1^2\cdot p - p^2 = p(1-p)$
+
+
+---
+name: binomial
+# Binomial
+
+Se **repetirmos** de forma independente $n$ vezes um experimento de **Bernoulli** e contarmos o número de ocorrências de sucesso, teremos então uma variável aleatória discreta com distribuição **Binomial**.
+
+Logo, se $X_i$ é um experimento de Bernoulli, $Y=\sum_{i=1}^n X_i$ terá uma distribuição binomial.
+
+--
+
+A função ***densidade*** de probabilidade é: 
+
+$P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}$, onde $x=0, \ldots, n$.
+
+---
+# Binomial
+
+## Valor Esperado
+
+Sabemos que $x\binom{n}{x}=n\binom{n-1}{x-1}$.
+
+
+\begin{align*}
+E[X]&=\sum_{\color{red}{x=1}}^n x \binom{n}{x}p^x(1-p)^{n-x} &\text{x=0 implica termo=0}\\
+&=\sum_{x=1}^n n\binom{n-1}{x-1}p^x(1-p)^{n-x}\\
+&=np \underbrace{\sum_{y=0}^{n-1}\binom{n-1}{y}p^y(1-p)^{n-1-y}}_{=1} &\text{y=x-1}\\
+&= np
+\end{align*}
+
+---
+# Binomial
+
+## Variância
+
+Sabemos que $x^2\binom{n}{x}=xn\binom{n-1}{x-1}$
+
+
+\begin{align*}
+E[X^2]&=n\sum_{\color{red}{x=1}}^n x \binom{n-1}{x-1}p^x(1-p)^{n-x}\qquad\qquad\text{x=0 implica termo=0}\\
+&=n\sum_{y=0}^{n-1}(y+1)\binom{n-1}{y}p^{y+1}(1-p)^{n-1-y} &\text{y=x-1}\\
+&=np\sum_{y=0}^{n-1}y\binom{n-1}{y}p^{y}(1-p)^{n-1-y}+np\sum_{y=0}^{n-1}\binom{n-1}{y}p^{y}(1-p)^{n-1-y}\\
+&=n(n-1)p^2+np
+\end{align*}
+
+---
+# Binomial
+
+## Variância
+
+
+\begin{align*}
+Var[X]&=E[X^2]-(E[X])^2\\
+&=n(n-1)p^2+np - n^2p^2\\
+&=np(1-p)
+\end{align*}
+
+
+---
+name: geometrica
+# Geométrica
+
+É uma distribuição também derivada do experimento de Bernoulli. Em uma sequência de experimentos independentes, quando ocorre o primeiro sucesso?
+
+$$P(X=x)=p(1-p)^{x-1},$$
+onde $x=1,2,\ldots$ denota a ocorrência do primeiro successo (e.g. na terceira tentativa, $x=3$).
+
+---
+# Geométrica
+
+## Valor Esperado
+
+\begin{align*}
+E[X]&=\sum_{x=1}^\infty x p(1-p)^{x-1}\\
+&=p\sum_{x=1}^\infty x (1-p)^{x-1}
+\end{align*}
+
+--
+
+Definimos então $g(p):=x(1-p)^{x-1}$, e observamos que $g(p)=-\frac{d}{dp}(1-p)^x$. Substituímos na equação acima
+
+---
+# Geométrica
+
+## Valor Esperado
+
+
+\begin{align*}
+E[X]&=p\sum_{x=1}^\infty -\frac{d}{dp}(1-p)^x\\
+&=-p\frac{d}{dp}\sum_{x=1}^\infty (1-p)^x\\
+&=-p\frac{d}{dp}\frac{1-p}{p}\\
+&=\frac{-p[-p-(1-p)]}{p^2}\\
+&=1/p
+\end{align*}
+
+---
+# Geométrica
+
+## Variância
+
+
+\begin{align*}
+E[X^2]&=\sum_{x=1}^\infty x^2p(1-p)^{x-1}\\
+&=p \sum_{x=1}^\infty [x(x-1) + x](1-p)^{x-1}\\
+&=p \sum_{x=1}^\infty x(x-1)q^{x-1} + \underbrace{\sum_{x=1}^\infty x pq^{x-1}}_{=1/p} \qquad\qquad q:=(1-p)\\
+&=pq \sum_{x=1}^\infty x(x-1)q^{x-2} + 1/p
+\end{align*}
+
+
+---
+# Geométrica
+
+## Variância
+
+Veja que se $g(q)=x(x-1)q^{x-2}$, então $\frac{d^2}{dq^2}q^x = g(q)$.
+
+
+\begin{align*}
+E[X^2]&=pq \sum_{x=1}^\infty \frac{d^2}{dq^2}q^x + 1/p\\
+&=pq\frac{d^2}{dq^2}\left(\frac{q}{1-q}\right) + 1/p\\
+&=pq\frac{2}{(1-q)^3} + 1/p\\
+&=\frac{2-p}{p^2}
+\end{align*}
+
+---
+
+# Geométrica
+
+## Variância
+
+Finalmente, temos que:
+
+$Var[X]=E[X^2]-(E[X])^2=\frac{2-p}{p^2}-\frac{1}{p^2}=\frac{1-p}{p^2}$
+
+--
+
+.center[
+<img src="https://media.giphy.com/media/8du24IW5k6fimUSeU5/giphy.gif", width="200"/>
+]
+
+---
+name: poisson
+# Poisson
+
+É uma distribuição discreta, tipicamente utilizada para modelar um ***processo de contagem*** de ocorrências em um determinado intervalo de tempo. 
+
+Exemplo: número de ônibus que passam no ponto da UDESC em 1 minuto¹.
+
+--
+
+A função densidade de probabilidade de uma $Poisson(\lambda)$ é:
+
+$$P(X=x)=\frac{e^{-\lambda}\lambda^x}{x!},$$ 
+onde $x=0,1, \ldots$ denota a contagem do evento.
+
+.footnote[&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1: Se condicionarmos no fato de estarmos no ponto, o resultado é zero! <img src="https://media.giphy.com/media/RPfW9Yz9bixi4xGHii/giphy.gif", width="30" />]
+
+---
+# Poisson
+
+## Valor Esperado
+
+Sabemos que a expansão em série de Taylor de $e^y=\sum_{i=0}^\infty \frac{y^i}{i!}$.
+
+\begin{align*}
+E[X]&=\sum_{x=0}^\infty x\cdot P(X=x)\\
+&= \sum_{x=0}^\infty x \frac{e^{-\lambda}\lambda^x}{x!}\\
+&= \lambda e^{-\lambda}\sum_{x=1}^\infty \frac{\lambda^{x-1}}{(x-1)!}\\
+&= \lambda e^{-\lambda} e^{\lambda}\\
+&= \lambda
+\end{align*}
+
+---
+# Poisson
+
+## Variância
+
+
+\begin{align*}
+E[X^2]&=\sum_{x=0}^\infty x^2\cdot P(X=x)\\
+&= \sum_{x=1}^\infty x \frac{e^{-\lambda}\lambda^x}{(x-1)!}\\
+&= \lambda e^{-\lambda}\sum_{y=0}^\infty (y+1)\frac{\lambda^{y}}{y!}\\
+&= \lambda \underbrace{\sum_{y=0}^\infty y e^{-\lambda}\frac{\lambda^{y}}{y!}}_{=\lambda} + \lambda e^{-\lambda}\underbrace{\sum_{y=0}^\infty \frac{\lambda^{y}}{y!}}_{=e^\lambda}\\
+&= \lambda^2 + \lambda
+\end{align*}
+
+---
+# Poisson
+
+## Variância
+
+$Var[X]=E[X^2]-(E[X])^2=\lambda^2 + \lambda - \lambda^2= \lambda$
