@@ -61,13 +61,13 @@ name: indice
 
 Podemos expandir e então simplificar esta expressão
 
-$$
+
 `\begin{align*}
 Var[X]&amp;=E[X^2-2XE[X]+(E[X])^2]\\
 &amp;=E[X^2]-2E[X]E[X]+(E[X])^2\\
 &amp;=E[X^2]-(E[X])^2
 \end{align*}`
-$$
+
 
 ---
 name: propriedades
@@ -139,6 +139,84 @@ Var[aX+b]&amp;=(1)-(2)\\
 &amp;=a^2E[X^2]-a^2(E[X])^2\\
 &amp;=a^2Var[X]
 \end{align*}`
+
+---
+# Variância
+
+## Exercícios
+
+Suponha duas variáveis aleatórias `\(X\)` e `\(Y\)` com as seguintes funções de probabilidade:
+
+`\(P(X=5)=P(X=15)=0,25\)` e `\(P(X=10) = 0,50\)`. `\(P(Y=8)=P(Y=12)=0,25\)` e `\(P(Y=2)=0,5\)`.
+
+Qual será o valor esperado de `\(X\)` e `\(Y\)`?
+
+--
+
+`\(E[X]=\sum_{x\in\chi}xp(x)=5*0.25 + 10*0.5 + 15*0.25 =\)` 10
+
+`\(E[Y]=\sum_{y\in\Upsilon}yp(y)=2*0.5+8*0.25+12*0.25=\)` 6
+
+--
+
+`\(Var[X]=\sum_{x\in\chi}(x-\bar{x})^2 p(x)=\)` 12.5
+
+`\(Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=\)` 18
+
+---
+# Variância
+
+## Exercícios
+
+Suponha que `\(X\)` e `\(Y\)` sejam variáveis aleatórias independentes, em que `\(X\)` é igual a 1 com probabilidade 0,5 e `\(X\)` é igual a -1 com probabilidade 0,5, assim como `\(Y\)` é igual a 1 com probabilidade 0,5 e Y é igual a -1 com probabilidade 0,5.
+
+--
+
+`\(E[X]=1*0.5+(-1)*0.5=\)` 0
+
+`\(Var[X]=\)` 1
+
+---
+# Variância
+
+## Exercícios
+
+A variável aleatória discreta `\(X\)` assume apenas os valores `\(0, 1, 2, 3, 4 \text{ e } 5\)`. A função densidade de probabilidade de `\(X\)` é dada por: 
+
+$$
+`\begin{align*}
+P(X = 0)&amp;=P(X=1)=P(X=2)=P(X=3)=a\\
+P(X=4) &amp;= P(X = 5)=b\\
+P(X\geq 2) &amp;= 3P(X &lt; 2)
+\end{align*}`
+$$
+`\(E[ \cdot ]\)` e `\(V[ \cdot ]\)` denotam, respectivamente, esperança e variância. Julgue as seguintes afirmativas:
+
+1. `\(E[X]=3\)`
+1. `\(V[X]=12\)`
+
+---
+# Variância
+
+## Exercícios
+
+Resolvemos o sistema:
+
+`$$\begin{cases}
+4a+2b=1\\
+2a+2b=3(2a)
+\end{cases}$$`
+
+
+--
+
+Temos `\(b=1/4\)` e `\(a=1/8\)`. 
+
+--
+
+`\(E[X]=0*a+1*a+2*a+3*a+4*b+5*b=\)` 3
+
+`\(V[X]=0^2*a+1^2*a+2^2*a+3^2*a+4^2*b+5^2*b - (E[X])^2=\)` 3
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

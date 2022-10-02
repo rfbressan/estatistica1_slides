@@ -50,13 +50,13 @@ $Var[X]=E[(X-E[X])^2]$
 
 Podemos expandir e então simplificar esta expressão
 
-$$
+
 \begin{align*}
 Var[X]&=E[X^2-2XE[X]+(E[X])^2]\\
 &=E[X^2]-2E[X]E[X]+(E[X])^2\\
 &=E[X^2]-(E[X])^2
 \end{align*}
-$$
+
 
 ---
 name: propriedades
@@ -128,3 +128,87 @@ Var[aX+b]&=(1)-(2)\\
 &=a^2E[X^2]-a^2(E[X])^2\\
 &=a^2Var[X]
 \end{align*}
+
+---
+# Variância
+
+## Exercícios
+
+Suponha duas variáveis aleatórias $X$ e $Y$ com as seguintes funções de probabilidade:
+
+$P(X=5)=P(X=15)=0,25$ e $P(X=10) = 0,50$. $P(Y=8)=P(Y=12)=0,25$ e $P(Y=2)=0,5$.
+
+Qual será o valor esperado de $X$ e $Y$?
+
+--
+
+$E[X]=\sum_{x\in\chi}xp(x)=5*0.25 + 10*0.5 + 15*0.25 =$ `r 5*0.25 + 10*0.5 + 15*0.25`
+
+$E[Y]=\sum_{y\in\Upsilon}yp(y)=2*0.5+8*0.25+12*0.25=$ `r 2*0.5+8*0.25+12*0.25`
+
+--
+
+$Var[X]=\sum_{x\in\chi}(x-\bar{x})^2 p(x)=$ `r (5^2*0.25 + 10^2*0.5 + 15^2*0.25)-(5*0.25 + 10*0.5 + 15*0.25)^2`
+
+$Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=$ `r (2^2*0.5+8^2*0.25+12^2*0.25)-(2*0.5+8*0.25+12*0.25)^2`
+
+---
+# Variância
+
+## Exercícios
+
+Suponha que $X$ e $Y$ sejam variáveis aleatórias independentes, em que $X$ é igual a 1 com probabilidade 0,5 e $X$ é igual a -1 com probabilidade 0,5, assim como $Y$ é igual a 1 com probabilidade 0,5 e Y é igual a -1 com probabilidade 0,5.
+
+--
+
+$E[X]=1*0.5+(-1)*0.5=$ `r 1*0.5+(-1)*0.5`
+
+$Var[X]=$ `r 1^2*0.5+(-1)^2*0.5`
+
+---
+# Variância
+
+## Exercícios
+
+A variável aleatória discreta $X$ assume apenas os valores $0, 1, 2, 3, 4 \text{ e } 5$. A função densidade de probabilidade de $X$ é dada por: 
+
+$$
+\begin{align*}
+P(X = 0)&=P(X=1)=P(X=2)=P(X=3)=a\\
+P(X=4) &= P(X = 5)=b\\
+P(X\geq 2) &= 3P(X < 2)
+\end{align*}
+$$
+$E[ \cdot ]$ e $V[ \cdot ]$ denotam, respectivamente, esperança e variância. Julgue as seguintes afirmativas:
+
+1. $E[X]=3$
+1. $V[X]=12$
+
+---
+# Variância
+
+## Exercícios
+
+Resolvemos o sistema:
+
+$$\begin{cases}
+4a+2b=1\\
+2a+2b=3(2a)
+\end{cases}$$
+
+```{r, echo=FALSE}
+A <- matrix(c(4, 2, -4, 2), ncol = 2, byrow = TRUE)
+B <- c(1, 0)
+s <- solve(A, B)
+a <- s[1]
+b <- s[2]
+```
+--
+
+Temos $b=1/4$ e $a=1/8$. 
+
+--
+
+$E[X]=0*a+1*a+2*a+3*a+4*b+5*b=$ `r 0*a+1*a+2*a+3*a+4*b+5*b`
+
+$V[X]=0^2*a+1^2*a+2^2*a+3^2*a+4^2*b+5^2*b - (E[X])^2=$ `r 0^2*a+1^2*a+2^2*a+3^2*a+4^2*b+5^2*b - (0*a+1*a+2*a+3*a+4*b+5*b)^2`
