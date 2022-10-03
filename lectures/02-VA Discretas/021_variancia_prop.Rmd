@@ -2,7 +2,7 @@
 title: "Estatística I"
 subtitle: "VA Discretas - Variância"
 author: "Rafael Bressan"
-date: "Esag </br> `r Sys.Date()`"
+date: "Esag </br> 04/10/2022"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -37,9 +37,18 @@ knitr::opts_chunk$set(
     #fig.height = 5
 )
 
+library(dplyr)
 ```
 
+# Variância
 
+* Mede a dispersão da massa de probabilidade em torno do valor esperado
+
+* Maior variância, mais "achatada" é a distribuição (sua _função de densidade_)
+
+[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
+
+---
 # Variável Aleatória Discreta
 
 ## Variância
@@ -128,6 +137,88 @@ Var[aX+b]&=(1)-(2)\\
 &=a^2E[X^2]-a^2(E[X])^2\\
 &=a^2Var[X]
 \end{align*}
+
+---
+# Variância
+
+## Exercícios
+
+Considere a seguinte distribuição dos lucros de uma montadora por produto vendido:
+
+```{r, fig.align='center', out.width="500"}
+knitr::include_graphics("../../img/ex_montadora.png")
+```
+
+a) Calcule o valor esperado do lucro
+
+b) Calcule a variância deste lucro
+
+---
+# Variância
+
+## Exercícios
+
+```{r montadora, echo=FALSE}
+df <- data.frame(
+    prob = c(0.56, 0.16, 0.08, 0.07, 0.02, 0.01, 0.07, 0.02, 0.01),
+    lucro = c(15, 10, -5, 10, 5, -5, -5, -5, -5)
+)
+
+df_group <- df |> 
+    group_by(lucro) |> 
+    summarize(prob = sum(prob))
+
+media <- df_group |> 
+    summarize(sum(lucro * prob)) |> 
+    pull()
+
+variancia <- df_group |> 
+    summarise(sum((lucro - media)^2 * prob)) |> 
+    pull()
+
+variancia2 <- df_group |> 
+    summarise(sum(lucro^2 * prob) - media^2) |> 
+    pull()
+```
+
+Facilitamos nossos cálculos produzindo a seguinte tabela de probabilidades:
+
+```{r, echo=FALSE, results='asis'}
+kableExtra::kbl(df_group,
+                col.names = c("Lucro", "Probabilidade"))
+```
+
+--
+
+$E[X]=\sum_{x\in\chi}xp(x)=-5*0.19+5*0.02+10*0.23+15*0.56=$ `r media`
+
+---
+# Variância
+
+## Exercícios
+
+
+$$
+\begin{align*}
+V[X]&=\sum_{x\in\chi}(x-\bar{x})^2p(x)\\
+&=(-5 - 9.85)^2*0.19 + (5 - 9.85)^2 * 0.02 + (10-9.85)^2 * 0.23+(15-9.85)^2 * 0.56\\
+&\approx 57.23
+\end{align*}
+$$
+
+--
+
+**OU**
+
+$$
+\begin{align*}
+V[X]&=\sum_{x\in\chi}x^2p(x) - \bar{x}^2\\
+&=(-5)^2*0.19 + (5)^2 * 0.02 + (10)^2 * 0.23+(15)^2 * 0.56 - 9.85^2\\
+&\approx 57.23
+\end{align*}
+$$
+
+
 
 ---
 # Variância

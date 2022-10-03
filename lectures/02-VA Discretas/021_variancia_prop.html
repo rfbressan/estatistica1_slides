@@ -6,6 +6,8 @@
     <meta name="author" content="Rafael Bressan" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/5235085b15.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -35,7 +37,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2022-10-01
+### Esag </br> 04/10/2022
 ]
 
 ---
@@ -50,7 +52,15 @@ name: indice
 
 
 
+# Variância
 
+* Mede a dispersão da massa de probabilidade em torno do valor esperado
+
+* Maior variância, mais "achatada" é a distribuição (sua _função de densidade_)
+
+[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
+
+---
 # Variável Aleatória Discreta
 
 ## Variância
@@ -139,6 +149,87 @@ Var[aX+b]&amp;=(1)-(2)\\
 &amp;=a^2E[X^2]-a^2(E[X])^2\\
 &amp;=a^2Var[X]
 \end{align*}`
+
+---
+# Variância
+
+## Exercícios
+
+Considere a seguinte distribuição dos lucros de uma montadora por produto vendido:
+
+&lt;img src="../../img/ex_montadora.png" width="500" style="display: block; margin: auto;" /&gt;
+
+a) Calcule o valor esperado do lucro
+
+b) Calcule a variância deste lucro
+
+---
+# Variância
+
+## Exercícios
+
+
+
+Facilitamos nossos cálculos produzindo a seguinte tabela de probabilidades:
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Lucro &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Probabilidade &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; -5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.02 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.56 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+`\(E[X]=\sum_{x\in\chi}xp(x)=-5*0.19+5*0.02+10*0.23+15*0.56=\)` 9.85
+
+---
+# Variância
+
+## Exercícios
+
+
+$$
+`\begin{align*}
+V[X]&amp;=\sum_{x\in\chi}(x-\bar{x})^2p(x)\\
+&amp;=(-5 - 9.85)^2*0.19 + (5 - 9.85)^2 * 0.02 + (10-9.85)^2 * 0.23+(15-9.85)^2 * 0.56\\
+&amp;\approx 57.23
+\end{align*}`
+$$
+
+--
+
+**OU**
+
+$$
+`\begin{align*}
+V[X]&amp;=\sum_{x\in\chi}x^2p(x) - \bar{x}^2\\
+&amp;=(-5)^2*0.19 + (5)^2 * 0.02 + (10)^2 * 0.23+(15)^2 * 0.56 - 9.85^2\\
+&amp;\approx 57.23
+\end{align*}`
+$$
+
+
 
 ---
 # Variância
