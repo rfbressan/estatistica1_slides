@@ -1,0 +1,179 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Estatística I},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Estatística I}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Lista 04 - Distribuições de Probabilidades Discretas\\
+Gabarito}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{distribuiuxe7uxe3o-de-probabilidade-discreta}{%
+\section{Distribuição de Probabilidade
+Discreta}\label{distribuiuxe7uxe3o-de-probabilidade-discreta}}
+
+\hypertarget{questuxe3o-1}{%
+\subsection{Questão 1}\label{questuxe3o-1}}
+
+VERDADEIRO, FALSO, VERDADEIRO, FALSO, FALSO, VERDADEIRO, FALSO,
+VERDADEIRO, VERDADEIRO, FALSO
+
+\hypertarget{questuxe3o-2}{%
+\subsection{Questão 2}\label{questuxe3o-2}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(b=2\)
+\item
+  \(b=2k\)
+\end{enumerate}
+
+\hypertarget{questuxe3o-3}{%
+\subsection{Questão 3}\label{questuxe3o-3}}
+
+VERDADEIRO, FALSO
+
+\hypertarget{questuxe3o-4}{%
+\subsection{Questão 4}\label{questuxe3o-4}}
+
+Binomial. \(P(X=8)=0,1201\)
+
+\hypertarget{questuxe3o-5}{%
+\subsection{Questão 5}\label{questuxe3o-5}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(P(X=5)=0,1968\)
+\item
+  \(P(X\geq 3) = 1-P(X<3)=0,91\)
+\item
+  \(P(X=0)=0,00312\)
+\end{enumerate}
+
+\hypertarget{questuxe3o-6}{%
+\subsection{Questão 6}\label{questuxe3o-6}}
+
+Distribuição de Poisson
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(f_{3h}(k=10|gripada)=\frac{9^{10} e^{-9}}{10!}=\) 0.1185801
+\item
+  \(f_{2h}(k\geq 1|gripada)=1-f_{2h}(k=0|gripada)=\) 0.9975212
+\item
+  \(P_{1h}(gripada|3 espirros) = \frac{P_{1h}(3 espirros|gripada)P_{1h}(gripada)}{P_{1h}(3 espirros)}\).
+  Teorema de Bayes
+\end{enumerate}
+
+Logo \(P_{1h}(gripada|3 espirros) =\) 0.7851335.
+
+Reforçando a importância do Teorema de Bayes. Como vimos nesse problema,
+sem saber que a aluna espirrou 3 vezes (ou seja, a \emph{priori}),
+sabemos que ela tem 0,5 de probabilidade de estar gripada. No momento em
+que recebemos a informação de que ela espirrou 3 vezes, podemos
+\textbf{atualizar} nossa crença de acordo com a nova informação e
+calcular a probabilidade a \emph{posteriori}. Para tanto, utilizamos o
+Teorema de Bayes, que é o pilar da Econometria Bayesiana. Recomendo o
+vídeo do canal \texttt{3blue1brown} sobre Teorema de Bayes que está
+neste \href{https://www.youtube.com/watch?v=HZGCoVF3YvM\&t=471s}{link}.
+
+\hypertarget{questuxe3o-7}{%
+\subsection{Questão 7}\label{questuxe3o-7}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Para \(Y = y\), precisamos de \(y − 1\) fracassos antes de
+  conseguirmos um acerto. Como um fracasso tem probabilidade \((1 − p)\)
+  e os eventos são independentes, temos: \(P(Y = y) = p(1 − p)^{y−1}\)
+\item
+  \(M_Y(t)=\frac{pe^t}{1-e^t(1-p)}\)
+\item
+  \(M'(t)=\frac{pe^t}{(1-e^t+pe^t)^2}\) e \(E[Y]=M'(0)\). Logo:
+\end{enumerate}
+
+\(E[Y]=\frac{pe^0}{(1-e^0+pe^0)^2}=1/p\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \(\frac{d^2 M}{d t^2}=\frac{-pe^t[(p-1)e^t-1]}{[(p-1)e^t+1]^3}.\)
+\end{enumerate}
+
+\(Var[Y]=M''(0)-E[Y]^2=\frac{2-p}{p^2}-\frac{1}{p^2}=\frac{1-p}{p^2}\)
+
+\end{document}

@@ -53,3 +53,40 @@ a) $P(X=5)=0,1968$
 b) $P(X\geq 3) = 1-P(X<3)=0,91$
 
 c) $P(X=0)=0,00312$
+
+## Questão 6
+
+Distribuição de Poisson
+
+a) $f_{3h}(k=10|gripada)=\frac{9^{10} e^{-9}}{10!}=$ `r dpois(10, 9)`
+
+b) $f_{2h}(k\geq 1|gripada)=1-f_{2h}(k=0|gripada)=$ `r 1- dpois(0, 6)`
+
+c) $P_{1h}(gripada|3 espirros) = \frac{P_{1h}(3 espirros|gripada)P_{1h}(gripada)}{P_{1h}(3 espirros)}$. Teorema de Bayes
+
+```{r, include=FALSE}
+p3g <- dpois(3, 3)
+pg <- 0.5
+p3ng <- dpois(3, 1)
+p3 <- p3g*pg+p3ng*(1-pg)
+
+pg3 <- (p3g*pg)/p3
+```
+
+Logo $P_{1h}(gripada|3 espirros) =$ `r pg3`.
+
+Reforçando a importância do Teorema de Bayes. Como vimos nesse problema, sem saber que a aluna espirrou 3 vezes (ou seja, a _priori_), sabemos que ela tem 0,5 de probabilidade de estar gripada. No momento em que recebemos a informação de que ela espirrou 3 vezes, podemos **atualizar** nossa crença de acordo com a nova informação e calcular a probabilidade a _posteriori_. Para tanto, utilizamos o Teorema de Bayes, que é o pilar da Econometria Bayesiana. Recomendo o vídeo do canal `3blue1brown` sobre Teorema de Bayes que está neste [link](https://www.youtube.com/watch?v=HZGCoVF3YvM&t=471s).
+
+## Questão 7
+
+a) Para $Y = y$, precisamos de $y − 1$ fracassos antes de conseguirmos um acerto. Como um fracasso tem probabilidade $(1 − p)$ e os eventos são independentes, temos: $P(Y = y) = p(1 − p)^{y−1}$
+
+b) $M_Y(t)=\frac{pe^t}{1-e^t(1-p)}$
+
+c) $M'(t)=\frac{pe^t}{(1-e^t+pe^t)^2}$ e $E[Y]=M'(0)$. Logo: 
+
+$E[Y]=\frac{pe^0}{(1-e^0+pe^0)^2}=1/p$
+
+d) $\frac{d^2 M}{d t^2}=\frac{-pe^t[(p-1)e^t-1]}{[(p-1)e^t+1]^3}.$
+
+$Var[Y]=M''(0)-E[Y]^2=\frac{2-p}{p^2}-\frac{1}{p^2}=\frac{1-p}{p^2}$
