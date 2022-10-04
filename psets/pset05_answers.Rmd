@@ -1,0 +1,55 @@
+---
+title: "Estatística I"
+subtitle: |
+    | Lista 04 - Distribuições de Probabilidades Discretas
+    | Gabarito
+# author: "Rafael Bressan"
+# date: "`r Sys.Date()`"
+output: 
+    pdf_document:
+        latex_engine: xelatex
+        keep_tex: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+```
+
+```{r loads}
+# library(ISLR2)
+# library(modelsummary)
+# library(kableExtra)
+# library(dplyr)
+# library(caret)
+```
+
+# Distribuição de Probabilidade Discreta
+
+## Questão 1
+
+VERDADEIRO, FALSO, VERDADEIRO, FALSO, FALSO, VERDADEIRO, FALSO, VERDADEIRO,
+VERDADEIRO, FALSO
+
+## Questão 2
+
+a) $b=2$
+
+b) $b=2k$
+
+## Questão 3
+
+VERDADEIRO, FALSO
+
+## Questão 4
+
+Binomial. $P(X=8)=0,1201$
+
+## Questão 5
+
+a) $P(X=5)=0,1968$
+
+b) $P(X\geq 3) = 1-P(X<3)=0,91$
+
+c) $P(X=0)=0,00312$
