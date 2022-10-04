@@ -1,0 +1,97 @@
+---
+title: "Estatística I"
+subtitle: |
+    | Lista 04 - Variáveis Aleatórias Discretas
+    | Gabarito
+# author: "Rafael Bressan"
+# date: "`r Sys.Date()`"
+output: 
+    pdf_document:
+        latex_engine: xelatex
+        keep_tex: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+```
+
+```{r loads}
+# library(ISLR2)
+library(modelsummary)
+library(kableExtra)
+library(dplyr)
+# library(caret)
+```
+
+# Variável aleatória discreta
+
+## Questão 1
+
+a) 2,25
+
+b) 5,25
+
+## Questão 2
+
+a) $P(X=x) = 1/6$ para todo $x$
+
+b) $F(1) = 1/6 F(2) = 2/6 F(3) = 3/6 F(4) = 4/6 F(5) = 5/6 F(6) = 6/6$
+
+c) $E[X] = 3,5$
+
+d) $E[X^2] = 15,17$
+
+## Questão 3
+
+Parta de $E[aX+b] = (ax_1 + b)p_1 + (ax_2 + b)p_2$ e mostre o resultado pedido.
+
+## Questão 4 (Livro Meyer)
+
+4.1
+
+$$p(x) = \begin{cases}
+1/64, \text{ se } x = 0\\
+9/64, \text{ se } x = 1\\
+27/64, \text{ se } x = 2 \text{ ou } 3\\
+\end{cases}$$
+
+$$F(x) = \begin{cases}
+0, \text{ se } x < 0\\
+1/64, \text{ se } 0 \leq x < 1\\
+5/32, \text{ se } 1 \leq x < 2\\
+37/64, \text{ se } 2\leq x < 3 \\
+1, \text{ se } x\geq 3
+\end{cases}$$
+
+4.3 
+
+a) $P(X=2j)=\sum_{j=1}^\infty \frac{1}{2^{2j}}=1/3$ Dica: Soma de uma PG infinita
+
+b) $P(X\geq 5) = \sum_{j=5}^\infty \frac{1}{2^{2j}}=1/16$
+
+c) $P(X=3j)=\sum_{j=1}^\infty \frac{1}{2^{3j}}=1/7$
+
+
+# Variável aleatória discreta – Medidas de dispersão
+
+## Questão 1
+
+$a=1/8$, $b=1/4$
+
+a) $E[X]=3$
+
+b) $V[X]=3$
+
+## Questão 2
+
+FALSO, FALSO
+
+## Questão 3
+
+Distribuição binomial. $X=1$ representa ter pelo menos 1 diploma.
+
+a) $E[X]=np \approx 19,7$
+
+b) $V[X]=np(1-)\approx 11,94$ e $dp=\sqrt{V[X]} \approx 3,45$
