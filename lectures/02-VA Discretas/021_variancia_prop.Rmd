@@ -397,13 +397,13 @@ kbl(df, col.names = c("X", "Prob.", "Z")) |>
 --
 
 .pull-right[
-* $E[X]=$ `r sum(df$X*df$prob)`
+* $E[X]=$ `r sum(df$X*df$prob)` - $g(E[X])=$ `r sqrt(sum(df$X*df$prob))`
 
 * $E[Z]=$ `r sum(df$Z*df$prob)`
 
 * Esta é uma aplicação da [**desigualdade de Jensen**](https://pt.wikipedia.org/wiki/Desigualdade_de_Jensen)
 
-* $E[g(X)]\leq E[X]$ sempre que $g(X)$ for côncava
+* $E[g(X)]\leq g(E[X])$ sempre que $g(X)$ for côncava
 
 * A relação é trocada para $g(X)$ convexa
 ]
