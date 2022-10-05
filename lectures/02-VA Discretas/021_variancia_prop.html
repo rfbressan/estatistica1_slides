@@ -238,7 +238,7 @@ $$
 
 Suponha duas variáveis aleatórias `\(X\)` e `\(Y\)` com as seguintes funções de probabilidade:
 
-`\(P(X=5)=P(X=15)=0,25\)` e `\(P(X=10) = 0,50\)`. `\(P(Y=8)=P(Y=12)=0,25\)` e `\(P(Y=2)=0,5\)`.
+`\(P(X=5)=P(X=15)=0,25\)` e `\(P(X=10) = 0,50\)`. `\(P(Y=8)=P(Y=12)=0,25\)` e `\(P(Y=10)=0,5\)`.
 
 Qual será o valor esperado de `\(X\)` e `\(Y\)`?
 
@@ -246,13 +246,13 @@ Qual será o valor esperado de `\(X\)` e `\(Y\)`?
 
 `\(E[X]=\sum_{x\in\chi}xp(x)=5*0.25 + 10*0.5 + 15*0.25 =\)` 10
 
-`\(E[Y]=\sum_{y\in\Upsilon}yp(y)=2*0.5+8*0.25+12*0.25=\)` 6
+`\(E[Y]=\sum_{y\in\Upsilon}yp(y)=8*0.25+10*0.5+12*0.25=\)` 10
 
 --
 
 `\(Var[X]=\sum_{x\in\chi}(x-\bar{x})^2 p(x)=\)` 12.5
 
-`\(Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=\)` 18
+`\(Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=\)` 2
 
 ---
 # Variância
@@ -308,6 +308,171 @@ Temos `\(b=1/4\)` e `\(a=1/8\)`.
 `\(E[X]=0*a+1*a+2*a+3*a+4*b+5*b=\)` 3
 
 `\(V[X]=0^2*a+1^2*a+2^2*a+3^2*a+4^2*b+5^2*b - (E[X])^2=\)` 3
+
+---
+
+# Variância
+
+## Exercícios
+
+.left-wide[
+Uma população de 1000 crianças foi analisada num estudo para determinar a efetividade de uma vacina contra um tipo de alergia.
+
+No estudo, as crianças recebiam uma dose da vacina e, após um mês, passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam outra dose da vacina. Ao fim de 5 doses todas as crianças foram consideradas imunizadas.
+
+Os resultados estão na tabela a seguir.
+]
+
+--
+
+.right-thin[
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Doses &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Freq. &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 245 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 288 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 256 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 145 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+---
+# Variância
+
+## Exercícios
+
+a) Encontre a função densidade de probabilidades, _fp_
+
+b) Encontre a função de distribuição acumulada, _FDA_
+
+c) Qual a probabilidade de uma criança ter recebido 2 doses?
+
+d) Qual a probabilidade de uma criança receber menos de 4 doses?
+
+e) Qual o valor esperado do número de doses de vacina deste estudo?
+
+f) Qual a variância do número de doses?
+
+g) Qual a probabilidade de uma criança receber mais de 5 doses?
+
+---
+
+# Variância
+
+## Exercícios
+
+
+Considere uma v.a. discreta `\(X\)` e uma transformação `\(g(X) = \sqrt{X}\)` desta v.a. que possui a seguinte distribuição:
+
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; X &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Prob. &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.20 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.30 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Variância
+
+## Exercícios
+
+.pull-left[
+a) Calcule o valor esperado de `\(X\)` e `\(Z=g(X)\)`
+
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; X &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Prob. &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Z &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.20 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.414214 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.449490 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.828427 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+* `\(E[X]=\)` 5.2
+
+* `\(E[Z]=\)` 2.2247964
+
+* Esta é uma aplicação da [**desigualdade de Jensen**](https://pt.wikipedia.org/wiki/Desigualdade_de_Jensen)
+
+* `\(E[g(X)]\leq E[X]\)` sempre que `\(g(X)\)` for côncava
+
+* A relação é trocada para `\(g(X)\)` convexa
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
