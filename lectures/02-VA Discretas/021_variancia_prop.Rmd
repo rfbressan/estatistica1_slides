@@ -397,7 +397,9 @@ kbl(df, col.names = c("X", "Prob.", "Z")) |>
 --
 
 .pull-right[
-* $E[X]=$ `r sum(df$X*df$prob)` - $g(E[X])=$ `r sqrt(sum(df$X*df$prob))`
+* $E[X]=$ `r sum(df$X*df$prob)` 
+
+* $g(E[X])=$ `r sqrt(sum(df$X*df$prob))`
 
 * $E[Z]=$ `r sum(df$Z*df$prob)`
 
