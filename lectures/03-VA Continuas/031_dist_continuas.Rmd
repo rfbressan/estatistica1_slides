@@ -1,0 +1,322 @@
+---
+title: "Estatística I"
+subtitle: "VA Contínuas - Demonstrações"
+author: "Rafael Bressan"
+date: "Esag </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: indice
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+library(ggplot2)
+
+```
+
+
+# Índice
+
+- [Uniforme](#uniforme)
+
+- [Normal](#normal)
+
+- [Exponencial](#exponencial)
+
+---
+name: uniforme
+# Uniforme
+
+Uma variável aleatória $X$ tem distribuição uniforme contínua no intervalo fechado $[a, b]$ se sua função densidade de probabilidade é:
+
+$$f(x)=\begin{cases}
+\frac{1}{b-a}, \text{ se } x\in[a,b]\\
+0, \text{ caso contrário}
+\end{cases}$$
+
+--
+
+A função de distribuição acumulada é $F(x)=\int_a^xf(t)\, dt$ para $x\in[a,b]$.
+
+$$F(x)=\begin{cases}
+0, \text{ se } x<a\\
+\frac{x-a}{b-a}, \text{ se } x\in[a,b]\\
+1, \text{ se x > b}
+\end{cases}$$
+
+---
+# Uniforme
+
+## Valor Esperado
+
+
+\begin{align*}
+E[X]&=\int_{a}^b x f(x)\, dx\\
+&=\int_{a}^b \frac{x}{b-a}\, dx\\
+&=\left. \frac{1}{b-a}\frac{x^2}{2}\right\rvert_a^b\\
+&=\frac{1}{2}\left[\frac{b^2}{b-a}-\frac{a^2}{b-a}\right]\\
+&=\frac{b+a}{2}
+\end{align*}
+
+
+---
+# Uniforme
+
+## Variância
+
+.pull-left[
+\begin{align*}
+Var[X]&=\int_{a}^b \frac{(x-\bar x)^2}{b-a} \, dx\\
+u = (x-\bar x)&\implies du = dx\\
+x = a &\implies u = (a-b)/2\\
+x = b &\implies u = (b-a)/2\\
+Var[X]&=\int_{(a-b)/2}^{(b-a)/2} \frac{u^2}{b-a} \, du\\ 
+&=\left . \frac{1}{(b-a)}\frac{u^3}{3}\right\rvert_{(a-b)/2}^{(b-a)/2}
+\end{align*}
+]
+--
+
+.pull-right[
+\begin{align*}
+Var[X]&=\frac{1}{3(b-a)}\left[\frac{(b-a)^3}{8}-\frac{(a-b)^3}{8}\right] \\
+&=\frac{1}{3(b-a)}\left[\frac{(b-a)^3}{8}-\frac{[-(b-a)]^3}{8}\right] \\
+&=\frac{1}{3(b-a)}\left[\frac{2(b-a)^3}{8}\right] \\
+&=\frac{(b-a)^2}{12} \\
+\end{align*}
+]
+---
+name: normal
+# Normal
+
+A distribuição Normal, também chamada de ***Gaussiana*** é a mais conhecida das distribuições.
+
+* Tratável analiticamente (faz parte da família exponencial)
+
+* **Teorema do Limite Central**. Muitas distribuições convergem para uma Normal
+
+--
+
+$f(x)=\phi(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}$, com $x\in(-\infty, \infty)$
+
+--
+
+$F(x)=\Phi(x)=\int_{-\infty}^x\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(t-\mu)^2}{2\sigma^2}}\,dt$
+
+--
+
+$\Phi(x)$ não possui solução analítica. [**Tabela da Normal**](https://en.wikipedia.org/wiki/Standard_normal_table)
+
+---
+
+# Normal
+
+## Valor Esperado
+
+* Toda $X\sim N(\mu, \sigma^2)$ pode ser reescrita em função de uma VA com distribuição normal padrão $Z\sim N(0,1)$ 
+
+* $X = \mu + \sigma Z$
+
+* Basta demonstrar a média e variância da **Normal Padrão** (por quê `r emo::ji("question")`)
+
+--
+
+* $\phi(z)=\frac{1}{\sqrt{2\pi}}e^{\frac{-z^2}{2}}$
+---
+
+# Normal
+
+## Valor Esperado
+
+.pull-left[
+
+* $E[Z]=\int_{-\infty}^{\infty} t \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt$
+* $te^{-t^2 / 2}$ é função ímpar
+* $E[Z]=0$
+]
+
+.pull-right[
+```{r esperado-normal, out.height=450}
+t <- seq(-3, 3, by = 0.1)
+ft <- function(t) {t * exp((-t^2)/2)}
+ftt <- ft(t)
+df <- data.frame(t = t, ftt = ftt)
+ggplot(df, aes(t, ftt)) +
+    geom_line(color = "darkgreen", size = 0.8) +
+    geom_hline(yintercept = 0) +
+    labs(x = "t",
+         y = expression(t*e^{-t^2 / 2})) +
+    theme_bw()
+```
+]
+---
+
+# Normal
+
+## Valor Esperado
+
+$$
+\begin{align*}
+E[Z]&=\int_{-\infty}^{\infty}t \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\\
+u=-t^2/2&\implies du=-tdt\\
+E[Z]&=\frac{-1}{\sqrt{2\pi}}\int e^u\,du\\
+&=\left . \frac{-1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\right\rvert_{-\infty}^{\infty}\\
+&=\frac{-1}{\sqrt{2\pi}}\left[\lim_{t\rightarrow\infty} e^{\frac{-t^2}{2}} - \lim_{t\rightarrow -\infty} e^{\frac{-t^2}{2}}\right]\\
+&= 0
+\end{align*}
+$$
+
+---
+name: var-normal
+# Normal
+
+## Variância
+
+$$
+\begin{align*}
+Var[Z]&=E[Z^2]+(E[Z])^2\\
+&=E[Z^2]
+\end{align*}
+$$
+--
+
+.pull-left[
+$$
+\begin{align*}
+E[Z^2]&=\int_{-\infty}^\infty t^2 \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\\
+u=t &\implies du = dt \\
+dv=te^{-t^2/2}&\implies v=-e^{-t^2/2}\\
+E[Z^2]&=\left . \frac{-te^{-t^2/2}}{\sqrt{2\pi}}\right\rvert_{-\infty}^\infty - \int_{-\infty}^\infty \frac{-e^{-t^2/2}}{\sqrt{2\pi}}\,dt
+\end{align*}
+$$
+
+]
+
+--
+
+.pull-right[
+$$
+\begin{align*}
+E[Z^2]&=\underbrace{\left . \frac{-te^{-t^2/2}}{\sqrt{2\pi}}\right\rvert_{-\infty}^\infty}_{=0} + \underbrace{\int_{-\infty}^\infty \frac{e^{-t^2/2}}{\sqrt{2\pi}}\,dt}_{=1}\\
+\implies & Var[Z]=1
+\end{align*}
+$$
+]
+
+.footnote[&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[1]: [integral dv](#int-dv)]
+
+---
+name: int-dv
+# Normal
+
+## Variância
+
+
+$$
+\begin{align*}
+\int te^{-t^2/2}\,dt&=\\
+u=-t^2/2&\implies du=-t\,dt\\
+&=-\int e^u\,du\\
+&=-e^{-t^2/2}
+\end{align*}
+$$
+.footnote[&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[1]: [variância Normal](#var-normal)]
+
+---
+name: exponencial
+# Exponencial
+
+A distribuição exponencial possui forte relação com a distribuição de Poisson. A exponencial é usada para modelar o intervalo de tempo entre dois eventos que ocorrem com distribuição de Poisson.
+
+--
+
+$$f(x)=\begin{cases}
+\lambda e^{-\lambda x}, \text{ se } x\geq 0\\
+0, \text{ caso contrário}
+\end{cases}$$
+
+--
+
+$$F(x)=\begin{cases}
+1-e^{-\lambda x}, \text{ se } x\geq 0\\
+0, \text{ caso contrário}
+\end{cases}$$
+
+---
+# Exponencial
+
+## Valor Esperado
+
+$$
+\begin{align*}
+E[X]&=\int_0^\infty x\lambda e^{-\lambda x}\,dx\\
+u=x&\implies du = dx\\
+dv=e^{-\lambda x}\,dx &\implies v=-\frac{1}{\lambda}e^{-\lambda x}\\
+E[X]&=\lambda\left[\left. -x \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\infty + \int_0^\infty \frac{1}{\lambda}e^{-\lambda x}\,dx\right]\\
+&=\int_0^\infty e^{-\lambda x}\,dx\\
+&=\left. \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\infty\\
+&= 1/\lambda
+\end{align*}
+$$
+
+---
+# Exponencial
+
+## Variância
+
+$$
+Var[X]=E[X^2]-(E[X])^2
+$$
+.pull-left[
+$$
+\begin{align*}
+E[X^2]&=\int_0^\infty x^2\lambda e^{-\lambda x}\,dx\\
+u=x&\implies du=dx\\
+dv=xe^{-\lambda x}&\implies v=\frac{-e^{-\lambda x}}{\lambda}(x+1/\lambda)\\
+E[X^2]&=\lambda\left\lbrace\left. -x(x+1/\lambda)\frac{e^{-\lambda x}}{\lambda}\right\rvert_0^\infty + \int_0^\infty \frac{e^{-\lambda x}}{\lambda}(x+1/\lambda)\,dx \right\rbrace\\
+&=\int_0^\infty e^{-\lambda x}(x+1/\lambda)\,dx
+\end{align*}
+$$
+]
+
+---
+# Exponencial
+
+## Variância
+
+$$
+\begin{align*}
+E[X^2]&=\underbrace{\int_0^\infty xe^{-\lambda x}\,dx}_{1/\lambda^2} + \underbrace{\int_0^\infty \frac{e^{-\lambda x}}{\lambda}\,dx}_{1/\lambda^2}\\
+&=2/\lambda^2
+\end{align*}
+$$
+--
+
+$Var[X]=2/\lambda^2 - (1/\lambda^2) = 1/\lambda^2$
+
