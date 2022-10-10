@@ -29,9 +29,21 @@ library(dplyr)
 
 ## Questão 1
 
-a) 2,25
+```{r q1}
+df <- data.frame(
+    x = 0:3,
+    p = c(1/8, 3/8, 3/8, 1/8)
+)
+df <- df |> 
+    mutate(FDA = cumsum(p))
 
-b) 5,25
+ex <- sum(df$x*df$p)
+varx <- sum((df$x^2)*df$p) - ex^2
+```
+
+a) `r ex`
+
+b) `r varx`
 
 ## Questão 2
 
@@ -94,4 +106,4 @@ Distribuição binomial. $X=1$ representa ter pelo menos 1 diploma.
 
 a) $E[X]=np \approx 19,7$
 
-b) $V[X]=np(1-)\approx 11,94$ e $dp=\sqrt{V[X]} \approx 3,45$
+b) $V[X]=np(1-p)\approx 11,94$ e $dp=\sqrt{V[X]} \approx 3,45$

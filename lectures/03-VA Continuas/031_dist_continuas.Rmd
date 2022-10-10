@@ -286,6 +286,7 @@ E[X]&=\lambda\left[\left. -x \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\inft
 $$
 
 ---
+
 # Exponencial
 
 ## Variância
