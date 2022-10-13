@@ -38,12 +38,12 @@ df <- df |>
     mutate(FDA = cumsum(p))
 
 ex <- sum(df$x*df$p)
-varx <- sum((df$x^2)*df$p) - ex^2
+ex2 <- sum((df$x^2)*df$p)
 ```
 
 a) `r ex`
 
-b) `r varx`
+b) `r ex2`
 
 ## Questão 2
 

@@ -1,7 +1,7 @@
 ---
 title: "Estatística I"
 subtitle: |
-    | Lista 04 - Distribuições de Probabilidades Discretas
+    | Lista 05 - Distribuições de Probabilidades Discretas
     | Gabarito
 # author: "Rafael Bressan"
 # date: "`r Sys.Date()`"
