@@ -1,0 +1,42 @@
+---
+title: "Lista Exercícios Extras"
+subtitle: "Variáveis Aleatórias Discretas"
+# author: "Rafael Bressan"
+# date: "`r Sys.Date()`"
+output: 
+    pdf_document:
+        latex_engine: xelatex
+bibliography: "../estatistica1.bib"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## VA Discretas
+
+Todos os Problemas das seções 6.2, 6.3 e 6.5 e Problemas 29, 58, 59 do Capítulo 6 do livro texto [@morettin2017estatistica]
+
+## Distribuição Uniforme
+
+Exercício 3.1, de [@casella2010inferencia]
+
+## Distribuição Binomial
+
+Problemas 21, 25, 26, 50 do Capítulo 6 de [@morettin2017estatistica]
+
+
+## Distribuição Geométrica
+
+Problemas 55, 56 do Capítulo 6 de [@morettin2017estatistica]
+
+Exercício 3.4 a), de [@casella2010inferencia]
+
+## Distribuição de Poisson
+
+Problemas 22, 24, 43, do Capítulo 6 de [@morettin2017estatistica]
+
+Problemas 8.2, 8.3 do Capítulo 8 de [@meyer1983probabilidade]
+
+## Referências
+
