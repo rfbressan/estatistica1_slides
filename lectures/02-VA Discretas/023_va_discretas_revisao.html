@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2022-10-19
+### Esag </br> 2022-10-25
 ]
 
 ---
@@ -1127,6 +1127,30 @@ name: poisson
 
 # Poisson
 
+
+Numa central telefônica, o número de chamadas chega segundo uma distribuição de
+Poisson, com a média de oito chamadas por minuto. Determinar qual a probabilidade
+de que num minuto se tenha:
+
+a) dez ou mais chamadas
+
+b) menos que nove chamadas
+
+c) entre sete (inclusive) e nove (exclusive) chamadas
+
+---
+
+# Poisson
+
+## Solução
+
+Neste caso `\(\lambda = 8/min\)` e `\(P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}\)`
+
+a) `\(P(X\geq 10)=1-P(X&lt;10)=\)` 0.2833757 
+
+b) `\(P(X&lt;9)=\)` 0.5925473
+
+c) `\(P(X\in\left[7, 9\right))=P(X=7)+P(X=8)=\)` 0.0174483
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

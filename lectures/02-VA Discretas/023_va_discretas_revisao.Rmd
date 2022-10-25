@@ -285,3 +285,27 @@ name: poisson
 
 # Poisson
 
+
+Numa central telefônica, o número de chamadas chega segundo uma distribuição de
+Poisson, com a média de oito chamadas por minuto. Determinar qual a probabilidade
+de que num minuto se tenha:
+
+a) dez ou mais chamadas
+
+b) menos que nove chamadas
+
+c) entre sete (inclusive) e nove (exclusive) chamadas
+
+---
+
+# Poisson
+
+## Solução
+
+Neste caso $\lambda = 8/min$ e $P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}$
+
+a) $P(X\geq 10)=1-P(X<10)=$ `r 1-ppois(9, 8, lower.tail=TRUE)` 
+
+b) $P(X<9)=$ `r ppois(8, 8, lower.tail=TRUE)`
+
+c) $P(X\in\left[7, 9\right))=P(X=7)+P(X=8)=$ `r dpois(7, 8)-dpois(6, 8)`
