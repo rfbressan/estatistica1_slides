@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2022-10-18
+### Esag </br> 2022-10-19
 ]
 
 ---
@@ -1037,6 +1037,96 @@ b/2&amp;=k\\
 b&amp;=2k
 \end{align*}`
 $$
+
+---
+name: bernoulli
+
+# Bernoulli
+
+Sabendo que a função geradora de momentos (fgm) de uma distribuição `\(X\)` é dada por `\(M_X(t)=E[e^{tX}]\)`, calcule:
+
+a) a _fgm_ de uma Bernoulli
+
+b) o valor esperado
+
+c) a variância
+
+---
+
+# Bernoulli
+
+## Solução
+
+a)
+
+$$
+`\begin{align*}
+M_X(t)&amp;=\sum_{k\in\{0,1\}} e^{tk}p^k(1-p)^{1-k}\\
+&amp;=(1-p)+pe^t
+\end{align*}`
+$$
+
+---
+
+# Bernoulli
+
+## Solução
+
+b) `\(E[X]=M_X'(0)\)`. Logo:
+
+`\(M_X'(t)=pe^t\implies M_X'(0)=p\)`
+
+c) `\(E[X^2]=M_X''(0)\)`.
+
+`\(M_X''(t)=pe^t\implies M_X''(0)=p\)`. Porém `\(Var[X]=E[X^2]-(E[X])^2\)`,
+
+`\(Var[X]=p-p^2=p(1-p)\)`
+
+---
+name: binomial
+
+# Binomial
+
+Suponha que se realizam 10 lançamentos independentes de uma moeda. Determine a função de probabilidade do número de caras obtidas e calcule a probabilidade de obtermos pelo menos duas caras.
+
+---
+
+# Binomial
+
+## Solução
+
+Podemos modelar esse problema como uma distribuição binomial com `\(p = 0,5\)` e `\(n = 10\)`. Logo, seja `\(X\sim B(10; 0,5)\)`, queremos encontrar a probabilidade de obtermos ao menos duas caras, que é o mesmo que procurarmos o complementar de obtermos menos de duas caras, ou seja: `\(P(X \geq 2) = 1 − P(X &lt; 2)\)`. Como `\(P(X &lt; 2) = P(X = 1) + P(X = 0)\)`, então:
+
+`\(P(X \geq 2) = 1 − P(X &lt; 2) = 1 − P(X = 1) − P(X = 0) =\)` 0.9892578
+
+Sendo que `\(P(X=k)=\binom{n}{k} p^k(1-p)^{n-k}\)`
+
+---
+name: geometrica
+
+# Geométrica
+
+Considere um indivíduo procurando emprego. Para cada entrevista de emprego `\((X)\)` esse indivíduo tem um custo linear `\((C)\)` de 10,00 reais. Suponha que a probabilidade de sucesso em uma entrevista qualquer seja de 0,2 . Suponha também que as entrevistas sejam independentes, e que o indivíduo continue fazendo entrevistas até que tenha o primeiro resultado de sucesso. Calcule o custo esperado até alcançar o primeiro sucesso.
+
+---
+
+# Geométrica
+
+## Solução
+
+Note que aqui temos um problema que pode ser representado por uma distribuição **geométrica** com probabilidade de sucesso igual a 0,2. 
+
+--
+Assim, queremos saber qual o ***valor esperado do número de entrevistas***, para assim calcularmos nosso custo. Isso é dado pela esperança de uma geométrica com probabilidade 0,2, que é `\(1/p = 5\)`. 
+
+--
+Como o custo de cada entrevista é igual a 10 reais, o custo esperado até alcançar o primeiro sucesso é de 50 reais.
+
+---
+name: poisson
+
+# Poisson
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
