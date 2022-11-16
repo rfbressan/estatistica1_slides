@@ -44,11 +44,116 @@ library(ggplot2)
 
 # Índice
 
+- [Funções de Variáveis Contínuas](#funcao)
+
 - [Uniforme](#uniforme)
 
 - [Normal](#normal)
 
 - [Exponencial](#exponencial)
+
+---
+name: funcao
+
+# Funções de Variáveis Contínuas
+
+Seja $X$ uma variável aleatória contínua 
+
+- Função densidade de probabilidade dada por $f(x)$ e;
+- Função de distribuição $F(x)$
+
+--
+
+Qual é a distribuição de uma variável aleatória $Y=h(X)$?
+
+- Onde $h(X)$ é uma **transformação monotônica** (estritamente crescente ou decrescente) de $X$
+
+---
+
+# Funções de Variáveis Contínuas
+
+- Neste caso a inversa $X=h^{-1}(Y)$ é bem definida.
+
+--
+
+- Se $a<x<b$, então:
+    + $h(a)<y<h(b)$, se $h$ for crescente, ou;
+    + $h(b)<y<h(a)$, se $h$ for decrescente.
+--
+
+A ***distribuição de Y*** será:
+
+.pull-left[
+$$\begin{align*}
+G(y)&=P[Y\leq y]\\
+&=P[h(X)\leq y]\\
+&=P[X\leq h^{-1}(y)]
+\end{align*}$$
+]
+
+.pull-right[
+
+$$G(y)=\begin{cases}
+F(h^{-1}(y)), &\text{se h for crescente} \\
+1-F(h^{-1}(y)), &\text{se h for decrescente}
+\end{cases}$$
+
+]
+
+---
+
+# Funções de Variáveis Contínuas
+
+A ***função densidade de probabilidade de Y*** será:
+
+$$
+\begin{align*}
+g(y)&=\frac{d}{dy}G(y)\\
+&=f(h^{-1}(y))\left\lvert\frac{dx}{dy}\right\rvert
+\end{align*}
+$$
+
+--
+
+<br>
+**Vejamos um exmplo!**
+.center[
+
+![](https://media.giphy.com/media/DffShiJ47fPqM/giphy.gif)
+]
+
+---
+
+# Funções de Variáveis Contínuas
+
+## Exemplo
+
+Considere $Y = 1/X$ e $f(x)=2x$, com $0< x \leq 1$.
+
+--
+- Identificamos $h(x)=1/x$ e portanto, $h^{-1}(y)=1/y$. Ou seja, $x=1/y$ e, $h(x)$ é ***estritamente decrescente***.
+- Limites da distribuição de $Y$: 
+    + $x\rightarrow 0^+ \implies y\rightarrow \infty$
+    + $x = 1\implies y=1$
+    
+--
+Logo:
+
+.pull-left[
+$$\begin{align*}
+G(y)&=1-F(h^{-1}(y))\\
+&=1-F(1/y)\\
+&=1-\left( \frac{1}{y} \right)^2
+\end{align*}$$
+]
+
+.pull-right[
+$$\begin{align*}
+g(y)&=f(h^{-1}(y))\left\lvert \frac{dx}{dy}\right\rvert\\
+&=\frac{1}{y^2}f(1/y)=\frac{2}{y^3}
+\end{align*}$$
+
+]
 
 ---
 name: uniforme
@@ -87,6 +192,7 @@ E[X]&=\int_{a}^b x f(x)\, dx\\
 
 
 ---
+
 # Uniforme
 
 ## Variância
@@ -123,15 +229,15 @@ A distribuição Normal, também chamada de ***Gaussiana*** é a mais conhecida 
 
 --
 
-$f(x)=\phi(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}$, com $x\in(-\infty, \infty)$
+$f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}$, com $x\in(-\infty, \infty)$
 
 --
 
-$F(x)=\Phi(x)=\int_{-\infty}^x\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(t-\mu)^2}{2\sigma^2}}\,dt$
+$F(x)=\int_{-\infty}^x\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(t-\mu)^2}{2\sigma^2}}\,dt$
 
 --
 
-$\Phi(x)$ não possui solução analítica. [**Tabela da Normal**](https://en.wikipedia.org/wiki/Standard_normal_table)
+$F(x)$ não possui solução analítica. [**Tabela da Normal**](https://en.wikipedia.org/wiki/Standard_normal_table)
 
 ---
 
@@ -139,15 +245,20 @@ $\Phi(x)$ não possui solução analítica. [**Tabela da Normal**](https://en.wi
 
 ## Valor Esperado
 
-* Toda $X\sim N(\mu, \sigma^2)$ pode ser reescrita em função de uma VA com distribuição normal padrão $Z\sim N(0,1)$ 
+* Toda $X\sim N(\mu, \sigma^2)$ pode ser reescrita em função de uma VA com distribuição **normal padrão** $Z\sim N(0,1)$ 
 
 * $X = \mu + \sigma Z$
+
+--
+* Padronização: $Z=\frac{X-\mu}{\sigma}$
 
 * Basta demonstrar a média e variância da **Normal Padrão** (por quê `r emo::ji("question")`)
 
 --
 
 * $\phi(z)=\frac{1}{\sqrt{2\pi}}e^{\frac{-z^2}{2}}$
+
+* $\Phi(z)=\int_{-\infty}^z\phi(t)\,dt$
 ---
 
 # Normal
