@@ -1,0 +1,268 @@
+---
+title: "Estatística I"
+subtitle: "VA Conjuntas"
+author: "Rafael Bressan"
+date: "Esag </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: indice
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+library(ggplot2)
+
+```
+
+
+# Índice
+
+- [Distribuição Conjunta](#dist-conjunta)
+
+- [Distribuição Marginal](#dist-marginal)
+
+- [Distribuição Condicional](#dist-condicional)
+
+- [Independência](#independencia)
+
+- [Exercícios 1](#exercicios1)
+
+- [Valor Esperado Condicional](#ve-condicional)
+
+- [Funções de VA Conjuntas](#funcoes)
+
+- [Covariância e Correlação](#covariancia)
+
+- [Exercícios 2](#exercicios2)
+
+---
+name: dist-conjunta
+
+# Distribuição Conjunjta
+
+
+---
+name: dist-marginal
+
+# Distribuição Marginal
+
+
+---
+name: dist-condicional
+
+# Distribuição Condicional
+
+
+---
+name: independencia
+# Independência
+
+
+---
+name: exercicios1
+
+# Exercícios
+
+1. Lançam-se, simultaneamente, uma moeda e um dado.
+
+(a) Determine o espaço amostral correspondente a esse experimento.
+
+(b) Obtenha a tabela da distribuição conjunta, considerando X o número de caras no lançamento da moeda e Y o número da face do dado.
+
+(c) Calcule:
+
+1. $P(X = 1)$
+2. $P(X \leq 1)$
+3. $P(X < 1)$
+4. $P(X = 2, Y = 3)$
+5. $P(X \geq 0, Y \leq 4)$
+6. $P(X = 0, Y \geq 1)$
+
+---
+# Exercícios
+
+## Solução
+
+a) $\Omega=\{(x,y): x\in\{C,K\}, y\in\{1,\ldots , 6\}\}$
+
+--
+
+b) tabela da distribuição conjunta
+
+| X\\Y | 1    | 2    | 3    | 4    | 5    | 6    | p(x) |
+|------|------|------|------|------|------|------|------|
+| 0    | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 |      |
+| 1    | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 |      |
+| p(y) |      |      |      |      |      |      |      |
+
+---
+
+# Exercícios
+
+## Solução
+
+c) 
+
+1. $P(X = 1) = \sum_y p(1, y) = 6\cdot 1/12=1/2$
+--
+
+2. $P(X \leq 1) = \sum_y p(0, y)+p(1,y)= 1$
+
+--
+
+3. $P(X < 1) = \sum_y p(0, y) = 1/2$
+
+--
+
+4. $P(X = 2, Y = 3) = p(2, 3) = 0$
+
+--
+
+5. $P(X \geq 0, Y \leq 4) = \sum_x \sum_{y\leq 4} p(x, y)= 8\cdot 1/12 = 2/3$
+
+--
+
+6. $P(X = 0, Y \geq 1) = \sum_{x=0}\sum_{y\geq 1} p(x, y) = 6\cdot 1/12 = 1/2$
+
+
+---
+
+# Exercícios
+
+2 A tabela abaixo dá a distribuição conjunta de X e Y.
+
+(a) Determine as distribuições marginais de X e Y.
+
+(b) Verifique se X e Y são independentes.
+
+(c) Calcule $P(X \leq 2)$ e $P(X = 2, Y \leq 1)$.
+
+--
+
+| Y\\X |   1 |   2 |   3 |
+|------|----:|----:|----:|
+| 0    | 0,1 | 0,1 | 0,1 |
+| 1    | 0,2 |   0 | 0,3 |
+| 2    |   0 | 0,1 | 0,1 |
+
+
+---
+
+# Exercícios
+
+## Solução
+
+a) Marginais
+
+.pull-left[
+| Y\\X |   1 |   2 |   3 | p(y) |
+|------|----:|----:|----:|------|
+| 0    | 0,1 | 0,1 | 0,1 | 0,3  |
+| 1    | 0,2 |   0 | 0,3 | 0,5  |
+| 2    |   0 | 0,1 | 0,1 | 0,2  |
+| p(x) | 0,3 | 0,2 | 0,5 |  1   |
+]
+
+--
+
+.pull-right[
+
+| X | p(x) |   | Y | p(y) |
+|---|-----:|   |---|-----:|
+| 1 | 0,3  |   | 0 | 0,3  |
+| 2 | 0,2  |   | 1 | 0,5  |
+| 3 | 0,5  |   | 2 | 0,2  |
+
+]
+
+---
+
+# Exercícios
+
+## Solução
+
+b) Independência
+
+.pull-left[
+| Y\\X |   1 |   2 |   3 | p(y) |
+|------|----:|----:|----:|------|
+| 0    | 0,1 | 0,1 | 0,1 | 0,3  |
+| 1    | 0,2 |   0 | 0,3 | 0,5  |
+| 2    |   0 | 0,1 | 0,1 | 0,2  |
+| p(x) | 0,3 | 0,2 | 0,5 |  1   |
+]
+
+--
+
+.pull-right[
+$P(X=1, Y=0)=0,1$, porém $p_X(1)=0,3$ e $p_Y(0)=0,3$. 
+
+Logo $P(X=1, Y=0)\neq p_X(1)p_Y(0)$.
+
+As distribuições **não** são independentes 
+]
+
+---
+
+# Exercícios
+
+## Solução
+
+a) $P(X \leq 2)$ e $P(X = 2, Y \leq 1)$
+
+$P(X \leq 2)=p_X(1)+p_X(2)=0,5$
+
+--
+
+$P(X = 2, Y \leq 1) = \sum_{y\leq 1} p(2, y)=0,1 + 0 = 0,1$
+
+
+---
+name: ve-condicional
+
+# Valor Esperado Condicional
+
+
+---
+name: funcoes
+
+# Funções de VA Conjuntas
+
+
+---
+name: covariancia
+
+# Covariância e Correlação
+
+
+---
+name: exercicios2
+
+# Exercícios 2

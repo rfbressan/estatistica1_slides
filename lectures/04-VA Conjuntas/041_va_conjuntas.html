@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## VA Conjuntas
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 2022-11-23
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+
+# Índice
+
+- [Distribuição Conjunta](#dist-conjunta)
+
+- [Distribuição Marginal](#dist-marginal)
+
+- [Distribuição Condicional](#dist-condicional)
+
+- [Independência](#independencia)
+
+- [Exercícios 1](#exercicios1)
+
+- [Valor Esperado Condicional](#ve-condicional)
+
+- [Funções de VA Conjuntas](#funcoes)
+
+- [Covariância e Correlação](#covariancia)
+
+- [Exercícios 2](#exercicios2)
+
+---
+name: dist-conjunta
+
+# Distribuição Conjunjta
+
+
+---
+name: dist-marginal
+
+# Distribuição Marginal
+
+
+---
+name: dist-condicional
+
+# Distribuição Condicional
+
+
+---
+name: independencia
+# Independência
+
+
+---
+name: exercicios1
+
+# Exercícios
+
+1. Lançam-se, simultaneamente, uma moeda e um dado.
+
+(a) Determine o espaço amostral correspondente a esse experimento.
+
+(b) Obtenha a tabela da distribuição conjunta, considerando X o número de caras no lançamento da moeda e Y o número da face do dado.
+
+(c) Calcule:
+
+1. `\(P(X = 1)\)`
+2. `\(P(X \leq 1)\)`
+3. `\(P(X &lt; 1)\)`
+4. `\(P(X = 2, Y = 3)\)`
+5. `\(P(X \geq 0, Y \leq 4)\)`
+6. `\(P(X = 0, Y \geq 1)\)`
+
+---
+# Exercícios
+
+## Solução
+
+a) `\(\Omega=\{(x,y): x\in\{C,K\}, y\in\{1,\ldots , 6\}\}\)`
+
+--
+
+b) tabela da distribuição conjunta
+
+| X\\Y | 1    | 2    | 3    | 4    | 5    | 6    | p(x) |
+|------|------|------|------|------|------|------|------|
+| 0    | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 |      |
+| 1    | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 | 1/12 |      |
+| p(y) |      |      |      |      |      |      |      |
+
+---
+
+# Exercícios
+
+## Solução
+
+c) 
+
+1. `\(P(X = 1) = \sum_y p(1, y) = 6\cdot 1/12=1/2\)`
+--
+
+2. `\(P(X \leq 1) = \sum_y p(0, y)+p(1,y)= 1\)`
+
+--
+
+3. `\(P(X &lt; 1) = \sum_y p(0, y) = 1/2\)`
+
+--
+
+4. `\(P(X = 2, Y = 3) = p(2, 3) = 0\)`
+
+--
+
+5. `\(P(X \geq 0, Y \leq 4) = \sum_x \sum_{y\leq 4} p(x, y)= 8\cdot 1/12 = 2/3\)`
+
+--
+
+6. `\(P(X = 0, Y \geq 1) = \sum_{x=0}\sum_{y\geq 1} p(x, y) = 6\cdot 1/12 = 1/2\)`
+
+
+---
+
+# Exercícios
+
+2 A tabela abaixo dá a distribuição conjunta de X e Y.
+
+(a) Determine as distribuições marginais de X e Y.
+
+(b) Verifique se X e Y são independentes.
+
+(c) Calcule `\(P(X \leq 2)\)` e `\(P(X = 2, Y \leq 1)\)`.
+
+--
+
+| Y\\X |   1 |   2 |   3 |
+|------|----:|----:|----:|
+| 0    | 0,1 | 0,1 | 0,1 |
+| 1    | 0,2 |   0 | 0,3 |
+| 2    |   0 | 0,1 | 0,1 |
+
+
+---
+
+# Exercícios
+
+## Solução
+
+a) Marginais
+
+.pull-left[
+| Y\\X |   1 |   2 |   3 | p(y) |
+|------|----:|----:|----:|------|
+| 0    | 0,1 | 0,1 | 0,1 | 0,3  |
+| 1    | 0,2 |   0 | 0,3 | 0,5  |
+| 2    |   0 | 0,1 | 0,1 | 0,2  |
+| p(x) | 0,3 | 0,2 | 0,5 |  1   |
+]
+
+--
+
+.pull-right[
+
+| X | p(x) |   | Y | p(y) |
+|---|-----:|   |---|-----:|
+| 1 | 0,3  |   | 0 | 0,3  |
+| 2 | 0,2  |   | 1 | 0,5  |
+| 3 | 0,5  |   | 2 | 0,2  |
+
+]
+
+---
+
+# Exercícios
+
+## Solução
+
+b) Independência
+
+.pull-left[
+| Y\\X |   1 |   2 |   3 | p(y) |
+|------|----:|----:|----:|------|
+| 0    | 0,1 | 0,1 | 0,1 | 0,3  |
+| 1    | 0,2 |   0 | 0,3 | 0,5  |
+| 2    |   0 | 0,1 | 0,1 | 0,2  |
+| p(x) | 0,3 | 0,2 | 0,5 |  1   |
+]
+
+--
+
+.pull-right[
+`\(P(X=1, Y=0)=0,1\)`, porém `\(p_X(1)=0,3\)` e `\(p_Y(0)=0,3\)`. 
+
+Logo `\(P(X=1, Y=0)\neq p_X(1)p_Y(0)\)`.
+
+As distribuições **não** são independentes 
+]
+
+---
+
+# Exercícios
+
+## Solução
+
+a) `\(P(X \leq 2)\)` e `\(P(X = 2, Y \leq 1)\)`
+
+`\(P(X \leq 2)=p_X(1)+p_X(2)=0,5\)`
+
+--
+
+`\(P(X = 2, Y \leq 1) = \sum_{y\leq 1} p(2, y)=0,1 + 0 = 0,1\)`
+
+
+---
+name: ve-condicional
+
+# Valor Esperado Condicional
+
+
+---
+name: funcoes
+
+# Funções de VA Conjuntas
+
+
+---
+name: covariancia
+
+# Covariância e Correlação
+
+
+---
+name: exercicios2
+
+# Exercícios 2
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
