@@ -56,9 +56,9 @@ library(ggplot2)
 
 - [Valor Esperado Condicional](#ve-condicional)
 
-- [Funções de VA Conjuntas](#funcoes)
-
 - [Covariância e Correlação](#covariancia)
+
+- [Funções de VA Conjuntas](#funcoes)
 
 - [Exercícios 2](#exercicios2)
 
@@ -235,7 +235,7 @@ As distribuições **não** são independentes
 
 ## Solução
 
-a) $P(X \leq 2)$ e $P(X = 2, Y \leq 1)$
+c) $P(X \leq 2)$ e $P(X = 2, Y \leq 1)$
 
 $P(X \leq 2)=p_X(1)+p_X(2)=0,5$
 
@@ -249,6 +249,262 @@ name: ve-condicional
 
 # Valor Esperado Condicional
 
+## Definição
+
+Sejam $X$ e $Y$ variáveis aleatórias distribuídas conjuntamente. Denominamos de ***valor esperado condicional*** de $X$ dado $Y=y$ por:
+
+$$
+\begin{align*}
+E[X|Y=y]&=\sum_x x P[X=x|Y=y], &\text{caso discreto}\\
+E[X|Y=y]&=\int_x x f_{X|Y}(x|y)\,dx, &\text{caso contínuo}
+\end{align*}
+$$
+--
+
+- `r emo::ji("warning")` Note que $E[X|Y=y]$ é uma função de $y$! Para cada valor $Y=y$ irá corresponder um valor esperado.
+
+--
+
+- $E[X|Y=y]$ também é conhecido como a curva de **regressão** de $X$ em $Y$.
+
+---
+
+# Valor Esperado Condicional
+
+## Exemplo
+
+.left-thin[
+| X\\Y     |   0 |   1 |   2 | $p_X(x)$ |
+|----------|----:|----:|----:|---------:|
+| 1        | 1/4 | 1/8 |   0 |      3/8 |
+| 2        |   0 | 1/2 | 1/8 |      5/8 |
+| $p_Y(y)$ | 1/4 | 5/8 | 1/8 |        1 |
+
+]
+
+--
+
+.right-wide[
+- Qual o $E[Y|X=1]$?
+
+- 1º Calculamos $P[Y|X=1] = P[X=1, Y=y] / p_X(x=1)$
+
+- $P[Y|X=1] = \{2/3; 1/3; 0\}$
+
+- Agora, $E[Y|X=1]=\sum_y y P[Y|X=1]$
+
+- $E[Y|X=1]0\cdot 2/3 + 1\cdot 1/3 + 2\cdot 0=1/3$
+]
+
+---
+
+# Valor Esperado Condicional
+
+## Exemplo
+
+$$
+f(x,y)=
+\begin{cases}
+1/2, &\text{se } x\geq y, x\leq 2, x,y\geq 0\\
+0, &\text{caso contrário.}
+\end{cases}
+$$
+
+--
+
+- Vejam que o suporte de $Y$ depende do valor assumido por $X$!
+
+```{r ve-conj-cont, fig.height=3.4}
+x <- seq(0, 2, by = 0.2)
+y <- x
+df <- data.frame(x = x, y = y)
+p <- ggplot(df, aes(x, y)) +
+    geom_line() +
+    geom_area(fill = "darkgreen", alpha = 0.6) +
+    geom_segment(aes(x = 0, y = 0, xend = 0, yend = 2.1),
+                 arrow = arrow(type = "closed", length = unit(0.125, "inches")),
+                 size = 0.4) +
+    geom_segment(aes(x = 0, y = 0, xend = 2.1, yend = 0.0),
+                 arrow = arrow(type = "closed", length = unit(0.125, "inches")),
+                 size = 0.3) +
+
+    theme_minimal()
+
+p
+```
+
+---
+
+# Valor Esperado Condicional
+
+## Exemplo
+
+- Qual o $E[Y|X]$? Ou seja, qual a curva de regressão de $Y$ em $X$?
+
+--
+
+$$E[Y|X] = \int_y y f_{Y|X}(y|x)\,dy$$
+
+--
+
+- Precisamos da densidade condicional $f_{X|Y}$, que por sua vez depende das densidades marginais!
+
+--
+
+- $f_X(x)=\int_0^xf(x,y)\,dy = 1/2\cdot y|_0^x = x/2$
+
+--
+
+- $f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)}=\frac{1/2}{x/2}=1/x$
+
+---
+
+# Valor Esperado Condicional
+
+## Exemplo
+
+- Agora podemos calcular a expressão $E[Y|X] = \int_y y f_{Y|X}(y|x)\,dy$
+
+- $E[Y|X] = \int_0^x y \frac{1}{x} \,dy= \left.\frac{1}{x}\frac{y^2}{2}\right\lvert_0^x = \frac{x}{2}$
+
+--
+
+- Como afirmado, $E[Y|X]$ é uma função de $x$! `r emo::ji("surprise")`
+
+---
+name: covariancia
+
+# Covariância e Correlação
+
+- Medidas da **relação linear** entre duas variáveis aleatórias
+
+--
+
+$$cov(X, Y) = E[(X - E[X])(Y-E[Y])]$$
+
+--
+- O valor esperado do produto dos desvios de $X$ e $Y$ em relação às suas respectivas médias.
+
+- Também pode ser como 
+
+--
+
+$$cov(X,Y)=E[XY]-E[X]E[Y]$$
+
+--
+
+- Quando $cov( X, Y ) = 0$, dizemos que as variáveis aleatórias $X$ e $Y$ são ***não correlacionadas***. 
+---
+
+# Covariância e Correlação
+
+- O **coeficiente de correlação** entre $X$ e $Y$ é definido por
+
+$$\rho(X,Y)=\frac{cov(X,Y)}{\sigma_X\sigma_Y}$$
+onde $\sigma_X$ denota o desvio padrão da variável aleatória $X$
+
+--
+
+- Medida que não depende das unidades de $X$ e $Y$.
+
+- $-1\leq\rho(X,Y)\leq 1$, sempre.
+
+--
+
+- **Propriedades**:
+    + $\rho(X + a,Y + b)=\rho(X,Y)$
+    + $\rho(aX,bY)=\frac{ab}{|ab|}\rho(X,Y)$
+
+---
+
+# Covariância e Correlação
+
+.pull-left[
+| Y\\X     |    0 |    1 |    2 | $p_Y(y)$ |
+|----------|-----:|-----:|-----:|----------|
+| 1        | 3/20 | 3/20 | 2/20 | 8/20     |
+| 2        | 1/20 | 1/20 | 2/20 | 4/20     |
+| 3        | 4/20 | 1/20 | 1/20 | 8/20     |
+| $p_X(x)$ | 8/20 | 5/20 | 7/20 | 1        |
+
+- Qual a covariância entre $X$ e $Y$?
+]
+
+--
+
+.pull-right[
+- $cov(X,Y)=E[XY]-E[X]E[Y]$
+
+- $E[X]=\sum_{x} x\cdot p_X(x)$
+
+- $E[Y]=\sum_{y} y\cdot p_Y(y)$
+
+- $E[XY]=\sum_{x}\sum_{y} xy\cdot p(x,y)$
+]
+
+--
+
+- $E[X]=0\cdot8/20 + 1\cdot 5/20 + 2\cdot 7/20 = 19/20$
+- $E[Y]= ?$ 
+- $E[XY]=?$
+
+--
+
+$$cov(X,Y)=0$$
+---
+
+# Covariância e Correlação
+
+**Proposição**: Se $X$ e $Y$ são duas variáveis aleatórias ***independentes***, então $cov( X, Y ) = 0$.
+
+--
+
+$X \perp\!\!\!\!\perp Y \implies cov(X, Y)=0$
+
+--
+
+`r emo::ji("warning")` A recíproca **não** é verdade! Covariância nula não implica independência entre variáveis aleatórias
+
+--
+
+A não ser que, ... estas variáveis aleatórias sejam **Normais**!
+
+- Se $X$ e $Y$ forem normalmente distribuídas, então $cov(X, Y)=0$ implica na independência destas variáveis.
+
+---
+
+# Variância
+
+$$Var[X]=E[(X-E[X])^2]$$
+- Variância é a covariância de uma va. com ela mesma!
+
+--
+
+**Propriedade**: $Var[X+Y]=Var[X]+Var[Y]+2\cdot cov(X,Y)$
+
+--
+
+$$
+\begin{align*}
+Var[X+Y]&=E[((X+Y)-E[X+Y])^2]\\
+&=E[(X+Y)^2-2(X+Y)E[X+Y]+(E[X+Y])^2]\\
+&=E[(X+Y)^2]-(E[X+Y])^2\\
+&=E[X^2+2XY+Y^2]-(E[X])^2-(E[Y])^2-2E[X]E[Y]\\
+&=\underbrace{E[X^2]-(E[X])^2}_{Var[X]} + \underbrace{E[Y^2]-(E[Y])^2}_{Var[Y]} + 2(\underbrace{E[XY]-E[X]E[Y]}_{cov(X,Y)})
+\end{align*}
+$$
+
+---
+
+# Variância
+
+$$Var[X+Y]=Var[X]+Var[Y]+2\cdot cov(X,Y)$$
+
+A ***variância da soma*** de duas variáveis aleatórias é ***igual a soma das variâncias***, se e somente se, a **covariância entre elas é igual a zero**.
+
+--
+
+E um Corolário desta proposição é que a independência entre duas variáveis aleatórias implica que a variância da soma é a soma das variâncias.
 
 ---
 name: funcoes
@@ -256,13 +512,10 @@ name: funcoes
 # Funções de VA Conjuntas
 
 
----
-name: covariancia
-
-# Covariância e Correlação
-
 
 ---
+
 name: exercicios2
 
 # Exercícios 2
+
