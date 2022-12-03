@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2022-11-16
+### Esag </br> 2022-12-03
 ]
 
 ---
@@ -60,6 +60,8 @@ name: indice
 - [Normal](#normal)
 
 - [Exponencial](#exponencial)
+
+- [Exercícios](#exercicios)
 
 ---
 name: funcao
@@ -115,12 +117,10 @@ F(h^{-1}(y)), &amp;\text{se h for crescente} \\
 
 A ***função densidade de probabilidade de Y*** será:
 
-$$
-`\begin{align*}
+`$$\begin{align*}
 g(y)&amp;=\frac{d}{dy}G(y)\\
 &amp;=f(h^{-1}(y))\left\lvert\frac{dx}{dy}\right\rvert
-\end{align*}`
-$$
+\end{align*}$$`
 
 --
 
@@ -191,13 +191,13 @@ A função de distribuição acumulada é `\(F(x)=\int_a^xf(t)\, dt\)` para `\(x
 ## Valor Esperado
 
 
-`\begin{align*}
+`$$\begin{align*}
 E[X]&amp;=\int_{a}^b x f(x)\, dx\\
 &amp;=\int_{a}^b \frac{x}{b-a}\, dx\\
 &amp;=\left. \frac{1}{b-a}\frac{x^2}{2}\right\rvert_a^b\\
 &amp;=\frac{1}{2}\left[\frac{b^2}{b-a}-\frac{a^2}{b-a}\right]\\
 &amp;=\frac{b+a}{2}
-\end{align*}`
+\end{align*}$$`
 
 
 ---
@@ -207,24 +207,24 @@ E[X]&amp;=\int_{a}^b x f(x)\, dx\\
 ## Variância
 
 .pull-left[
-`\begin{align*}
+`$$\begin{align*}
 Var[X]&amp;=\int_{a}^b \frac{(x-\bar x)^2}{b-a} \, dx\\
 u = (x-\bar x)&amp;\implies du = dx\\
 x = a &amp;\implies u = (a-b)/2\\
 x = b &amp;\implies u = (b-a)/2\\
 Var[X]&amp;=\int_{(a-b)/2}^{(b-a)/2} \frac{u^2}{b-a} \, du\\ 
 &amp;=\left . \frac{1}{(b-a)}\frac{u^3}{3}\right\rvert_{(a-b)/2}^{(b-a)/2}
-\end{align*}`
+\end{align*}$$`
 ]
 --
 
 .pull-right[
-`\begin{align*}
+`$$\begin{align*}
 Var[X]&amp;=\frac{1}{3(b-a)}\left[\frac{(b-a)^3}{8}-\frac{(a-b)^3}{8}\right] \\
 &amp;=\frac{1}{3(b-a)}\left[\frac{(b-a)^3}{8}-\frac{[-(b-a)]^3}{8}\right] \\
 &amp;=\frac{1}{3(b-a)}\left[\frac{2(b-a)^3}{8}\right] \\
 &amp;=\frac{(b-a)^2}{12} \\
-\end{align*}`
+\end{align*}$$`
 ]
 ---
 name: normal
@@ -290,16 +290,14 @@ A distribuição Normal, também chamada de ***Gaussiana*** é a mais conhecida 
 
 ## Valor Esperado
 
-$$
-`\begin{align*}
+`$$\begin{align*}
 E[Z]&amp;=\int_{-\infty}^{\infty}t \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\\
 u=-t^2/2&amp;\implies du=-tdt\\
 E[Z]&amp;=\frac{-1}{\sqrt{2\pi}}\int e^u\,du\\
 &amp;=\left . \frac{-1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\right\rvert_{-\infty}^{\infty}\\
 &amp;=\frac{-1}{\sqrt{2\pi}}\left[\lim_{t\rightarrow\infty} e^{\frac{-t^2}{2}} - \lim_{t\rightarrow -\infty} e^{\frac{-t^2}{2}}\right]\\
 &amp;= 0
-\end{align*}`
-$$
+\end{align*}$$`
 
 ---
 name: var-normal
@@ -307,35 +305,29 @@ name: var-normal
 
 ## Variância
 
-$$
-`\begin{align*}
+`$$\begin{align*}
 Var[Z]&amp;=E[Z^2]+(E[Z])^2\\
 &amp;=E[Z^2]
-\end{align*}`
-$$
+\end{align*}$$`
 --
 
 .pull-left[
-$$
-`\begin{align*}
+`$$\begin{align*}
 E[Z^2]&amp;=\int_{-\infty}^\infty t^2 \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\\
 u=t &amp;\implies du = dt \\
 dv=te^{-t^2/2}&amp;\implies v=-e^{-t^2/2}\\
 E[Z^2]&amp;=\left . \frac{-te^{-t^2/2}}{\sqrt{2\pi}}\right\rvert_{-\infty}^\infty - \int_{-\infty}^\infty \frac{-e^{-t^2/2}}{\sqrt{2\pi}}\,dt
-\end{align*}`
-$$
+\end{align*}$$`
 
 ]
 
 --
 
 .pull-right[
-$$
-`\begin{align*}
+`$$\begin{align*}
 E[Z^2]&amp;=\underbrace{\left . \frac{-te^{-t^2/2}}{\sqrt{2\pi}}\right\rvert_{-\infty}^\infty}_{=0} + \underbrace{\int_{-\infty}^\infty \frac{e^{-t^2/2}}{\sqrt{2\pi}}\,dt}_{=1}\\
 \implies &amp; Var[Z]=1
-\end{align*}`
-$$
+\end{align*}$$`
 ]
 
 .footnote[&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;[1]: [integral dv](#int-dv)]
@@ -347,14 +339,12 @@ name: int-dv
 ## Variância
 
 
-$$
-`\begin{align*}
+`$$\begin{align*}
 \int te^{-t^2/2}\,dt&amp;=\\
 u=-t^2/2&amp;\implies du=-t\,dt\\
 &amp;=-\int e^u\,du\\
 &amp;=-e^{-t^2/2}
-\end{align*}`
-$$
+\end{align*}$$`
 .footnote[&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;[1]: [variância Normal](#var-normal)]
 
 ---
@@ -382,8 +372,7 @@ A distribuição exponencial possui forte relação com a distribuição de Pois
 
 ## Valor Esperado
 
-$$
-`\begin{align*}
+`$$\begin{align*}
 E[X]&amp;=\int_0^\infty x\lambda e^{-\lambda x}\,dx\\
 u=x&amp;\implies du = dx\\
 dv=e^{-\lambda x}\,dx &amp;\implies v=-\frac{1}{\lambda}e^{-\lambda x}\\
@@ -391,8 +380,7 @@ E[X]&amp;=\lambda\left[\left. -x \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\
 &amp;=\int_0^\infty e^{-\lambda x}\,dx\\
 &amp;=\left. \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\infty\\
 &amp;= 1/\lambda
-\end{align*}`
-$$
+\end{align*}$$`
 
 ---
 
@@ -404,15 +392,13 @@ $$
 Var[X]=E[X^2]-(E[X])^2
 $$
 .pull-left[
-$$
-`\begin{align*}
+`$$\begin{align*}
 E[X^2]&amp;=\int_0^\infty x^2\lambda e^{-\lambda x}\,dx\\
 u=x&amp;\implies du=dx\\
 dv=xe^{-\lambda x}&amp;\implies v=\frac{-e^{-\lambda x}}{\lambda}(x+1/\lambda)\\
 E[X^2]&amp;=\lambda\left\lbrace\left. -x(x+1/\lambda)\frac{e^{-\lambda x}}{\lambda}\right\rvert_0^\infty + \int_0^\infty \frac{e^{-\lambda x}}{\lambda}(x+1/\lambda)\,dx \right\rbrace\\
 &amp;=\int_0^\infty e^{-\lambda x}(x+1/\lambda)\,dx
-\end{align*}`
-$$
+\end{align*}$$`
 ]
 
 ---
@@ -420,16 +406,195 @@ $$
 
 ## Variância
 
-$$
-`\begin{align*}
+`$$\begin{align*}
 E[X^2]&amp;=\underbrace{\int_0^\infty xe^{-\lambda x}\,dx}_{1/\lambda^2} + \underbrace{\int_0^\infty \frac{e^{-\lambda x}}{\lambda}\,dx}_{1/\lambda^2}\\
 &amp;=2/\lambda^2
-\end{align*}`
-$$
+\end{align*}$$`
 --
 
 `\(Var[X]=2/\lambda^2 - (1/\lambda^2) = 1/\lambda^2\)`
 
+---
+
+name: exercicios
+
+# Exercícios
+
+Seja `\(X\)` uma VA contínua com fdp dada por:
+
+`$$f(x)=\begin{cases}
+2Kx,  &amp;\text{se } 0\leq x\leq 1\\
+0, &amp;\text{caso contrário}
+\end{cases}$$`
+
+a) Determine o valor de `\(K\)`
+
+b) Calcule `\(E[X]\)`
+
+c) Calcule `\(Var[X]\)`
+
+d) Calcule a função de distribuição acumulada (FDA)
+
+---
+
+# Exercícios
+
+## Solução
+
+a) Determine o valor de `\(K\)`
+
+i) `\(K&gt;0\)`
+
+ii) `\(\int_0^1 2Kx\,dx = 1\implies K=1\)`
+
+--
+
+b) Calcule `\(E[X]\)`.
+
+`$$\begin{align*}
+E[X]&amp;=\int_0^1 2x^2\,dx\\
+&amp;=\left.\frac{2}{3}x^3\right\rvert_0^1\\
+&amp;=2/3
+\end{align*}$$`
+
+---
+
+# Exercícios
+
+## Solução
+
+c) Calcule `\(Var[X]\)`
+
+`$$\begin{align*}
+E[X^2]&amp;=\int_0^1 2x^3\,dx\\
+&amp;=\left.\frac{1}{2}x^4\right\rvert_0^1\\
+&amp;=1/2
+\end{align*}$$`
+
+--
+
+`\(Var[X]=E[X^2]-(E[X])^2=\frac{1}{2}-\left(\frac{2}{3}\right)^2=\frac{1}{18}\)`
+
+---
+
+# Exercícios
+
+## Solução
+
+d) Calcule a função de distribuição acumulada (FDA)
+
+`$$\begin{align*}
+F(x)&amp;=\int_0^x 2t\,dt\\
+&amp;=\left.t^2\right\rvert_0^x\\
+&amp;=x^2
+\end{align*}$$`
+
+---
+
+# Exercícios
+
+A quantidade de óleo contida em cada lata fabricada por uma indústria tem peso normalmente distribuído com média 900 g e desvio padrão de 12 g. Uma lata é rejeitada para venda se tiver peso menor que 884 g.
+
+a) Se observarmos uma sequência aleatória de latas em uma linha de produção, qual o percentual esperado de latas serão rejeitadas?
+
+b) Qual a probabilidade de que a 10ª lata observada seja a 1ª a ser rejeitada?
+
+Considere agora que as latas são rejeitadas se o peso delas estiver fora do intervalo `\([884, 916]\)`.
+
+c) Qual o percentual esperado de latas serão rejeitadas agora?
+
+---
+
+# Exercícios
+## Solução
+
+a) `\(P[X\leq 884]=\)` ❓
+
+--
+
+`\(z_c = (884-900) / 12 =\)` -1.3333333
+
+`\(P[X\leq 884] = P[Z\leq z_c] =\)` 0.0912112
+
+---
+
+# Exercícios
+## Solução
+
+b) 10ª lata observada seja a 1ª a ser rejeitada?
+
+Agora o item a) passa a ser a probabilidade de sucesso em uma distribuição geométrica (discreta). Sucesso é definido como rejeitar uma lata.
+
+`\(P[X=k]=(1-p)^{k-1}p\)`, logo:
+
+--
+
+`\(P[X=10]=\)` 0.0385669
+
+---
+
+# Exercícios
+## Solução
+
+c) Latas são rejeitadas se o peso delas estiver fora do intervalo `\([884, 916]\)`. Qual o percentual esperado de latas serão rejeitadas agora?
+
+Probabilidade de rejeitar é o complemento da probabilidade de aceitar a lata. Vamos calcular esta última primeiro.
+
+.pull-left[
+`\(P[884\leq X\leq 916]=P[z_1\leq Z\leq z_2]\)`
+
+`\(z_1=\)`-1.3333333
+
+`\(z_2=(916-900) / 12=\)` 1.3333333
+
+`\(P[z_1\leq Z\leq z_2]=\Phi(z_2)-\Phi(z_1)\)`
+
+]
+
+--
+
+.pull-right[
+`\(P[-1.33\leq Z\leq 1.33]=\Phi(1.33)-(1-\Phi(1.33))\)`
+
+`\(P[-1.33\leq Z\leq 1.33]=\)` 0.8175776
+
+Logo, a probabilidade de rejeição é:
+
+`\(P[X\leq 884 \cup X\geq 916]=1-\)` 0.8175776 `\(=\)` 0.1824224
+]
+
+---
+
+# Exercícios
+
+A variável aleatória contínua `\(X\)` possui a seguinte função densidade de probabilidade, `\(f(x)=1/2\)` para `\(0\leq x \leq 2\)`.
+
+Seja `\(Y\)` uma variável aleatória definida pela seguinte transformação monotônica, `\(Y=X^2\)`. Qual é a distribuição de `\(Y\)`, `\(G(y)\)`, sobre todos os Reais? 
+
+---
+
+# Exercícios
+## Solução
+
+Primeiramente estabelecemos que esta é uma transformação **crescente** no suporte de `\(X\)`.
+
+--
+
+O suporte de `\(Y\)` será `\(0\leq Y\leq 4\)`.
+
+--
+
+A transformação inversa é `\(X=h^{-1}(Y)=\sqrt{Y}\)`.
+
+--
+
+A função de distribuição de `\(X\)` é `\(F(x)=\frac{1}{2}x\)`. Portanto, pela fórmula `\(G(y)=F(h^{-1}(y))\)`
+
+`$$G(y)=\begin{cases}
+0, &amp;\text{se } y &lt; 0\\
+\frac{1}{2}\sqrt{y}, &amp;\text{se } 0\leq y\leq 4\\
+1, &amp;\text{se } y &gt; 4
+\end{cases}$$`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
