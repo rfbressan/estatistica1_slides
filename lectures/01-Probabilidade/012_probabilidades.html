@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## Probabilidades
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 2023-01-20
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+
+
+
+# Índice
+
+- [Introdução](#introducao)
+
+- [Exercícios 1](#exercicios1)
+
+- [Probabilidade Condicional](#condicional)
+
+- [Exercícios 2](#exercicios2)
+
+- [Independência](#independencia)
+
+- [Exercícios 3](#exercicios3)
+
+- [Teorema de Bayes](#bayes)
+
+- [Exercícios 4](#exercicios4)
+
+
+---
+name: introducao
+
+# Introdução
+
+***Fenômenos determinísticos***
+
+Dizemos que um experimento é determinístico quando repetido inúmeras
+vezes, em condições semelhantes, conduz a resultados essencialmente
+idênticos. Ex.:
+- Aceleração da gravidade;
+- Leis da Física e da Química.
+
+--
+
+***Fenômenos aleatórios***
+
+Os experimentos que repetidos sob as mesmas condições geram
+resultados diferentes, são chamados de experimentos aleatórios. Ex.:
+- Lançamento de uma moeda;
+- Lançamento de um dado;
+- Condições climáticas do próximo domingo;
+- Taxa de inflação do próximo mês.
+
+---
+# Teoria das Probabilidades
+
+- O que é a Teoria das Probabilidades?
+  + Ramo da matemática que desenvolve e avalia **modelos** para descrever
+**fenômenos aleatórios**.
+  + É a base teórica para o desenvolvimento das técnicas estatísticas.
+
+- Qual o objetivo da Teoria das Probabilidades?
+  + Construir um arcabouço **matemático** adequado para descrever
+fenômenos aleatórios.
+
+- O que precisamos para começar?
+  + Descrever o **conjunto de resultados possíveis** do fenômeno aleatório
+de interesse;
+  + Atribuir **pesos** a cada possível resultado, refletindo suas chances de
+ocorrência.
+
+---
+#Definições
+
+- ***Espaço amostral***: Conjunto de todos os possíveis resultados de um
+experimento aleatório.
+  - Pode conter um número finito ou infinito de pontos.
+  - Exemplos: `\(\{cara, coroa\}\)`, `\(\{1,2,3,4,5,6\}\)`, `\(\mathbb{R}^+\)`.
+  - Notação `\(\Omega\)`.
+
+- ***Pontos amostrais***: São os elementos que compõem `\(\Omega\)`.
+  - Notação `\(\omega\)`.
+  - Exemplo: `\(\omega_1\)` = cara, `\(\omega_2\)` = coroa.
+
+- ***Eventos***: Todo resultado ou subconjunto de resultados de um experimento aleatório.
+  - Exemplos: A = “sair cara”, B = “sair face par”.
+  - Em geral são denotados por `\(A, B, C, \ldots\)` 
+  
+---
+# Exemplos
+
+&gt; - **Experimento**: pesar um fruto ao acaso.
+
+&gt; - **Espaço amostral**: `\(\Omega = \mathbb{R}^+\)`.
+ 
+&gt; - **Pontos amostrais**: espaço amostral é infinito. `\(\omega\in [0,\infty)\)`
+ 
+&gt; - **Eventos**: A = “peso menor que 50g”, `\(B = \{x \mid x \geq 100g\}\)`.
+
+--
+
+&lt;br&gt;
+&gt; - **Experimento**: lançar um dado de seis faces.
+
+&gt; - **Espaço amostral**: `\(\Omega = \{1,2,3,4,5,6\}\)`.
+
+&gt; - **Pontos amostrais**: `\(\omega_i = i, \text{ onde } i\in \{1,2,3,4,5,6\}\)`
+
+&gt; - **Eventos**: A = sair número par, B = sair número menor que 3.
+
+
+---
+
+# Teoria de Conjuntos
+
+.pull-left[
+Um conjunto é uma reunião de ***elemetos***
+
+`\(A=\{0, 2, 4\}\)`, ou `\(B=\{⚠️, 🆙, 🔍\}\)`
+
+- Operações sobre conjuntos
+  + ***União***: `\(A\cup B=\{x\,\mid\, x \in A \textbf{ ou } x \in B\}\)`
+  + ***Interseção***: `\(A\cap B=\{x\,\mid\, x \in A \textbf{ e } x \in B\}\)`
+  + ***Complementação***: `\(A^c\)` ou `\(\bar{A}=\{x\in S\,\mid\, x \notin A\}\)`. onde `\(A\subset S\)`
+
+- ***Conjunto vazio***, denotado por `\(\emptyset\)`
+- ***Disjuntos*** (mutuamente exclusivos), `\(A\cap B = \emptyset\)`
+]
+
+--
+
+.pull-right[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+| Símbolo       | Significado        |
+|---------------|--------------------|
+| `\(=\)`           | Igual              |
+| `\(\in\)`         | Pertence           |
+| `\(\cup\)` `\(\cap\)` | União / Interseção |
+| `\(\subset\)`     | Está contido       |
+| `\(\mid\)` ou `\(:\)` | Tal que            |
+| `\(\exists\)`     | Existe             |
+| `\(\forall\)`     | Para todo          |
+
+]
+
+---
+# Exemplo
+
+Considere o lançamento de um dado e os eventos: `\(A = \{1, 2, 3, 4\}\)`,
+`\(B = \{\omega : \omega \geq 3\}\)`, C = face par, D = face primo.
+
+- Quem são `\(A, B, C \text{ e } D\)`?
+
+--
+
+- `\(A\cup D\)`, 
+- `\(C\cap D\)` e, 
+- `\(B^c \cap A\)`?
+
+---
+# Teoria de Conjuntos
+
+## Propriedades
+
+1. Para todo conjunto A, `\(\emptyset \subset A\)`
+1. `\(A\cup B = B\cup A\)` - Comutatividade
+1. `\(A\cap B = B\cap A\)`
+1. `\(A\cup(B\cup C) = (A\cup B)\cup C\)` - Associatividade
+1. `\(A\cap(B\cap C) = (A\cap B)\cap C\)`
+1. `\(A\cap(B\cup C) = (A\cap B)\cup (A\cap C)\)` - Leis Distributivas
+1. `\(A\cup(B\cap C) = (A\cup B)\cap (A\cup C)\)`
+1. `\((A\cup B)^c=A^c\cap B^c\)` - Leis de DeMorgan
+1. `\((A\cap B)^c=A^c\cup B^c\)`
+
+---
+
+# Diagramas de Venn
+
+Uma forma gráfica simples de representar conjuntos e suas operações
+
+- Suponha um espaço amostral `\(S\)` e dois subconjuntos `\(A\)` e `\(B\)`
+
+.pull-left[
+&lt;img src="012_probabilidades_files/figure-html/venn-1.svg" height="400" style="display: block; margin: auto;" /&gt;
+]
+
+--
+
+.pull-right[
+- `\(A\cup B\)` ?
+
+- `\(A\cap B\)` ?
+
+- `\(S\backslash(A\cup B)\)` ? (mesmo que `\((A\cup B)^c\)`)
+]
+
+---
+
+# Axiomas de Probabilidade
+
+Probabilidade é uma função `\(P(\cdot)\)` que atribui valores numéricos aos eventos do espaço amostral, de tal forma que
+
+1. `\(0 \leq P(A) \leq 1\)`, `\(\forall A \subset \Omega\)`;
+1. `\(P(\Omega) = 1\)`;
+1. `\(P(\bigcup_{j=1}^n A_j) = \sum^n_{j=1} P(A_j)\)`, com os `\(A_j\)` disjuntos.
+
+--
+
+Estas três propriedades são conhecidas como **Axiomas de Kolmogorov**
+
+--
+
+A pergunta que surge é: como **atribuir probabilidades** de ocorrência aos elementos do espaço amostral?
+
+---
+
+# Definição de Probabilidade
+
+Existem duas maneiras principais de atribuir probabilidades aos elementos
+do espaço amostral:
+
+1. **Clássica**. Baseia-se nas ***características teóricas*** do fenômeno.
+  - Considerando o lançamento de um dado, temos `\(\Omega = \{1, 2, 3, 4, 5, 6\}\)`.
+  - Admitindo que o dado é honesto, podemos assumir que `\(P(1) = P(2) = \ldots = P(6) = 1/6\)`
+
+--
+
+2. **Frequentista**. Baseia-se nas ***frequências relativas*** de ocorrência do
+fenômeno. Empírica.
+  - Determinar a probabilidade de ocorrência de cada face de um dado.
+  - Sem fazer nenhuma suposição inicial, podemos usar as frequências relativas de sucessivas ocorrências.
+
+---
+
+# Definição Frequentista
+
+Repetir o experimento aleatório `\(n\)` vezes e contar o número de ocorrência do evento A, `\(n(A)\)`
+
+- Frequência relativa: `\(f_{A,n}=n(A) / n\)`
+
+--
+
+Se pudermos repetir o experimento um grande número de vezes, `\(n\rightarrow\infty\)`, então
+
+`$$\lim_{n\rightarrow\infty}\frac{n(A)}{n}=P(A)$$`
+
+---
+# Exemplo
+## Definição Clássica
+
+Lançamos uma moeda duas vezes. C indica cara e R indica coroa. O espaço amostral será
+`$$\Omega = \{\omega_1 , \omega_2 , \omega_3 , \omega_4 \}$$`
+onde `\(\omega_1 = (C, C ), \omega_2 = (C, R), \omega_3 = (R, C ), \omega_4 = (R, R)\)`. 
+
+Suponha que cada ponto `\(\omega_i\)` tenha probabilidade 1/4. (moeda não viciada)
+
+Seja A o evento que consiste na obtenção de faces iguais nos dois
+lançamentos, então
+
+--
+
+`$$P(A) = P(\omega_1 \text{ ou } \omega_4) = 1/4 + 1/4 = 1/2.$$`
+
+--
+
+De modo geral, se A for qualquer evento de `\(\Omega\)`, então
+
+`$$P(A ) = \sum_{\omega_j\in A}P(\omega_j)$$`
+
+---
+
+# Exemplo
+## Definição Frequentista
+
+Lançamos um dado n vezes e contamos o número de ocorrências do valor 4. A medida que `\(n\rightarrow\infty\)` o valor **estimado** da probabilidade `\(P(4)\)` tende para o verdadeiro valor, 1/6.
+
+.pull-left[
+
+
+```r
+n &lt;- seq(10, 10000, by = 10)
+p4 &lt;- sapply(n, function(n) {
+    (sample(1:6, n, replace = TRUE) == 4) |&gt; 
+        mean()
+})
+df &lt;- data.frame(n, p4)
+plt &lt;- ggplot(df, aes(n, p4)) +
+    geom_line() +
+    geom_hline(yintercept = 1/6, 
+               linetype = "dashed", 
+               color = "red") +
+    theme_clean()
+```
+]
+
+.pull-right[
+&lt;img src="012_probabilidades_files/figure-html/unnamed-chunk-1-1.svg" height="370" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Eventos como Conjuntos
+
+Eventos e o próprio espaço amostral são encarados como conjuntos e, portanto, possuem propriedades análogas aos conjuntos, por exemplo:
+
+.pull-left[
+
+1. `\((A \cap B)^c = A^c \cup B^c\)`
+1. `\((A \cup B)^c = A^c \cap B^c\)`
+1. `\(A \cap \emptyset = \emptyset , A \cap \Omega = A\)`
+1. `\(\emptyset^c = \Omega, \Omega^c = \emptyset\)`
+1. `\(A \cap A^c = \emptyset\)`
+1. `\(A \cup A^c = \Omega\)`
+1. `\(A \cup \emptyset = A, A \cup \Omega = \Omega\)`
+1. `\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C )\)`
+
+]
+
+.pull-right[
+1. `\(P(\emptyset)=0\)`
+1. `\(P(A)\leq1\)`
+1. `\(P(A^c)=1-P(A)\)`
+1. `\(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)`
+1. `\(P(B\cap A^c)=P(B)-P(A\cap B)\)`
+1. `\(P(A)\leq P(B)\)` se `\(A\subset B\)`
+1. `\(P(A)=\sum_{i=1}^n P(A\cap C_i)\)`, para qualquer partição `\(C_i\)` de `\(A\)`
+1. `\(P(\bigcup_{i=1}^\infty A_i)\leq\sum_{i=1}^\infty P(A_i)\)`
+]
+
+---
+
+# Exemplos
+
+Consideremos um experimento aleatório e os eventos A e B associados,
+tais que `\(P(A) = 1/2\)`, `\(P(B) = 1/3\)` e `\(P(A \cap B) = 1/4\)`. Calcule:
+
+.pull-left[
+- `\(P(A^c)\)`
+- `\(P(A\cup B)\)`
+- `\(P(A^c\cap B^c)\)`
+- `\(P(A^c\cap B)\)`
+
+]
+
+--
+
+.pull-right[
+- `\(1-P(A)=1/2\)`
+- `\(P(A)+P(B)-P(A\cap B)=7/12\)`
+- `\(P((A\cup B)^c)=1-P(A\cup B)=5/12\)`
+- `\(P(B)-P(A\cap B)=1/12\)`
+]
+
+
+Outra forma de resolver o último item
+
+- `\((A^c\cap B) \cup (A\cap B) = B\)`
+- Logo `\(P(A^c\cap B) + P(A\cap B)=P(B)\)`
+- `\(P(A^c\cap B)=P(B)-P(A\cap B)\)`
+
+---
+name: condicional
+
+# Probabilidade Condicional
+
+- Em muitas situações práticas, o fenômeno aleatório com o qual trabalhamos pode ser separado em etapas.
+
+- A informação do que ocorreu em uma determinada etapa pode **influenciar
+nas probabilidades** de ocorrências das etapas sucessivas.
+
+- Nestes casos, dizemos que **ganhamos informação**, e podemos recalcular as
+probabilidades de interesse.
+
+- Estas probabilidades recalculadas recebem o nome de **probabilidades
+condicionais**.
+
+---
+# Probabilidade Condicional
+## Definição
+
+- Dados dois eventos A e B, a probabilidade condicional de A ocorrer, dado que ocorreu B é representado por `\(P(A\mid B)\)` 
+
+`$$P(A\mid B) = \begin{cases}
+\frac{P(A \cap B)}{P(B)}, &amp;\text{para } P(B) &gt; 0,\\ 
+P(A), &amp;\text{ caso } P(B) = 0 
+\end{cases}$$`
+
+--
+
+- Qual a probabilidade da face do dado ser 4, **dado que** ocorreu face par?
+
+--
+
+- `\(A=4\)`, `\(B=par\)`
+- `\(P(A\cap B)= P(A) = 1/6\)` (Por quê ❓)
+- `\(P(B)=1/2\)`
+- Logo, `\(P(A\mid B)=(1/6) / (1/2) = 1/3\)`
+
+---
+
+# Regra do Produto
+
+A regra do produto é uma expressão derivada do conceito de probabilidade
+condicional. Uma vez que `\(P(A\mid B) = P(A \cap B) / P(B)\)` temos que:
+
+`$$P(A \cap B) = P(A\mid B) \cdot P(B)$$`
+
+- Calcular probabilidades que são realizados em **sequência**, onde a ocorrência da **segunda etapa depende** (ou não) da ocorrência da primeira.
+
+--
+
+Qual a probabilidade de se obter dois ases em seguida, quando se extraem
+duas cartas de um baralho comum de 52 cartas, se:
+
+1. A primeira carta extraída **não é reposta** antes da extração da segunda carta.
+1. A primeira carta é reposta no baralho antes da extração da segunda carta.
+
+---
+name: independencia
+
+# Independência
+
+- Vimos que para probabilidades condicionais, `\(P(A\mid B)\)`, saber que B ocorreu
+nos dá uma informação “extra” sobre a ocorrência de A.
+
+- Porém, existem algumas situações nas quais saber que o *evento B ocorreu,
+não tem qualquer interferência* na ocorrência de A.
+
+- Nestes casos, podemos dizer que os ***eventos A e B são independentes***.
+
+--
+
+Os eventos A e B são **eventos independentes** se a **ocorrência de B não
+altera a probabilidade** de ocorrência de A
+
+`\(P(A\mid B)=P(A)\)` e também `\(P(B|A)=P(B)\)`
+
+- Portanto
+  - `\(P(A\cap B)=P(A\mid B)\cdot P(B)=P(A)\cdot P(B)\)`
+  
+---
+
+# Exemplo
+
+Considere o lançamento de um dado, os seguintes eventos e responda se os eventos A e B são independentes?
+
+.pull-left[
+A = “resultado é um número par”.
+
+B = “resultado é um número menor ou igual a 4”.
+]
+
+--
+
+.pull-right[
+&lt;img src="012_venn_dado.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Partição do Espaço Amostral
+
+Dizemos que os eventos `\(C_1 , C_2, \ldots, C_k\)` formam uma partição do espaço amostral se:
+
+1. eles não tem interseção entre si, `\(C_i\cap C_j=\emptyset\)` com `\(i\neq j\)` e,
+1. sua união é igual ao espaço amostral, `\(\bigcup_{i=1}^k C_i=\Omega\)`.
+
+--
+
+&lt;img src="012_particao.png" width="600" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Exemplo
+
+Suponha que um fabricante de sorvetes recebe 20% de todo o leite que
+utiliza de uma fazenda F1, 30% de outra fazenda F2 e 50% de F3.
+
+Um órgão de fiscalização inspecionou as fazendas de surpresa e observou
+que 20% do leite produzido por F1 estava adulterado por adição de água,
+enquanto que para F2 e F3, essa proporção era de 5% e 2%, respectivamente.
+
+Na indústria de sorvetes os galões de leite são armazenados em um refrigerador sem identificação das fazendas. Para um galão escolhido ao acaso, qual a probabilidade do leite estar adulterado, P(A)?
+
+---
+
+# Exemplo
+
+&lt;img src="012_fazenda.png" width="600" style="display: block; margin: auto;" /&gt;
+
+.pull-left[
+- `\(P(F1)=0.2\)`
+- `\(P(F2)=0.3\)`
+- `\(P(F3)=0.5\)`
+]
+.pull-right[
+- `\(P(A\mid F1)=0.2\)`
+- `\(P(A\mid F2)=0.05\)`
+- `\(P(A\mid F3)=0.02\)`
+]
+
+---
+
+# Exemplo
+
+&lt;img src="012_fazenda.png" width="600" style="display: block; margin: auto;" /&gt;
+
+`$$\begin{align*}
+P(A)&amp;=P((A\cap F1)\cup (A\cap F2)\cup (A\cap F3))\\
+&amp;=P(A\mid F1)P(F1) + P(A\mid F2)P(F2) + P(A\mid F3)P(F3)\\
+&amp;=0.065
+\end{align*}$$`
+
+---
+name: bayes
+
+# Teorema de Bayes
+
+Poderíamos estar interessados também na probabilidade de uma amostra adulterada ter sido obtida a partir da fazenda F1 , ou seja, `\(P(F1\mid A)\)`.
+
+&lt;div class="theorem" text="de Bayes"&gt;
+Suponha que os eventos \(C_1, C_2, \ldots , C_k\) formem uma partição de \(\Omega\) e que suas probabilidades sejam conhecidas. Suponha, ainda, que para um evento A, se conheçam as probabilidades \(P(A\mid C_i)\) para todo \(i = 1, 2, \ldots , k\). Então, para qualquer j,
+
+\[P(C_j\mid A)=\frac{P(A\mid C_j)P(C_j)}{P(A)},\quad j=1,2,\ldots , k. \text{ Onde }\]
+\[P(A)=\sum_{i=1}^k P(A\mid C_i)P(C_i)\]
+&lt;/div&gt;
+
+---
+# Exemplo
+
+Retomando o exemplo anterior, qual `\(P(F1\mid A)\)`?
+
+--
+
+- `\(P(A)=0.065\)`, calculado anteriormente usando particionamento
+- `\(P(A\mid F1)=0.2\)`
+- `\(P(F1)=0.2\)`
+
+Logo:
+
+`$$P(F1\mid A)=\frac{P(A\mid F1)P(F1)}{P(A)}\approx 0.615$$`
+
+---
+layout: false
+
+class: title-slide-final, middle
+background-image: url(../../img/logo/UdescEsag.jpeg)
+background-size: 350px
+background-position: 9% 19%
+
+# ATÉ A PRÓXIMA AULA!
+
+
+.footnote[
+[1]: Este slides foram baseados nas aulas de Estatística Básica da [UFPR](http://cursos.leg.ufpr.br/estbas-slides/)
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

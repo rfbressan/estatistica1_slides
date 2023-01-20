@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## Análise Exploratória de Dados
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 2023-01-18
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+
+
+
+# Índice
+
+- [Resumo de Dados](#resumo)
+
+- [Exercícios 1](#exercicios1)
+
+- [Medidas-Resumo](#medidas)
+
+- [Exercícios 2](#exercicios2)
+
+- [Análise Bidimensional](#analise)
+
+- [Exercícios 3](#exercicios3)
+
+---
+name: resumo
+
+# Resumo de Dados
+
+- Estatística trata de analisar e entender um ***conjunto de dados*** relevantes ao problema em estudo
+
+- Esses dados foram de alguma forma coletados e são representativos de alguma população a ser estudada
+
+- ***Inferência Estatística*** tem por objetivo a _coleta, tratamento, redução, análise e modelagem_ dos dados para, finalmente, fazer a inferência para a população
+
+--
+
+.center[Análise Estatística necessita de **DADOS**]
+
+.center[
+&lt;img src="https://media.giphy.com/media/xT9C25UNTwfZuk85WP/giphy.gif", width="200"/&gt;
+]
+
+---
+# Resumo de Dados
+
+- Dados são organizados pelas características da população ao qual dizem respeito
+
+- Chamamos estas características de ***variáveis*** e podemos coletar diversas ***observações*** destas
+
+--
+
+.center[![](011_variaveis.png)]
+
+---
+
+# Resumo de Dados
+
+- Variáveis podem ser classificadas em: ***qualitativas*** e ***quantitativas*** e subclassificadas em: ***nominal*** e ***ordinal*** e; ***discreta*** e ***contínua***
+
+--
+
+.center[
+&lt;img src="011_classificacao_var.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Resumo de Dados
+
+- Variáveis qualitativas (ou categóricas): apresentam como possíveis realizações uma qualidade (ou atributo) do indivíduo pesquisado
+
+  + Exemplos: educação, estado civil
+
+--
+
+- Variáveis quantitativas: números resultantes de uma contagem ou mensuração
+
+  + Exemplos: salário, idade
+
+--
+
+- Variáveis qualitativas **nominais**: não existe ordenação clara. Ex.: região de procedência
+
+- Variáveis qualitativas **ordinais**: possuem ordenação. Ex.: grau de instrução
+
+- Variáveis quantitativas **discretas**: conjunto finito ou enumerável. Ex.: núm. filhos
+
+- Variáveis quantitativas **contínuas**: intervalo de números reais. Ex.: estatura, peso
+
+---
+name: medidas
+
+# Medidas-Resumo
+
+- Muitas vezes queremos resumir um conjunto de dados em apenas uma ou algumas métricas
+
+- É importante que estas métricas sejam representativas do conjunto todo
+
+--
+
+- Neste curso trataremos de dois tipos de medidas-resumo:
+  + Medidas de ***posição*** (ou localização)
+  + Medidas de ***dispersão***
+
+---
+# Medidas de posição
+
+- Resumo da posição do conjunto de dados. Valor central a partir do qual os dados estão distribuídos
+
+--
+
+- As três medidas de posição mais conhecidas são:
+  + Moda
+  + Mediana
+  + Média
+
+--
+
+- **Moda** é a realização mais frequente dos dados. Pode haver mais de uma moda
+
+- **Mediana** é o valor que ocupa a posição central da série de observações ordenadas
+
+- **Média** é a soma das realizações divida pelo número destas
+
+---
+
+# Medidas de posição
+
+## Exemplos
+
+
+
+.pull-left[
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; N. filhos (Z) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Frequência (N) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+- Moda?
+
+- Mediana?
+
+- Média?
+]
+
+---
+
+# Medidas de posição
+
+## Média
+
+- Seja `\(x_1, \ldots , x_k\)`, os valores distintos assumidos pela variável X
+
+- `\(n_1, \ldots , n_k\)` a quantidade de observações de cada um destes valores
+
+- A **média aritmética** de X é:
+
+`$$\bar{x}=\frac{1}{n}\sum_{i=1}^kn_ix_i=\sum_{i=1}^kf_ix_i,$$`
+onde `\(n=\sum_{i=1}^k n_i\)` e `\(f_i\equiv n_i/n\)` é a frequência relativa da observação i
+
+---
+
+# Medidas de posição
+
+## Mediana
+
+- Considere as observações ordenadas em ordem crescente. A menor observação é `\(x_{(1)}\)`, portanto
+
+`$$x_{(1)}\leq x_{(2)}\leq \ldots \leq x_{(n)}$$`
+--
+- Observações ordenadas são chamadas ***estatísticas de ordem***. Exemplos mais conhecidos são o **mínimo** `\((x_{(1)})\)` e o **máximo** `\((x_{(n)})\)`
+
+--
+- A **mediana** pode assim ser definida:
+
+`$$\begin{equation}
+md(X)=\begin{cases}
+x_{\left(\frac{n+1}{2}\right)}, &amp;\text{se n ímpar}\\
+\frac{x_{\left(\frac{n}{2}\right)}+x_{\left(\frac{n}{2}+1\right)}}{2}, &amp;\text{se n par}
+\end{cases}
+\end{equation}$$`
+
+---
+
+# Medidas de dispersão
+
+- Medidas de localização não informam sobre a variabilidade dos dados
+
+- São necessárias medidas que sumarizem a variabilidade de um conjunto de observações
+
+--
+- Medidas de dispersão:
+  + ***Desvio Médio***
+  + ***Variância***
+  
+--
+- Tomadas em relação a média
+
+`$$\begin{align*}
+dm(X)&amp;=\frac{\sum_{i=1}^n |x_i -\bar{x}|}{n},\\
+var(X)&amp;=\frac{\sum_{i=1}^n \left(x_i -\bar{x}\right)^2}{n}
+\end{align*}$$`
+
+---
+
+# Medidas de dispersão
+
+Se houver repetição de observações
+
+`$$\begin{align*}
+dm(X)&amp;=\frac{\sum_{i=1}^k n_i|x_i -\bar{x}|}{n},\\
+var(X)&amp;=\frac{\sum_{i=1}^k n_i\left(x_i -\bar{x}\right)^2}{n}
+\end{align*}$$`
+
+--
+
+.pull-left[
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; N. filhos (Z) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Frequência (N) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+- Sabemos que `\(\bar{x}=\)` 1.65
+
+- Qual `\(dm(Z)\)`?
+
+- Qual `\(var(Z)\)`?
+]
+
+---
+
+# Medidas de dispersão
+
+- Variância tem unidade igual ao quadrado da unidade original dos dados!
+
+- Difícil interpretação
+
+--
+
+- Pode-se utilizar o ***desvio-padrão*** para voltar a unidade de medida original
+
+`$$dp(X)=\sqrt{var(X)}$$`
+
+---
+
+# Quantis Empíricos
+
+- Somente medidas de posição e dispersão podem não ser suficientes para descrever um conjunto de dados
+
+- Da mesma forma que a **mediana** divide os dados ao meio (50%), podemos definir outra medida para dividir os dados
+
+--
+
+- Chama-se de ***quantil de ordem p*** ou p-quantil, `\(q(p)\)`, o valor tal que `\(100*p \%\)` das observações sejam menores que `\(q(p)\)`
+
+- Temos alguns quantis especiais:
+  + `\(q(0,25)=q_1\)`: 1º **Quartil**
+  + `\(q(0,50)=q_2\)`: mediana
+  + `\(q(0,75)=q_3\)`: 3º **Quartil**
+
+---
+
+# Quantis Empíricos
+
+- Exemplo: 2 &lt; 3 &lt; 5 &lt; 7 &lt; 8 &lt; 10 &lt; 11 &lt; 12 &lt; 15 
+
+--
+- Temos um número ímpar de observações. Portanto a mediana `\((q_2)=8\)`
+
+- Como calculamos os quartis `\(q_1\)` e `\(q_3\)` ?
+
+--
+
+- Temos de dividir os dados em 4 partes. Já fizemos em duas
+
+- Quartil `\(q_1\)`: tome a primeira metade, 2 &lt; 3 &lt; 5 &lt; 7 e encontre a mediana desta
+
+- Quartil `\(q_3\)`: o mesmo para a segunda metade
+
+---
+
+# Quantis Empíricos
+
+- Uma propriedade dos quantis empíricos é que são ditos ***medidas robustas*** de posição
+
+- A robustez é no sentido que estas medidas são pouco afetadas por valores discrepantes nos dados
+
+--
+
+- Considere o exemplo anterior: 2 &lt; 3 &lt; 5 &lt; 7 &lt; 8 &lt; 10 &lt; 11 &lt; 12 &lt; 15
+
+- Mediana = 8 e Média = 8,1
+
+--
+
+- Se acrescentarmos o valor 67 na série
+  + Mediana = 9
+  + Média = 14!!
+
+--
+
+.center[👉 **Média é sucetível a _outliers_** ⚠️] 
+
+---
+
+# Box Plots
+
+- Representação gráfica de importantes quantis de um conjunto de dados
+
+- Em um _box plot_ consegue-se visualizar a posição, dispersão, assimetria, caudas e dados discrepantes
+
+- A caixa é formada pelos 1º e 3º quartis, com a mediana cortando a caixa
+
+- Os limites superior e inferior são calculados da seguinte forma:
+
+`$$\begin{align*}
+LS = q_3 + 1,5*d_q\\
+LI = q_1 - 1,5*d_q
+\end{align*}$$`
+
+onde `\(d_q = q_3 - q_1\)` é chamado de ***distância interquartil***
+
+---
+
+# Box Plots
+
+Vejamos o _box plot_ do exemplo com 30 municípios brasileiros
+
+--
+
+.pull-left[
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Município &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; População &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Rio de Janeiro(RJ) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 556.9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Salvador(BA) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 224.6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Belo Horizonte(MG) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 210.9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fortaleza(CE) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 201.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Belém(PA) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 116.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Guarulhos(SP) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Campinas(SP) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 92.4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Campo Grande(MS) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 61.9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Jaboatão(PE) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Contagem(MG) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50.3 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+&lt;img src="011_analise_dados_files/figure-html/boxplot-1.svg" height="400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Histogramas
+
+***Histograma*** é um gráfico de barras contíguas, com as bases proporcionais aos intervalos das classes e a área de cada retângulo proporcional à respectiva frequência.
+
+- As classes podem vir diretamente de uma variável qualitativa, ou;
+
+- Variáveis quantitativas devem ter as classes construídas com intervalos
+
+--
+
+Vejamos um exemplo com dados de temperatura
+
+---
+
+# Histogramas
+
+.pull-left[
+- Temos 120 observações de temperatura da cidade de Ubatuba-SP
+
+- Histograma é um gráfico **univariado**
+
+- Criamos intervalos para a variável contínua de temperatura
+]
+
+--
+
+.pull-right[
+&lt;img src="011_analise_dados_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+name: analise
+
+# Análise Bidimensional
+
+- Até o momento análisamos as propriedades de apenas uma variável por vez
+
+- Frequentemente desejamos avaliar o **comportamento conjunto** de duas ou mais variáveis
+
+- Coletamos mais de uma variável em cada observação (i.e. de um indivíduo)
+
+- Organizamos em uma tabela (_Data Frame_ no R)
+
+--
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; N &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; estado_civil &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; grau_instrucao &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_filhos &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; salario &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; idade_anos &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; idade_meses &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; reg_procedencia &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; solteiro &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ensino fundamental &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; interior &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; casado &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ensino fundamental &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; capital &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; casado &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ensino fundamental &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; capital &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; solteiro &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ensino médio &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.73 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; outra &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; solteiro &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ensino fundamental &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.26 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; outra &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Análise Bidimensional
+
+- Quando consideramos duas variáveis, podemos ter três situações:
+  + as duas variáveis são qualitativas;
+  + as duas variáveis são quantitativas; e
+  + uma variável é qualitativa e outra é quantitativa.
+  
+- Dependendo da situação, a técnica de análise será diferente
+
+--
+
+- Duas qualitativas: tabela de contingência com as frequências
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ensino fundamental &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ensino médio &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; superior &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; casado &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; solteiro &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Análise Bidimensional
+
+.pull-left[
+- Duas variáveis quantitativas 
+
+- _scatter plot_, 
+
+- correlação, 
+
+- regressão
+
+]
+
+--
+
+.pull-right[
+&lt;img src="011_analise_dados_files/figure-html/unnamed-chunk-8-1.svg" height="500" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Análise Bidimensional
+
+.pull-left[
+- Quando temos uma variável **qualitativa** e outra **quantitativa**
+
+- Analisamos o que acontece com a variável quantitativa quando os dados são categorizados de acordo com a variável qualitativa.
+]
+
+--
+
+.pull-right[
+
+&lt;img src="011_analise_dados_files/figure-html/unnamed-chunk-9-1.svg" height="500" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Análise Bidimensional
+
+- Entendemos a ***associação*** de duas variavéis como 
+
+&gt; a mudança de opinião sobre o comportamento de uma variável na presença ou não de informação sobre a segunda variável
+
+--
+
+- ⚠️ Este conceito de "mudança de opinião" condicional em alguma informação será exaustivamente explorado neste curso!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
