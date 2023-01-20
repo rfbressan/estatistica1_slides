@@ -270,6 +270,9 @@ blockquote {
     font-size: 35px;
 }
 
+.remark-slide-content h1, h2, h3 {
+    margin-bottom: 0px;
+}
 /* Color adjustments for text */
 
 /* Make bold syntax compile to udescgreen */
@@ -423,4 +426,35 @@ rect-block {
 .hi-red {
   font-weight: 600;
   color: #fb6107 !important;
+}
+
+/* Theorem environment */
+
+.theorem {
+  display: block;
+  font-style: italic;
+  font-size: 24px;
+  font-family: "Times New Roman";
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(222,222,231);
+  box-shadow: 5px 10px 8px #888888;
+}
+.theorem::before {
+  content: "Teorema. ";
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  width: -webkit-fill-available;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 5px 5px 15px;
+  background-color: #054B28;
+}
+.theorem[text]::before {
+  content: "Teorema " attr(text) " ";
+}
+.theorem p {
+  /* display: inline; */
+  padding: 15px 15px 15px 15px;
 }
