@@ -1,16 +1,13 @@
 # Bem-vindos a Estatística I
 
-Neste curso você aprenderá algumas das principais ferramentas atualmente utilizadas em ***microeconometria***. Modelos com dados em painel, regressão com efeitos-fixos, diferença-em-diferenças, modelos de equações simultâneas, variáveis instrumentais e mínimos quadrados em dois estágios (MQ2E) e, modelos com variável dependente limitada.
+Neste curso você aprenderá os princípios básicos da estatística. Iniciaremos com a análise exploratória de dados e algumas representações gráficas. Em seguida partimos para conceitos básicos da teoria de probabilidades e variáveis aleatórias. Aprofundaremos nosso estudo em algumas distribuições de probabilidade muito utilizadas, tanto discretas quanto contínuas. Por fim, estudaremos o comportamento conjunto de variáveis aleatórias.
  
-Você também aprenderá a usar a linguagem de programação `R` para fazer as manipulações de dados, estimações e testes de hipóteses, entretanto, este **não** é um curso de `R` e uma leitura complementar é sugerida. 
+Você também terá um breve contato com a linguagem de programação `R`. Mostrarei em sala de aula manipulações de dados, elaboração de gráficos e cálculo de algumas estatísticas. Entretanto, este **não** é um curso de `R` e uma leitura complementar é sugerida para aqueles que desde já decidam por estudar mais aprofundadamente esta ferramenta. 
 
 
 ## Pré-requisitos
 
-Você precisa ter feito o curso de Matemática I na Esag (ou equivalente).
-
-## Visão geral
-
+Embora não exista um pré-requisito formal, é aconselhável que você tenha feito o curso de Matemática I na Esag (ou equivalente).
 
 
 ## Programa e slides
@@ -19,11 +16,22 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 
 | Tópico                                                   | Slides                                                                                                              | Lista                                                                                                   |
 |----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Aula 1: Causalidade                                      | [HTML](https://raw.githack.com/rfbressan/econometria3_slides/master/lectures/01-causalidade/01-causality_pt.html)   |                                                                                                         |
+| Aula 1: Análise Exploratória de Dados                                      | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/011-analise_dados.html)   |                                                                                                         |
 
 
 ## Bibliografia Recomendada
 
+MORETTIN, Pedro A.; BUSSAB, Wilton O. Estatística básica. Saraiva Educação SA, 2017.
+
+CASELLA, George; BERGER, Roger L. Inferência estatística-tradução da 2a edição norte-americana. São Paulo: Cengage Learning, 2010.
+
+MEYER, Paul L. Probabilidade: Aplicações à Estatística.(2ª edição). Livros Técnicos e Científicos Editora SA, 1983.
+
+HOFFMAN, R. Estatística para economistas. São Paulo: Pioneira, 2001.
+
+DEGROOT, Morris H.; SCHERVISH, Mark J. Probability and statistics. Pearson Education, 2012.
+
+LARSEN, Richard J.; MARX, Morris L. An introduction to mathematical statistics and its applications. (4th edition). Hoboken, NJ: Prentice Hall, 2005.
 
 ## Outros Recursos
 
@@ -39,22 +47,9 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 
 O sistema de avaliação da disciplina se dará da seguinte maneira:
 
-- 4 listas de exercícios a serem entregues no Moodle em formato eletrônico (arquivo PDF). Cada lista conta 5% na nota antes do exame.
+- 6 listas de exercícios a serem entregues no Moodle em formato eletrônico. O conjunto das listas conta 20% da nota antes do exame.
 
-- 3 Provas escritas, presenciais, com os seguintes pesos: 20%, 25% e 35%.
+- 3 Provas escritas, presenciais, com os seguintes pesos: 25%, 25% e 30%.
 
 - É obrigatória a frequência em no mínimo 75% das aulas para aprovação.
 
-## Legal
-
-Você pode copiar e adaptar este material para seus propósitos, contanto que dê os devidos créditos e compartilhe o trabalho nos mesmos termos. Claro que você pode usar os slides para ensinar em suas salas de aula. *Crédito Apropriado* significa que em algum lugar em seus slides há um link para o repositório [original](https://github.com/rfbressan/estatistica1_slides) indicando que é sobre este trabalho que você está construindo. Clique no ícone para detalhes.
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-
-## Como construir
-
-* Estes são simplesmente slides Rmarkdown.
-* Então, no Rstudio, basta clicar em *knit*.
-* Para imprimir os slides como PDF, faça
-```decktape capitulo1.html capitulo1.pdf --chrome-arg=--disable-web-security```
-usando o incrível [decktape](https://github.com/astefanutti/decktape)

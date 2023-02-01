@@ -42,7 +42,7 @@ library(ggthemes)
 ```
 
 ```{r dados}
-load("../dados.RData")
+load("../../dados/dados.RData")
 ```
 
 
@@ -462,6 +462,28 @@ duas cartas de um baralho comum de 52 cartas, se:
 
 1. A primeira carta extraída **não é reposta** antes da extração da segunda carta.
 1. A primeira carta é reposta no baralho antes da extração da segunda carta.
+
+---
+
+# Exemplo
+
+Uma urna contém duas bolas brancas (B) e três vermelhas (V). Suponha que são sorteadas sequencialmente duas bolas ao acaso, **sem reposição**.
+
+.pull-left[
+- A = "bola branca na segunda extração"
+
+- Qual $P(A)$?
+
+- Um diagrama em ***árvore de probabilidades*** ajuda a compreender a situação
+]
+
+--
+
+.pull-right[
+```{r arvore, out.height = 400}
+DiagrammeR::grViz("012_arvore.gv")
+```
+]
 
 ---
 name: independencia

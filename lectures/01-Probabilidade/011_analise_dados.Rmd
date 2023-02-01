@@ -42,7 +42,7 @@ library(ggthemes)
 ```
 
 ```{r dados}
-load("../dados.RData")
+load("../../dados/dados.RData")
 ```
 
 

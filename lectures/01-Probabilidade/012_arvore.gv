@@ -1,0 +1,30 @@
+digraph dot {
+
+graph [rankdir = TB]
+
+node [
+    shape = circle,
+    # style = filled,
+    width = 0.2,
+    color = darkgreen,
+    label = ""
+    ]
+    
+edge [color = black]
+
+a -> b [label = "2/5"]
+a -> c [label = "3/5"]
+b -> d [label = "1/4"]
+b -> e [label = "3/4"]
+c -> f [label = "1/2"]
+c -> g [label = "1/2"]
+
+b [label = "B"]
+c [label = "V"]
+c [label = "V"]
+d [label = "B"]
+e [label = "V"]
+f [label = "B"]
+g [label = "V"]
+
+}

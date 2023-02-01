@@ -6,6 +6,10 @@
     <meta name="author" content="Rafael Bressan" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
     <script src="https://use.fontawesome.com/5235085b15.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -35,7 +39,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2023-01-20
+### Esag </br> 2023-01-23
 ]
 
 ---
@@ -462,6 +466,27 @@ duas cartas de um baralho comum de 52 cartas, se:
 
 1. A primeira carta extraída **não é reposta** antes da extração da segunda carta.
 1. A primeira carta é reposta no baralho antes da extração da segunda carta.
+
+---
+
+# Exemplo
+
+Uma urna contém duas bolas brancas (B) e três vermelhas (V). Suponha que são sorteadas sequencialmente duas bolas ao acaso, **sem reposição**.
+
+.pull-left[
+- A = "bola branca na segunda extração"
+
+- Qual `\(P(A)\)`?
+
+- Um diagrama em ***árvore de probabilidades*** ajuda a compreender a situação
+]
+
+--
+
+.pull-right[
+<div id="htmlwidget-d5bbfba3a98751c486bb" style="width:504px;height:400px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d5bbfba3a98751c486bb">{"x":{"diagram":"digraph dot {\n\ngraph [rankdir = TB]\n\nnode [\n    shape = circle,\n    # style = filled,\n    width = 0.2,\n    color = darkgreen,\n    label = \"\"\n    ]\n    \nedge [color = black]\n\na -> b [label = \"2/5\"]\na -> c [label = \"3/3\"]\nb -> d [label = \"1/4\"]\nb -> e [label = \"3/4\"]\nc -> f [label = \"1/2\"]\nc -> g [label = \"1/2\"]\n\nb [label = \"B\"]\nc [label = \"V\"]\nc [label = \"V\"]\nd [label = \"B\"]\ne [label = \"V\"]\nf [label = \"B\"]\ng [label = \"V\"]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
 
 ---
 name: independencia
