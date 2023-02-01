@@ -16,7 +16,7 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 
 | Tópico                                                   | Slides                                                                                                              | Lista                                                                                                   |
 |----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Aula 1: Análise Exploratória de Dados                                      | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/011-analise_dados.html)   |                                                                                                         |
+| Aula 1: Análise Exploratória de Dados                                      | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/011_analise_dados.html)   |                                                                                                         |
 
 
 ## Bibliografia Recomendada
