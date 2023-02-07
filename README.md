@@ -14,9 +14,15 @@ Embora não exista um pré-requisito formal, é aconselhável que você tenha fe
 
 Observe que várias dessas aulas se estendem por duas ou mais sessões.
 
-| Tópico                                                   | Slides                                                                                                              | Lista                                                                                                   |
-|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Aula 1: Análise Exploratória de Dados                                      | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/011_analise_dados.html)   |                                                                                                         |
+| Tópico | Slides | 
+|--------|--------|
+| Aula 1: Análise Exploratória de Dados | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/011_analise_dados.html) |
+| Aula 2: Teoria de Probabilidades | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/012_probabilidades.html) |
+| Aula 3: Revisão | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/013_revisao.html) |
+| Aula 4: Variáveis Aleatórias Discretas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/020_va_discretas.html) |
+
+
+
 
 
 ## Bibliografia Recomendada

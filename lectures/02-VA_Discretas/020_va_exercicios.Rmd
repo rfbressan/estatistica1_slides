@@ -1,6 +1,6 @@
 ---
 title: "Estatística I"
-subtitle: "VA Discretas - Variância"
+subtitle: "VA Discretas - Exercícios"
 author: "Rafael Bressan"
 date: "Esag </br> 04/10/2022"
 output:
@@ -41,106 +41,7 @@ library(dplyr)
 library(kableExtra)
 ```
 
-# Variância
-
-* Mede a dispersão da massa de probabilidade em torno do valor esperado
-
-* Maior variância, mais "achatada" é a distribuição (sua _função de densidade_)
-
-[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
-
----
-# Variável Aleatória Discreta
-
-## Variância
-
-$Var[X]=E[(X-E[X])^2]$
-
---
-
-Podemos expandir e então simplificar esta expressão
-
-
-\begin{align*}
-Var[X]&=E[X^2-2XE[X]+(E[X])^2]\\
-&=E[X^2]-2E[X]E[X]+(E[X])^2\\
-&=E[X^2]-(E[X])^2
-\end{align*}
-
-
----
-name: propriedades
-# Variância
-
-## Propriedades
-
-Sendo $X$ uma variável aleatória e $a$ e $b$ constantes arbitrárias:
-
-- $Var[X+a]=Var[X]$
-
-- $Var[aX]=a^2Var[X]$
-
-- $Var[aX+b]=a^2Var[X]$
-
---
-
-`r emo::ji("warning")` Variância **não é** um operador linear!
-
----
-# Variância
-
-## Propriedades
-
-$Var[X+a]=Var[X]$
-
---
-
-
-\begin{align*}
-E[(X+a)^2]&=E[X^2]+2aE[X]+a^2\\
-(E[X+a])^2&=(E[X])^2+2aE[X]+a^2\\
-Var[X+a]&=E[X^2]-(E[X])^2\\
-&=Var[X]
-\end{align*}
-
-
----
-# Variância
-
-## Propriedades
-
-$Var[aX]=a^2Var[X]$
-
---
-
-
-\begin{align*}
-E[(aX)^2]&=E[a^2X^2]\\
-(E[aX])^2&=(aE[X])^2\\
-Var[aX]&=a^2E[X^2]-a^2(E[X])^2\\
-&=a^2\left[E[X^2]-(E[X])^2\right]\\
-&=a^2Var[X]
-\end{align*}
-
----
-# Variância
-
-## Propriedades
-
-$Var[aX+b]=a^2Var[X]$
-
-\begin{align*}
-E[(aX+b)^2]&=E[a^2X^2+2abX+b^2]\\
-&=a^2E[X^2]+2abE[X]+b^2\tag{1}\\
-(E[aX+b])^2&=(aE[X])^2+2abE[X]+b^2\\
-&=a^2(E[X])^2+2abE[X]+b^2\tag{2}\\
-Var[aX+b]&=(1)-(2)\\
-&=a^2E[X^2]-a^2(E[X])^2\\
-&=a^2Var[X]
-\end{align*}
-
----
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -155,7 +56,7 @@ a) Calcule o valor esperado do lucro
 b) Calcule a variância deste lucro
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -194,7 +95,7 @@ kableExtra::kbl(df_group,
 $E[X]=\sum_{x\in\chi}xp(x)=-5*0.19+5*0.02+10*0.23+15*0.56=$ `r media`
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -222,7 +123,7 @@ $$
 
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -245,24 +146,11 @@ $Var[X]=\sum_{x\in\chi}(x-\bar{x})^2 p(x)=$ `r (5^2*0.25 + 10^2*0.5 + 15^2*0.25)
 $Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=$ `r (8^2*0.25+10^2*0.5+12^2*0.25)-(8*0.25+10*0.5+12*0.25)^2`
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
-Suponha que $X$ e $Y$ sejam variáveis aleatórias independentes, em que $X$ é igual a 1 com probabilidade 0,5 e $X$ é igual a -1 com probabilidade 0,5, assim como $Y$ é igual a 1 com probabilidade 0,5 e Y é igual a -1 com probabilidade 0,5.
-
---
-
-$E[X]=1*0.5+(-1)*0.5=$ `r 1*0.5+(-1)*0.5`
-
-$Var[X]=$ `r 1^2*0.5+(-1)^2*0.5`
-
----
-# Variância
-
-## Exercícios
-
-A variável aleatória discreta $X$ assume apenas os valores $0, 1, 2, 3, 4 \text{ e } 5$. A função densidade de probabilidade de $X$ é dada por: 
+A variável aleatória discreta $X$ assume apenas os valores $0, 1, 2, 3, 4 \text{ e } 5$. A função de probabilidade de $X$ é dada por: 
 
 $$
 \begin{align*}
@@ -277,7 +165,7 @@ $E[ \cdot ]$ e $V[ \cdot ]$ denotam, respectivamente, esperança e variância. J
 1. $V[X]=12$
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -307,7 +195,7 @@ $V[X]=0^2*a+1^2*a+2^2*a+3^2*a+4^2*b+5^2*b - (E[X])^2=$ `r 0^2*a+1^2*a+2^2*a+3^2*
 
 ---
 
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -340,7 +228,7 @@ kbl(df, col.names = c("Doses", "Freq.")) |>
 
 ## Exercícios
 
-a) Encontre a função densidade de probabilidades, _fp_
+a) Encontre a função de probabilidades, _fp_
 
 b) Encontre a função de distribuição acumulada, _FDA_
 
@@ -356,7 +244,7 @@ g) Qual a probabilidade de uma criança receber mais de 5 doses?
 
 ---
 
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -377,7 +265,7 @@ kbl(df, col.names = c("X", "Prob.")) |>
 
 ---
 
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 

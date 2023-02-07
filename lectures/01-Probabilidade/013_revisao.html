@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## Revisão - Análise de Dados e Probabilidades
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 2023-02-07
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+
+
+# Análise de Dados
+
+Considere as seguintes estatísticas descritivas para as notas de uma turma de Estatística I:
+
+.pull-left[
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Nota &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Min. &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.500 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1st Qu. &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.125 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mediana &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Media &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.810 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3rd Qu. &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.375 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Max. &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.500 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+Avalie as seguintes proposições.
+
+
+
+I - Uma vez que a mediana é diferente da média, esta distribuição não é perfeitamente simétrica
+
+II - A distância interquartil é 2.5
+
+III - O limite superior de um boxplot destes dados é 10.5
+
+IV - Estes dados apresentam pelo menos um valor _outlier_
+
+]
+
+---
+
+# Análise de Dados
+
+.pull-left[
+I - Uma vez que a mediana é diferente da média, esta distribuição não é perfeitamente simétrica ✅
+
+II - A distância interquartil é 2.5 ❌
+
+III - O limite superior de um boxplot destes dados é 10.5 ❌
+
+IV - Estes dados apresentam pelo menos um valor _outlier_ ❌
+
+]
+
+.pull-right[
+&lt;img src="013_revisao_files/figure-html/q1-boxplot-1.svg" style="display: block; margin: auto;" /&gt;
+]
+---
+# Probabilidades
+
+Dentre seis números positivos e oito negativos, dois números são escolhidos ao acaso (sem reposição) e multiplicados. Qual a probabilidade de que o produto seja positivo?
+
+---
+# Probabilidades
+## Solução
+
+- O produto de dois números é positivo se **ambos são positivos** OU **ambos negativos**
+
+1. `\(P(2+)=\frac{6}{14}\cdot\frac{5}{13}=\)` 0.1648352
+
+1. `\(P(2-)=\frac{8}{14}\cdot\frac{7}{13}=\)` 0.3076923
+
+--
+
+Logo,
+
+`$$P(produto+)=0.4725275$$`
+
+---
+# Probabilidades
+
+Considere o lançamento de dois dados. Considere os eventos: A = soma dos números obtidos igual a 9, e B = número no primeiro dado maior ou igual a 4. 
+
+a) Enumere os elementos dos eventos A e B. 
+
+Obtenha:
+
+b) `\(A \cup B\)` 
+
+c) `\(A \cap B\)`  
+
+d) `\(A^c\)`
+
+---
+# Probabilidades
+## Solução
+
+a) `\(A=\{(3,6);(4,5);(5,4);(6,3)\}\)`
+
+`\(B=\{(4,x);(5,x);(6,x)\}\)` onde `\(x=\{1,\ldots, 6\}\)`
+
+b) `\(A\cup B=\{(3,6);(4,x);(5,x);(6,x)\}\)` onde `\(x=\{1,\ldots, 6\}\)`
+
+c) `\(A \cap B=\{(4,5);(5,4);(6,3)\}\)`
+
+d) `\(A^c\)` serão todos os elementos do espaço amostral **a não ser** aqueles pertencentes a `\(A\)`, ou seja: `\(A^c=\{(x,y): x,y \in \{1,\ldots, 6\} \text{ e } (x,y) \not\in A\}\)`
+
+---
+
+# Probabilidade Condicional e Independência
+
+Uma urna contém duas bolas brancas (B) e três vermelhas (V). Suponha que são sorteadas sequencialmente duas bolas ao acaso, **sem reposição**.
+
+.pull-left[
+<div id="htmlwidget-50f8d15b0a297beba22b" style="width:504px;height:400px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-50f8d15b0a297beba22b">{"x":{"diagram":"digraph dot {\n\ngraph [rankdir = TB]\n\nnode [\n    shape = circle,\n    # style = filled,\n    width = 0.2,\n    color = darkgreen,\n    label = \"\"\n    ]\n    \nedge [color = black]\n\na -> b [label = \"2/5\"]\na -> c [label = \"3/5\"]\nb -> d [label = \"1/4\"]\nb -> e [label = \"3/4\"]\nc -> f [label = \"1/2\"]\nc -> g [label = \"1/2\"]\n\nb [label = \"B\"]\nc [label = \"V\"]\nc [label = \"V\"]\nd [label = \"B\"]\ne [label = \"V\"]\nf [label = \"B\"]\ng [label = \"V\"]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
+
+.pull-right[
+- Converta a árvore de probabilidades em uma tabela de contingência. Mostrando as probabilidades de ocorrência da 1ª e 2ª bola.
+
+- Os eventos são independentes?
+]
+
+---
+
+# Probabilidade Condicional e Independência
+## Solução 
+
+.pull-left[
+- Converta a árvore de probabilidades em uma tabela de contingência. Mostrando as probabilidades de ocorrência da 1ª e 2ª bola.
+]
+
+.pull-right[
+|       | 1B   | 1V    | Total |
+|-------|------|-------|-------|
+| 2B    | 0.1  | 0.3   | 0.4   |
+| 2V    | 0.3  | 0.3   | 0.6   |
+| Total | 0.4  | 0.6   | 1.00  |
+]
+
+--
+
+- Independência: `\(P(1B\cap 2B)= 0.1 \neq 0.4\cdot 0.4\)`
+  + Não são independentes
+
+---
+
+# Teorema de Bayes
+
+Um restaurante popular apresenta apenas dois tipos de refeições: salada completa ou um prato à base de carne. Considere que 20% dos fregueses do sexo masculino preferem a salada, 30% das mulheres escolhem carne, 75% dos fregueses são homens e os seguintes eventos:
+
+.pull-left[
+
+H: freguês é homem
+
+A: freguês prefere salada
+
+M: freguês é mulher
+
+B: freguês prefere carne
+
+]
+
+--
+
+.pull-right[
+Calcular:
+
+1. `\(P(H), P(A|H), P(B|M)\)`
+
+1. `\(P(A\cap H), P(A\cup H)\)`
+
+1. `\(P(M|A)\)`
+]
+
+---
+
+# Teorema de Bayes
+## Solução
+
+1. `\(P(H)=0.75, P(A|H)=0.2, P(B|M)=0.3\)`
+
+--
+
+1. `\(P(A\cap H)=P(A|H)\cdot P(H)=\)` 0.15
+1. `\(P(A\cup H)=P(A)+P(H)-P(A\cap H)=\)` 0.925 
+
+Pois, `\(P(A)=P(A|H)P(H)+P(A|M)P(M)=\)` 0.325
+
+4. `\(P(M|A)=\frac{P(A|M)\cdot P(M)}{P(A)}=\frac{0.7\cdot 0.25}{0.325}=0.5384615\)` 
+
+---
+layout: false
+
+class: title-slide-final, middle
+background-image: url(../../img/logo/UdescEsag.jpeg)
+background-size: 350px
+background-position: 9% 19%
+
+# ATÉ A PRÓXIMA AULA!
+
+.large.center[E não se esqueçam de fazer a lista de exercícios]
+
+&lt;img src="https://media.giphy.com/media/vY0M7hs2II79TNMEwt/giphy.gif" width="200"&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

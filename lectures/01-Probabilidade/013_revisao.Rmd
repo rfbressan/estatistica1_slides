@@ -1,0 +1,269 @@
+---
+title: "Estatística I"
+subtitle: "Revisão - Análise de Dados e Probabilidades"
+author: "Rafael Bressan"
+date: "Esag </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: indice
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+library(ggplot2)
+library(ggthemes)
+```
+
+```{r dados}
+load("../../dados/dados.RData")
+```
+
+# Análise de Dados
+
+Considere as seguintes estatísticas descritivas para as notas de uma turma de Estatística I:
+
+.pull-left[
+```{r q_notas_tbl, results = 'asis'}
+set.seed(982432)
+df <- as.data.frame(apply(cd_notas[sample(50),,drop = FALSE], 2, summary))
+rownames(df)[c(3, 4)] <- c("Mediana", "Media")
+kableExtra::kbl(df,
+                booktabs = TRUE,
+                col.names = c("Nota"),
+                row.names = TRUE) |> 
+    kableExtra::kable_classic(full_width = FALSE,
+                              latex_options = c("HOLD_position"))
+```
+]
+
+.pull-right[
+Avalie as seguintes proposições.
+
+```{r q_notas_prop}
+iqr <- df["3rd Qu.",] - df["1st Qu.",]
+ls <- 1.5*iqr + df["3rd Qu.",]
+
+set.seed(123435)
+iqr_question <- sample(c(2.25, 2.75, 2.5, 3.25, 1.75), 1)
+```
+
+I - Uma vez que a mediana é diferente da média, esta distribuição não é perfeitamente simétrica
+
+II - A distância interquartil é `r iqr_question`
+
+III - O limite superior de um boxplot destes dados é 10.5
+
+IV - Estes dados apresentam pelo menos um valor _outlier_
+
+]
+
+---
+
+# Análise de Dados
+
+.pull-left[
+I - Uma vez que a mediana é diferente da média, esta distribuição não é perfeitamente simétrica `r emo::ji("check")`
+
+II - A distância interquartil é `r iqr_question` `r emo::ji("x")`
+
+III - O limite superior de um boxplot destes dados é 10.5 `r emo::ji("x")`
+
+IV - Estes dados apresentam pelo menos um valor _outlier_ `r emo::ji("x")`
+
+]
+
+.pull-right[
+```{r q1-boxplot}
+ggplot(df, aes(y = nota)) +
+    geom_segment(xend = 0, yend = ls,
+                 x = 0.2, y = ls,
+                 lineend = "round",
+                 linejoin = "mitre",
+                 arrow = arrow(length = unit(0.1, "inches"))) +
+    annotate("text", x = 0.25, y = ls, 
+             label = sprintf("LS: %s", ls)) +
+    annotate("text", x = 0.43, y = df["Median", ],
+             label = sprintf("IQR: %s", iqr)) +
+    geom_boxplot(color = "darkgreen") +
+    scale_y_continuous(limits = c(0, ls + 0.5),
+                       n.breaks = 6) +
+    scale_x_continuous(limits = c(-0.4, 0.45)) +
+    theme_clean()
+```
+]
+---
+# Probabilidades
+
+Dentre seis números positivos e oito negativos, dois números são escolhidos ao acaso (sem reposição) e multiplicados. Qual a probabilidade de que o produto seja positivo?
+
+---
+# Probabilidades
+## Solução
+
+- O produto de dois números é positivo se **ambos são positivos** OU **ambos negativos**
+
+1. $P(2+)=\frac{6}{14}\cdot\frac{5}{13}=$ `r (6/14)*(5/13)`
+
+1. $P(2-)=\frac{8}{14}\cdot\frac{7}{13}=$ `r (8/14)*(7/13)`
+
+--
+
+Logo,
+
+$$P(produto+)=`r (6/14)*(5/13) + (8/14)*(7/13)`$$
+
+---
+# Probabilidades
+
+Considere o lançamento de dois dados. Considere os eventos: A = soma dos números obtidos igual a 9, e B = número no primeiro dado maior ou igual a 4. 
+
+a) Enumere os elementos dos eventos A e B. 
+
+Obtenha:
+
+b) $A \cup B$ 
+
+c) $A \cap B$  
+
+d) $A^c$
+
+---
+# Probabilidades
+## Solução
+
+a) $A=\{(3,6);(4,5);(5,4);(6,3)\}$
+
+$B=\{(4,x);(5,x);(6,x)\}$ onde $x=\{1,\ldots, 6\}$
+
+b) $A\cup B=\{(3,6);(4,x);(5,x);(6,x)\}$ onde $x=\{1,\ldots, 6\}$
+
+c) $A \cap B=\{(4,5);(5,4);(6,3)\}$
+
+d) $A^c$ serão todos os elementos do espaço amostral **a não ser** aqueles pertencentes a $A$, ou seja: $A^c=\{(x,y): x,y \in \{1,\ldots, 6\} \text{ e } (x,y) \not\in A\}$
+
+---
+
+# Probabilidade Condicional e Independência
+
+Uma urna contém duas bolas brancas (B) e três vermelhas (V). Suponha que são sorteadas sequencialmente duas bolas ao acaso, **sem reposição**.
+
+.pull-left[
+```{r arvore, out.height = 400}
+DiagrammeR::grViz("012_arvore.gv")
+```
+]
+
+.pull-right[
+- Converta a árvore de probabilidades em uma tabela de contingência. Mostrando as probabilidades de ocorrência da 1ª e 2ª bola.
+
+- Os eventos são independentes?
+]
+
+---
+
+# Probabilidade Condicional e Independência
+## Solução 
+
+.pull-left[
+- Converta a árvore de probabilidades em uma tabela de contingência. Mostrando as probabilidades de ocorrência da 1ª e 2ª bola.
+]
+
+.pull-right[
+|       | 1B   | 1V    | Total |
+|-------|------|-------|-------|
+| 2B    | 0.1  | 0.3   | 0.4   |
+| 2V    | 0.3  | 0.3   | 0.6   |
+| Total | 0.4  | 0.6   | 1.00  |
+]
+
+--
+
+- Independência: $P(1B\cap 2B)= 0.1 \neq 0.4\cdot 0.4$
+  + Não são independentes
+
+---
+
+# Teorema de Bayes
+
+Um restaurante popular apresenta apenas dois tipos de refeições: salada completa ou um prato à base de carne. Considere que 20% dos fregueses do sexo masculino preferem a salada, 30% das mulheres escolhem carne, 75% dos fregueses são homens e os seguintes eventos:
+
+.pull-left[
+
+H: freguês é homem
+
+A: freguês prefere salada
+
+M: freguês é mulher
+
+B: freguês prefere carne
+
+]
+
+--
+
+.pull-right[
+Calcular:
+
+1. $P(H), P(A|H), P(B|M)$
+
+1. $P(A\cap H), P(A\cup H)$
+
+1. $P(M|A)$
+]
+
+---
+
+# Teorema de Bayes
+## Solução
+
+1. $P(H)=0.75, P(A|H)=0.2, P(B|M)=0.3$
+
+--
+
+1. $P(A\cap H)=P(A|H)\cdot P(H)=$ `r 0.2*0.75`
+1. $P(A\cup H)=P(A)+P(H)-P(A\cap H)=$ `r 0.2*0.75 + 0.7*0.25 + 0.75 - 0.2*0.75` 
+
+Pois, $P(A)=P(A|H)P(H)+P(A|M)P(M)=$ `r 0.2*0.75 + 0.7*0.25`
+
+4. $P(M|A)=\frac{P(A|M)\cdot P(M)}{P(A)}=\frac{0.7\cdot 0.25}{`r 0.2*0.75 + 0.7*0.25`}=`r 0.7*0.25/(0.2*0.75 + 0.7*0.25)`$ 
+
+---
+layout: false
+
+class: title-slide-final, middle
+background-image: url(../../img/logo/UdescEsag.jpeg)
+background-size: 350px
+background-position: 9% 19%
+
+# ATÉ A PRÓXIMA AULA!
+
+.large.center[E não se esqueçam de fazer a lista de exercícios]
+
+<img src="https://media.giphy.com/media/vY0M7hs2II79TNMEwt/giphy.gif" width="200">

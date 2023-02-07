@@ -1,6 +1,6 @@
 ---
 title: "Estatística I"
-subtitle: "VA Discretas - Demonstrações"
+subtitle: "VA Discretas - Distribuições"
 author: "Rafael Bressan"
 date: "Esag </br> `r Sys.Date()`"
 output:
@@ -120,7 +120,7 @@ Logo, se $X_i$ é um experimento de Bernoulli, $Y=\sum_{i=1}^n X_i$ terá uma di
 
 --
 
-A função ***densidade*** de probabilidade é: 
+A ***função de probabilidade*** é: 
 
 $P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}$, onde $x=0, \ldots, n$.
 

@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 # Estatística I
 ]
 .subtitle[
-## VA Discretas - Variância
+## VA Discretas - Exercícios
 ]
 .author[
 ### Rafael Bressan
@@ -52,106 +52,7 @@ name: indice
 
 
 
-# Variância
-
-* Mede a dispersão da massa de probabilidade em torno do valor esperado
-
-* Maior variância, mais "achatada" é a distribuição (sua _função de densidade_)
-
-[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
-
----
-# Variável Aleatória Discreta
-
-## Variância
-
-`\(Var[X]=E[(X-E[X])^2]\)`
-
---
-
-Podemos expandir e então simplificar esta expressão
-
-
-`\begin{align*}
-Var[X]&amp;=E[X^2-2XE[X]+(E[X])^2]\\
-&amp;=E[X^2]-2E[X]E[X]+(E[X])^2\\
-&amp;=E[X^2]-(E[X])^2
-\end{align*}`
-
-
----
-name: propriedades
-# Variância
-
-## Propriedades
-
-Sendo `\(X\)` uma variável aleatória e `\(a\)` e `\(b\)` constantes arbitrárias:
-
-- `\(Var[X+a]=Var[X]\)`
-
-- `\(Var[aX]=a^2Var[X]\)`
-
-- `\(Var[aX+b]=a^2Var[X]\)`
-
---
-
-⚠️ Variância **não é** um operador linear!
-
----
-# Variância
-
-## Propriedades
-
-`\(Var[X+a]=Var[X]\)`
-
---
-
-
-`\begin{align*}
-E[(X+a)^2]&amp;=E[X^2]+2aE[X]+a^2\\
-(E[X+a])^2&amp;=(E[X])^2+2aE[X]+a^2\\
-Var[X+a]&amp;=E[X^2]-(E[X])^2\\
-&amp;=Var[X]
-\end{align*}`
-
-
----
-# Variância
-
-## Propriedades
-
-`\(Var[aX]=a^2Var[X]\)`
-
---
-
-
-`\begin{align*}
-E[(aX)^2]&amp;=E[a^2X^2]\\
-(E[aX])^2&amp;=(aE[X])^2\\
-Var[aX]&amp;=a^2E[X^2]-a^2(E[X])^2\\
-&amp;=a^2\left[E[X^2]-(E[X])^2\right]\\
-&amp;=a^2Var[X]
-\end{align*}`
-
----
-# Variância
-
-## Propriedades
-
-`\(Var[aX+b]=a^2Var[X]\)`
-
-`\begin{align*}
-E[(aX+b)^2]&amp;=E[a^2X^2+2abX+b^2]\\
-&amp;=a^2E[X^2]+2abE[X]+b^2\tag{1}\\
-(E[aX+b])^2&amp;=(aE[X])^2+2abE[X]+b^2\\
-&amp;=a^2(E[X])^2+2abE[X]+b^2\tag{2}\\
-Var[aX+b]&amp;=(1)-(2)\\
-&amp;=a^2E[X^2]-a^2(E[X])^2\\
-&amp;=a^2Var[X]
-\end{align*}`
-
----
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -164,7 +65,7 @@ a) Calcule o valor esperado do lucro
 b) Calcule a variância deste lucro
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -204,7 +105,7 @@ Facilitamos nossos cálculos produzindo a seguinte tabela de probabilidades:
 `\(E[X]=\sum_{x\in\chi}xp(x)=-5*0.19+5*0.02+10*0.23+15*0.56=\)` 9.85
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -232,7 +133,7 @@ $$
 
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -255,24 +156,11 @@ Qual será o valor esperado de `\(X\)` e `\(Y\)`?
 `\(Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=\)` 2
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
-Suponha que `\(X\)` e `\(Y\)` sejam variáveis aleatórias independentes, em que `\(X\)` é igual a 1 com probabilidade 0,5 e `\(X\)` é igual a -1 com probabilidade 0,5, assim como `\(Y\)` é igual a 1 com probabilidade 0,5 e Y é igual a -1 com probabilidade 0,5.
-
---
-
-`\(E[X]=1*0.5+(-1)*0.5=\)` 0
-
-`\(Var[X]=\)` 1
-
----
-# Variância
-
-## Exercícios
-
-A variável aleatória discreta `\(X\)` assume apenas os valores `\(0, 1, 2, 3, 4 \text{ e } 5\)`. A função densidade de probabilidade de `\(X\)` é dada por: 
+A variável aleatória discreta `\(X\)` assume apenas os valores `\(0, 1, 2, 3, 4 \text{ e } 5\)`. A função de probabilidade de `\(X\)` é dada por: 
 
 $$
 `\begin{align*}
@@ -287,7 +175,7 @@ $$
 1. `\(V[X]=12\)`
 
 ---
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -311,7 +199,7 @@ Temos `\(b=1/4\)` e `\(a=1/8\)`.
 
 ---
 
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -365,7 +253,7 @@ Os resultados estão na tabela a seguir.
 
 ## Exercícios
 
-a) Encontre a função densidade de probabilidades, _fp_
+a) Encontre a função de probabilidades, _fp_
 
 b) Encontre a função de distribuição acumulada, _FDA_
 
@@ -381,7 +269,7 @@ g) Qual a probabilidade de uma criança receber mais de 5 doses?
 
 ---
 
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 
@@ -419,7 +307,7 @@ Considere uma v.a. discreta `\(X\)` e uma transformação `\(g(X) = \sqrt{X}\)` 
 
 ---
 
-# Variância
+# Valor Esperado e Variância
 
 ## Exercícios
 

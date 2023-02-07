@@ -50,19 +50,11 @@ load("../../dados/dados.RData")
 
 - [Introdução](#introducao)
 
-- [Exercícios 1](#exercicios1)
-
 - [Probabilidade Condicional](#condicional)
-
-- [Exercícios 2](#exercicios2)
 
 - [Independência](#independencia)
 
-- [Exercícios 3](#exercicios3)
-
 - [Teorema de Bayes](#bayes)
-
-- [Exercícios 4](#exercicios4)
 
 
 ---
