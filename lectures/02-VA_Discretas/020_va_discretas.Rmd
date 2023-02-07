@@ -1,8 +1,8 @@
 ---
 title: "Estatística I"
-subtitle: "VA Discretas - Variância"
+subtitle: "VA Discretas"
 author: "Rafael Bressan"
-date: "Esag </br> 04/10/2022"
+date: "Esag </br> 27/03/2023"
 output:
   xaringan::moon_reader:
     lib_dir: libs

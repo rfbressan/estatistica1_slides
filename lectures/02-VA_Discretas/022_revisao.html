@@ -6,6 +6,8 @@
     <meta name="author" content="Rafael Bressan" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/5235085b15.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -35,7 +37,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2022-10-25
+### Esag </br> 2023-02-07
 ]
 
 ---
@@ -68,6 +70,319 @@ name: indice
 ---
 name: discretas
 
+# Valor Esperado e Variância
+
+## Exercícios
+
+Considere a seguinte distribuição dos lucros de uma montadora por produto vendido:
+
+&lt;img src="../../img/ex_montadora.png" width="500" style="display: block; margin: auto;" /&gt;
+
+a) Calcule o valor esperado do lucro
+
+b) Calcule a variância deste lucro
+
+---
+# Valor Esperado e Variância
+
+## Exercícios
+
+
+
+Facilitamos nossos cálculos produzindo a seguinte tabela de probabilidades:
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Lucro &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Probabilidade &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; -5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.02 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.56 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+`\(E[X]=\sum_{x\in\chi}xp(x)=-5*0.19+5*0.02+10*0.23+15*0.56=\)` 9.85
+
+---
+# Valor Esperado e Variância
+
+## Exercícios
+
+
+$$
+`\begin{align*}
+V[X]&amp;=\sum_{x\in\chi}(x-\bar{x})^2p(x)\\
+&amp;=(-5 - 9.85)^2*0.19 + (5 - 9.85)^2 * 0.02 + (10-9.85)^2 * 0.23+(15-9.85)^2 * 0.56\\
+&amp;\approx 57.23
+\end{align*}`
+$$
+
+--
+
+**OU**
+
+$$
+`\begin{align*}
+V[X]&amp;=\sum_{x\in\chi}x^2p(x) - \bar{x}^2\\
+&amp;=(-5)^2*0.19 + (5)^2 * 0.02 + (10)^2 * 0.23+(15)^2 * 0.56 - 9.85^2\\
+&amp;\approx 57.23
+\end{align*}`
+$$
+
+
+
+---
+# Valor Esperado e Variância
+
+## Exercícios
+
+Suponha duas variáveis aleatórias `\(X\)` e `\(Y\)` com as seguintes funções de probabilidade:
+
+`\(P(X=5)=P(X=15)=0,25\)` e `\(P(X=10) = 0,50\)`. `\(P(Y=8)=P(Y=12)=0,25\)` e `\(P(Y=10)=0,5\)`.
+
+Qual será o valor esperado de `\(X\)` e `\(Y\)`?
+
+--
+
+`\(E[X]=\sum_{x\in\chi}xp(x)=5*0.25 + 10*0.5 + 15*0.25 =\)` 10
+
+`\(E[Y]=\sum_{y\in\Upsilon}yp(y)=8*0.25+10*0.5+12*0.25=\)` 10
+
+--
+
+`\(Var[X]=\sum_{x\in\chi}(x-\bar{x})^2 p(x)=\)` 12.5
+
+`\(Var[Y]=\sum_{y\in\Upsilon}(y-\bar{y})^2 p(y)=\)` 2
+
+---
+# Valor Esperado e Variância
+
+## Exercícios
+
+A variável aleatória discreta `\(X\)` assume apenas os valores `\(0, 1, 2, 3, 4 \text{ e } 5\)`. A função de probabilidade de `\(X\)` é dada por: 
+
+$$
+`\begin{align*}
+P(X = 0)&amp;=P(X=1)=P(X=2)=P(X=3)=a\\
+P(X=4) &amp;= P(X = 5)=b\\
+P(X\geq 2) &amp;= 3P(X &lt; 2)
+\end{align*}`
+$$
+`\(E[ \cdot ]\)` e `\(V[ \cdot ]\)` denotam, respectivamente, esperança e variância. Julgue as seguintes afirmativas:
+
+1. `\(E[X]=3\)`
+1. `\(V[X]=12\)`
+
+---
+# Valor Esperado e Variância
+
+## Exercícios
+
+Resolvemos o sistema:
+
+`$$\begin{cases}
+4a+2b=1\\
+2a+2b=3(2a)
+\end{cases}$$`
+
+
+--
+
+Temos `\(b=1/4\)` e `\(a=1/8\)`. 
+
+--
+
+`\(E[X]=0*a+1*a+2*a+3*a+4*b+5*b=\)` 3
+
+`\(V[X]=0^2*a+1^2*a+2^2*a+3^2*a+4^2*b+5^2*b - (E[X])^2=\)` 3
+
+---
+
+# Valor Esperado e Variância
+
+## Exercícios
+
+.left-wide[
+Uma população de 1000 crianças foi analisada num estudo para determinar a efetividade de uma vacina contra um tipo de alergia.
+
+No estudo, as crianças recebiam uma dose da vacina e, após um mês, passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam outra dose da vacina. Ao fim de 5 doses todas as crianças foram consideradas imunizadas.
+
+Os resultados estão na tabela a seguir.
+]
+
+--
+
+.right-thin[
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Doses &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Freq. &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 245 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 288 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 256 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 145 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+---
+# Variância
+
+## Exercícios
+
+a) Encontre a função de probabilidades, _fp_
+
+b) Encontre a função de distribuição acumulada, _FDA_
+
+c) Qual a probabilidade de uma criança ter recebido 2 doses?
+
+d) Qual a probabilidade de uma criança receber menos de 4 doses?
+
+e) Qual o valor esperado do número de doses de vacina deste estudo?
+
+f) Qual a variância do número de doses?
+
+g) Qual a probabilidade de uma criança receber mais de 5 doses?
+
+---
+
+# Valor Esperado e Variância
+
+## Exercícios
+
+
+Considere uma v.a. discreta `\(X\)` e uma transformação `\(g(X) = \sqrt{X}\)` desta v.a. que possui a seguinte distribuição:
+
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; X &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Prob. &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.20 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.30 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Valor Esperado e Variância
+
+## Exercícios
+
+.pull-left[
+a) Calcule o valor esperado de `\(X\)` e `\(Z=g(X)\)`
+
+
+&lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; X &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Prob. &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Z &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.20 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.414214 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.449490 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.828427 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+* `\(E[X]=\)` 5.2 
+
+* `\(g(E[X])=\)` 2.2803509
+
+* `\(E[Z]=\)` 2.2247964
+
+* Esta é uma aplicação da [**desigualdade de Jensen**](https://pt.wikipedia.org/wiki/Desigualdade_de_Jensen)
+
+* `\(E[g(X)]\leq g(E[X])\)` sempre que `\(g(X)\)` for côncava
+
+* A relação é trocada para `\(g(X)\)` convexa
+]
+
+---
 # VA Discretas
 
 
@@ -92,12 +407,12 @@ A partir da árvore de probabilidades, podemos construir a seguinte tabela de pr
 
 a)
 
-<div id="gvptczovki" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="shevsvusgl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gvptczovki .gt_table {
+#shevsvusgl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -122,7 +437,7 @@ a)
   border-left-color: #D3D3D3;
 }
 
-#gvptczovki .gt_heading {
+#shevsvusgl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -134,7 +449,7 @@ a)
   border-right-color: #D3D3D3;
 }
 
-#gvptczovki .gt_title {
+#shevsvusgl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -146,7 +461,7 @@ a)
   border-bottom-width: 0;
 }
 
-#gvptczovki .gt_subtitle {
+#shevsvusgl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -158,13 +473,13 @@ a)
   border-top-width: 0;
 }
 
-#gvptczovki .gt_bottom_border {
+#shevsvusgl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gvptczovki .gt_col_headings {
+#shevsvusgl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -179,7 +494,7 @@ a)
   border-right-color: #D3D3D3;
 }
 
-#gvptczovki .gt_col_heading {
+#shevsvusgl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -199,7 +514,7 @@ a)
   overflow-x: hidden;
 }
 
-#gvptczovki .gt_column_spanner_outer {
+#shevsvusgl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -211,15 +526,15 @@ a)
   padding-right: 4px;
 }
 
-#gvptczovki .gt_column_spanner_outer:first-child {
+#shevsvusgl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gvptczovki .gt_column_spanner_outer:last-child {
+#shevsvusgl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gvptczovki .gt_column_spanner {
+#shevsvusgl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -231,7 +546,7 @@ a)
   width: 100%;
 }
 
-#gvptczovki .gt_group_heading {
+#shevsvusgl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -256,7 +571,7 @@ a)
   vertical-align: middle;
 }
 
-#gvptczovki .gt_empty_group_heading {
+#shevsvusgl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -271,15 +586,15 @@ a)
   vertical-align: middle;
 }
 
-#gvptczovki .gt_from_md > :first-child {
+#shevsvusgl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gvptczovki .gt_from_md > :last-child {
+#shevsvusgl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gvptczovki .gt_row {
+#shevsvusgl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -298,7 +613,7 @@ a)
   overflow-x: hidden;
 }
 
-#gvptczovki .gt_stub {
+#shevsvusgl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -311,7 +626,7 @@ a)
   padding-right: 5px;
 }
 
-#gvptczovki .gt_stub_row_group {
+#shevsvusgl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -325,11 +640,11 @@ a)
   vertical-align: top;
 }
 
-#gvptczovki .gt_row_group_first td {
+#shevsvusgl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gvptczovki .gt_summary_row {
+#shevsvusgl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -339,16 +654,16 @@ a)
   padding-right: 5px;
 }
 
-#gvptczovki .gt_first_summary_row {
+#shevsvusgl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gvptczovki .gt_first_summary_row.thick {
+#shevsvusgl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gvptczovki .gt_last_summary_row {
+#shevsvusgl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -358,7 +673,7 @@ a)
   border-bottom-color: #D3D3D3;
 }
 
-#gvptczovki .gt_grand_summary_row {
+#shevsvusgl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -368,7 +683,7 @@ a)
   padding-right: 5px;
 }
 
-#gvptczovki .gt_first_grand_summary_row {
+#shevsvusgl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -378,11 +693,11 @@ a)
   border-top-color: #D3D3D3;
 }
 
-#gvptczovki .gt_striped {
+#shevsvusgl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gvptczovki .gt_table_body {
+#shevsvusgl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -391,7 +706,7 @@ a)
   border-bottom-color: #D3D3D3;
 }
 
-#gvptczovki .gt_footnotes {
+#shevsvusgl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -405,7 +720,7 @@ a)
   border-right-color: #D3D3D3;
 }
 
-#gvptczovki .gt_footnote {
+#shevsvusgl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -414,7 +729,7 @@ a)
   padding-right: 5px;
 }
 
-#gvptczovki .gt_sourcenotes {
+#shevsvusgl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -428,7 +743,7 @@ a)
   border-right-color: #D3D3D3;
 }
 
-#gvptczovki .gt_sourcenote {
+#shevsvusgl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -436,64 +751,64 @@ a)
   padding-right: 5px;
 }
 
-#gvptczovki .gt_left {
+#shevsvusgl .gt_left {
   text-align: left;
 }
 
-#gvptczovki .gt_center {
+#shevsvusgl .gt_center {
   text-align: center;
 }
 
-#gvptczovki .gt_right {
+#shevsvusgl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gvptczovki .gt_font_normal {
+#shevsvusgl .gt_font_normal {
   font-weight: normal;
 }
 
-#gvptczovki .gt_font_bold {
+#shevsvusgl .gt_font_bold {
   font-weight: bold;
 }
 
-#gvptczovki .gt_font_italic {
+#shevsvusgl .gt_font_italic {
   font-style: italic;
 }
 
-#gvptczovki .gt_super {
+#shevsvusgl .gt_super {
   font-size: 65%;
 }
 
-#gvptczovki .gt_footnote_marks {
+#shevsvusgl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#gvptczovki .gt_asterisk {
+#shevsvusgl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gvptczovki .gt_indent_1 {
+#shevsvusgl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gvptczovki .gt_indent_2 {
+#shevsvusgl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gvptczovki .gt_indent_3 {
+#shevsvusgl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gvptczovki .gt_indent_4 {
+#shevsvusgl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gvptczovki .gt_indent_5 {
+#shevsvusgl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -528,12 +843,12 @@ a)
 
 b)
 
-<div id="xxxyvzjbly" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xccmdimbds" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xxxyvzjbly .gt_table {
+#xccmdimbds .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -558,7 +873,7 @@ b)
   border-left-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_heading {
+#xccmdimbds .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -570,7 +885,7 @@ b)
   border-right-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_title {
+#xccmdimbds .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -582,7 +897,7 @@ b)
   border-bottom-width: 0;
 }
 
-#xxxyvzjbly .gt_subtitle {
+#xccmdimbds .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -594,13 +909,13 @@ b)
   border-top-width: 0;
 }
 
-#xxxyvzjbly .gt_bottom_border {
+#xccmdimbds .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_col_headings {
+#xccmdimbds .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -615,7 +930,7 @@ b)
   border-right-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_col_heading {
+#xccmdimbds .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -635,7 +950,7 @@ b)
   overflow-x: hidden;
 }
 
-#xxxyvzjbly .gt_column_spanner_outer {
+#xccmdimbds .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -647,15 +962,15 @@ b)
   padding-right: 4px;
 }
 
-#xxxyvzjbly .gt_column_spanner_outer:first-child {
+#xccmdimbds .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xxxyvzjbly .gt_column_spanner_outer:last-child {
+#xccmdimbds .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xxxyvzjbly .gt_column_spanner {
+#xccmdimbds .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -667,7 +982,7 @@ b)
   width: 100%;
 }
 
-#xxxyvzjbly .gt_group_heading {
+#xccmdimbds .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -692,7 +1007,7 @@ b)
   vertical-align: middle;
 }
 
-#xxxyvzjbly .gt_empty_group_heading {
+#xccmdimbds .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -707,15 +1022,15 @@ b)
   vertical-align: middle;
 }
 
-#xxxyvzjbly .gt_from_md > :first-child {
+#xccmdimbds .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xxxyvzjbly .gt_from_md > :last-child {
+#xccmdimbds .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xxxyvzjbly .gt_row {
+#xccmdimbds .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -734,7 +1049,7 @@ b)
   overflow-x: hidden;
 }
 
-#xxxyvzjbly .gt_stub {
+#xccmdimbds .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -747,7 +1062,7 @@ b)
   padding-right: 5px;
 }
 
-#xxxyvzjbly .gt_stub_row_group {
+#xccmdimbds .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -761,11 +1076,11 @@ b)
   vertical-align: top;
 }
 
-#xxxyvzjbly .gt_row_group_first td {
+#xccmdimbds .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xxxyvzjbly .gt_summary_row {
+#xccmdimbds .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -775,16 +1090,16 @@ b)
   padding-right: 5px;
 }
 
-#xxxyvzjbly .gt_first_summary_row {
+#xccmdimbds .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_first_summary_row.thick {
+#xccmdimbds .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xxxyvzjbly .gt_last_summary_row {
+#xccmdimbds .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -794,7 +1109,7 @@ b)
   border-bottom-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_grand_summary_row {
+#xccmdimbds .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -804,7 +1119,7 @@ b)
   padding-right: 5px;
 }
 
-#xxxyvzjbly .gt_first_grand_summary_row {
+#xccmdimbds .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -814,11 +1129,11 @@ b)
   border-top-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_striped {
+#xccmdimbds .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xxxyvzjbly .gt_table_body {
+#xccmdimbds .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -827,7 +1142,7 @@ b)
   border-bottom-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_footnotes {
+#xccmdimbds .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -841,7 +1156,7 @@ b)
   border-right-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_footnote {
+#xccmdimbds .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -850,7 +1165,7 @@ b)
   padding-right: 5px;
 }
 
-#xxxyvzjbly .gt_sourcenotes {
+#xccmdimbds .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -864,7 +1179,7 @@ b)
   border-right-color: #D3D3D3;
 }
 
-#xxxyvzjbly .gt_sourcenote {
+#xccmdimbds .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -872,64 +1187,64 @@ b)
   padding-right: 5px;
 }
 
-#xxxyvzjbly .gt_left {
+#xccmdimbds .gt_left {
   text-align: left;
 }
 
-#xxxyvzjbly .gt_center {
+#xccmdimbds .gt_center {
   text-align: center;
 }
 
-#xxxyvzjbly .gt_right {
+#xccmdimbds .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xxxyvzjbly .gt_font_normal {
+#xccmdimbds .gt_font_normal {
   font-weight: normal;
 }
 
-#xxxyvzjbly .gt_font_bold {
+#xccmdimbds .gt_font_bold {
   font-weight: bold;
 }
 
-#xxxyvzjbly .gt_font_italic {
+#xccmdimbds .gt_font_italic {
   font-style: italic;
 }
 
-#xxxyvzjbly .gt_super {
+#xccmdimbds .gt_super {
   font-size: 65%;
 }
 
-#xxxyvzjbly .gt_footnote_marks {
+#xccmdimbds .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#xxxyvzjbly .gt_asterisk {
+#xccmdimbds .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xxxyvzjbly .gt_indent_1 {
+#xccmdimbds .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xxxyvzjbly .gt_indent_2 {
+#xccmdimbds .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xxxyvzjbly .gt_indent_3 {
+#xccmdimbds .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xxxyvzjbly .gt_indent_4 {
+#xccmdimbds .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xxxyvzjbly .gt_indent_5 {
+#xccmdimbds .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

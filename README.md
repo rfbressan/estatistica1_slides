@@ -20,6 +20,8 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 | Aula 2: Teoria de Probabilidades | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/012_probabilidades.html) |
 | Aula 3: Revisão | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/01-Probabilidade/013_revisao.html) |
 | Aula 4: Variáveis Aleatórias Discretas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/020_va_discretas.html) |
+| Aula 5: Distribuições Discretas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/021_distribuicoes.html) |
+| Aula 6: Revisao | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/022_revisao.html) |
 
 
 
