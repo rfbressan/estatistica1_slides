@@ -1,6 +1,6 @@
 ---
 title: "Estatística I"
-subtitle: "VA Discretas - Distribuições"
+subtitle: "Distribuições Discretas"
 author: "Rafael Bressan"
 date: "Esag </br> `r Sys.Date()`"
 output:

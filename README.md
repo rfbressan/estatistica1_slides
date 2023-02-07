@@ -27,6 +27,7 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 
 
 
+
 ## Bibliografia Recomendada
 
 MORETTIN, Pedro A.; BUSSAB, Wilton O. Estatística básica. Saraiva Educação SA, 2017.
