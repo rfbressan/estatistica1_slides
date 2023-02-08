@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## VA Contínuas
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 19/05/2023
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+# Recapitulando
+
+***Variável aleatória*** - Descrição numérica do resultado de um fenômeno aleatório.
+--
+
+- Tipos de espaço amostral
+1. Espaço amostral Discreto: Contêm apenas um número enumerável de elementos, podendo ser finito ou infinito.
+
+1. Espaço amostral Contínuo: Contêm um número **infinito e não enumerável** de elementos.
+
+--
+
+Uma função X, definida no espaço amostral `\(\Omega\)` e com valores num infinito e não enumerável de pontos da reta é dita uma ***variável aleatória contínua***.
+
+---
+# VA Contínua
+
+Uma va. é classificada como contínua se assume valores em qualquer intervalo dos números reais, ou seja, um conjunto de valores não enumerável.
+
+Dessa forma, **não é possível atribuir probabilidades** para um ponto específico, apenas para intervalos da reta.
+
+--
+
+Exemplos:
+
+- Peso de animais
+- Tempo de falha de um equipamento eletrônico
+- Altura da maré em uma hora específica
+- Salinidade da água do mar
+- Retorno financeiro de um investimento
+
+
+  
+---
+
+# Função Densidade de Probabilidade
+
+- Não podemos atribuir probabilidades à valores específicos, pois há uma quantidade não enumerável (infinita) de valores em um ponto.
+
+- Atribuimos probabilidades à **intervalos de valores**, por meio de uma função.
+
+- probabilidades são representadas por áreas.
+
+--
+
+.pull-left[
+
+```r
+df &lt;- data.frame(
+    x = rnorm(1000, mean = 50, sd = 2)
+)
+
+p &lt;- ggplot(df, aes(x, after_stat(density))) +
+    geom_histogram(bins = 20, fill = "darkgreen", 
+                   color = "black") + 
+    geom_density() +
+    labs(x = "X", y = "Densidade") +
+    theme_clean()
+```
+]
+
+.pull-right[
+&lt;img src="030_va_continuas_files/figure-html/fdp-plot-1.svg" width="350" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# Função Densidade de Probabilidade
+
+A ***função densidade de probabilidade*** (fdp), denotada por `\(f(x)\)`, atribui probabilidades a intervalos de valores do tipo `\([a, b]\)`, e é definida por
+
+`$$P(a&lt;X&lt;b)=\int_a^b f(x)\,dx$$`
+
+--
+
+com as seguintes propriedades:
+1. É uma função não negativa, `\(f (x) \geq 0\)`
+1. A área total sob a curva deve ser igual a 1, `\(\int_{-\infty}^{+\infty}f(x)\,dx=1\)`
+
+---
+
+# Função Densidade de Probabilidade
+
+- Algumas observações com relação a va. contínuas:
+
+- `\(P(X = x) = 0\)`
+
+- `\(P(a \leq X \leq b) = P(a &lt; X \leq b) = P(a \leq X &lt; b) = P(a &lt; X &lt; b)\)`
+
+--
+
+- Qualquer função `\(f(\cdot)\)` que seja não negativa e cuja área total sob a curva seja igual à unidade caracterizará uma va. contínua.
+
+- `\(f(x)\)` **não representa a probabilidade de ocorrência** de algum evento. A área sob a curva entre dois pontos é que fornecerá a probabilidade.
+
+---
+# Exemplo
+
+Considere a seguinte função
+
+`$$f(x)=\begin{cases}
+\frac{3}{2}x^2, &amp;\text{se } -1\leq x\leq 1\\
+0, &amp;\text{caso contrário}
+\end{cases}$$`
+
+- Verique se esta função caracteriza uma va. contínua
+
+- Calcule `\(P(0\leq X &lt; 1)\)`
+--
+
+Assim podemos associar a cada valor de X sua **probabilidade**
+correspondente, como resultado das **frequências relativas**.
+
+- `\(P(X=1)=0.5\)`
+
+---
+
+# Função de Distribuição
+
+Dada uma va. X com função densidade de probabilidade `\(f(x)\)`, podemos definir a sua ***função de distribuição acumulada***, `\(F(x)\)`, do mesmo modo como foi definida para va. discretas
+
+`$$F(x)=P(X\leq x)$$`
+
+--
+
+Portanto,
+
+`$$F(x)=\int_{-\infty}^x f(t)\,dt$$`
+
+--
+
+**Exemplo**
+
+.pull-left[
+Retomamos o exemplo anterior
+
+`$$f(x)=\begin{cases}
+\frac{3}{2}x^2, &amp;\text{se } -1\leq x\leq 1\\
+0, &amp;\text{caso contrário}
+\end{cases}$$`
+]
+
+.pull-right[
+`$$\begin{align*}
+F(x)&amp;=\int_{-1}^x f(t)\,dt\\
+&amp;=\frac{1}{2}(x^3+1)
+\end{align*}$$`
+]
+
+---
+
+# Função de Distribuição de Probabilidade
+
+Esta função de distribuição do exemplo anterior pode ser assim descrita
+
+`$$F(x)=\begin{cases}
+0, &amp;\text{se } x &lt; 0\\
+0.25, &amp;\text{se } 0\leq x &lt; 1\\
+0.75, &amp;\text{se } 1\leq x &lt; 2\\
+1, &amp;\text{se } x \geq 2\\
+\end{cases}$$`
+
+---
+# Valor Esperado
+
+- O valor esperado de uma va. discreta é dado pelo seu valor médio
+
+- Dada a v.a. X discreta, assumindo os valores `\(x_1, \ldots, x_n\)`, chamamos valor médio ou esperança matemática de X ao valor
+
+`$$E[X]=\sum_{i=1}^n x_i\cdot p_i$$`
+
+--
+
+**Exemplo**
+
+- Qual o valor esperado de X = número de caras no lançamento de 2 moedas?
+
+--
+
+`\(E[X]=0\cdot 0.25+ 1\cdot 0.5+2\cdot 0.25=\)` 0
+
+---
+
+# Mediana
+
+A mediana de uma va. discreta é tal que
+
+`$$P(X\leq m)\geq 0.5 \text{ e } P(X\geq m)\geq 0.5$$`
+
+--
+
+- No nosso exemplo anterior, a mediana será também o valor 1
+
+--
+
+- Esta definição vale para qualquer quantil p
+
+`$$P(X\leq q(p))\geq p \text{ e } P(X\geq q(p))\geq 1-p$$`
+
+---
+# Propriedades do Valor Esperado
+
+Considere a e b duas constantes quaisquer e X uma variável aleatória
+
+- `\(E[a]=a\)`
+
+- `\(E[aX]=aE[X]\)`
+
+- `\(E[aX+b]=aE[X]+b\)`
+
+--
+
+Seja `\(Z=h(X)\)` uma transformação da variável aleatória X. Então, por definição, o valor esperado de Z é
+
+`$$E[Z]=\sum h(x_i)\cdot p_i$$`
+
+---
+# Variância
+
+* Mede a dispersão da massa de probabilidade em torno do valor esperado
+
+* Maior variância, mais "achatada" é a distribuição (sua _função de probabilidade_)
+
+[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
+
+---
+# Variância
+
+- Dada a va. X discreta, assumindo os valores `\(x_1, \ldots, x_n\)`, chamamos de variância da va. X o valor
+
+`$$Var[X]=\sum_{i=1}^n(x_i-E[X])^2\cdot p_i$$`
+
+--
+
+**Exemplo**
+
+- Qual a variância de X = número de caras no lançamento de 2 moedas?
+
+--
+
+`\(Var[X]=(0 - 1)^2\cdot 0.25+ (1-1)^2\cdot 0.5+(2-1)^2\cdot 0.25=\)` 0
+
+---
+# Propriedades da Variância
+
+`$$Var[X]=E[(X-E[X])^2]$$`
+
+--
+
+Podemos expandir e então simplificar esta expressão
+
+$$
+`\begin{align*}
+Var[X]&amp;=E[X^2-2XE[X]+(E[X])^2]\\
+&amp;=E[X^2]-2E[X]E[X]+(E[X])^2\\
+&amp;=E[X^2]-(E[X])^2
+\end{align*}`
+$$
+
+
+
+---
+# Propriedades da Variância
+
+Sendo `\(X\)` uma variável aleatória e `\(a\)` e `\(b\)` constantes arbitrárias:
+
+- `\(Var[X+a]=Var[X]\)`
+
+- `\(Var[aX]=a^2Var[X]\)`
+
+- `\(Var[aX+b]=a^2Var[X]\)`
+
+--
+
+⚠️ Variância **não é** um operador linear!
+
+---
+# Variância
+
+## Propriedades
+
+`\(Var[X+a]=Var[X]\)`
+
+--
+
+
+`\begin{align*}
+E[(X+a)^2]&amp;=E[X^2]+2aE[X]+a^2\\
+(E[X+a])^2&amp;=(E[X])^2+2aE[X]+a^2\\
+Var[X+a]&amp;=E[X^2]-(E[X])^2\\
+&amp;=Var[X]
+\end{align*}`
+
+
+---
+# Variância
+
+## Propriedades
+
+`\(Var[aX]=a^2Var[X]\)`
+
+--
+
+
+`\begin{align*}
+E[(aX)^2]&amp;=E[a^2X^2]\\
+(E[aX])^2&amp;=(aE[X])^2\\
+Var[aX]&amp;=a^2E[X^2]-a^2(E[X])^2\\
+&amp;=a^2\left[E[X^2]-(E[X])^2\right]\\
+&amp;=a^2Var[X]
+\end{align*}`
+
+---
+# Variância
+
+## Propriedades
+
+`\(Var[aX+b]=a^2Var[X]\)`
+
+`\begin{align*}
+E[(aX+b)^2]&amp;=E[a^2X^2+2abX+b^2]\\
+&amp;=a^2E[X^2]+2abE[X]+b^2\tag{1}\\
+(E[aX+b])^2&amp;=(aE[X])^2+2abE[X]+b^2\\
+&amp;=a^2(E[X])^2+2abE[X]+b^2\tag{2}\\
+Var[aX+b]&amp;=(1)-(2)\\
+&amp;=a^2E[X^2]-a^2(E[X])^2\\
+&amp;=a^2Var[X]
+\end{align*}`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

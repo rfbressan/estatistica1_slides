@@ -117,10 +117,7 @@ g(y)&=\frac{d}{dy}G(y)\\
 
 <br>
 **Vejamos um exmplo!**
-.center[
 
-![](https://media.giphy.com/media/DffShiJ47fPqM/giphy.gif)
-]
 
 ---
 

@@ -22,6 +22,10 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 | Aula 4: Variáveis Aleatórias Discretas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/020_va_discretas.html) |
 | Aula 5: Distribuições Discretas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/021_distribuicoes.html) |
 | Aula 6: Revisao | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/02-VA_Discretas/022_revisao.html) |
+| Aula 7: Revisao de Integrais| [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/09-Integrais/09_Integrais.html) |
+| Aula 8: Variáveis Aleatórias Contínuas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/03-VA_Continuas/030_va_continuas.html) |
+| Aula 9: Distribuições Contínuas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/03-VA_Continuas/031_distribuicoes.html) |
+| Aula 10: Revisao | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/03-VA_Continuas/032_revisao.html) |
 
 
 

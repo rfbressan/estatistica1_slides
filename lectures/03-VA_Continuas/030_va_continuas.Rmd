@@ -1,0 +1,373 @@
+---
+title: "Estatística I"
+subtitle: "VA Contínuas"
+author: "Rafael Bressan"
+date: "Esag </br> 19/05/2023"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: indice
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+library(dplyr)
+library(kableExtra)
+library(ggplot2)
+library(ggthemes)
+```
+
+# Recapitulando
+
+***Variável aleatória*** - Descrição numérica do resultado de um fenômeno aleatório.
+--
+
+- Tipos de espaço amostral
+1. Espaço amostral Discreto: Contêm apenas um número enumerável de elementos, podendo ser finito ou infinito.
+
+1. Espaço amostral Contínuo: Contêm um número **infinito e não enumerável** de elementos.
+
+--
+
+Uma função X, definida no espaço amostral $\Omega$ e com valores num infinito e não enumerável de pontos da reta é dita uma ***variável aleatória contínua***.
+
+---
+# VA Contínua
+
+Uma va. é classificada como contínua se assume valores em qualquer intervalo dos números reais, ou seja, um conjunto de valores não enumerável.
+
+Dessa forma, **não é possível atribuir probabilidades** para um ponto específico, apenas para intervalos da reta.
+
+--
+
+Exemplos:
+
+- Peso de animais
+- Tempo de falha de um equipamento eletrônico
+- Altura da maré em uma hora específica
+- Salinidade da água do mar
+- Retorno financeiro de um investimento
+
+
+  
+---
+
+# Função Densidade de Probabilidade
+
+- Não podemos atribuir probabilidades à valores específicos, pois há uma quantidade não enumerável (infinita) de valores em um ponto.
+
+- Atribuimos probabilidades à **intervalos de valores**, por meio de uma função.
+
+- probabilidades são representadas por áreas.
+
+--
+
+.pull-left[
+```{r fdp-exemplo, echo=TRUE}
+df <- data.frame(
+    x = rnorm(1000, mean = 50, sd = 2)
+)
+
+p <- ggplot(df, aes(x, after_stat(density))) +
+    geom_histogram(bins = 20, fill = "darkgreen", 
+                   color = "black") + 
+    geom_density() +
+    labs(x = "X", y = "Densidade") +
+    theme_clean()
+```
+]
+
+.pull-right[
+```{r fdp-plot, out.width=350}
+p
+```
+]
+---
+
+# Função Densidade de Probabilidade
+
+A ***função densidade de probabilidade*** (fdp), denotada por $f(x)$, atribui probabilidades a intervalos de valores do tipo $[a, b]$, e é definida por
+
+$$P(a<X<b)=\int_a^b f(x)\,dx$$
+
+--
+
+com as seguintes propriedades:
+1. É uma função não negativa, $f (x) \geq 0$
+1. A área total sob a curva deve ser igual a 1, $\int_{-\infty}^{+\infty}f(x)\,dx=1$
+
+---
+
+# Função Densidade de Probabilidade
+
+- Algumas observações com relação a va. contínuas:
+
+- $P(X = x) = 0$
+
+- $P(a \leq X \leq b) = P(a < X \leq b) = P(a \leq X < b) = P(a < X < b)$
+
+--
+
+- Qualquer função $f(\cdot)$ que seja não negativa e cuja área total sob a curva seja igual à unidade caracterizará uma va. contínua.
+
+- $f(x)$ **não representa a probabilidade de ocorrência** de algum evento. A área sob a curva entre dois pontos é que fornecerá a probabilidade.
+
+---
+# Exemplo
+
+Considere a seguinte função
+
+$$f(x)=\begin{cases}
+\frac{3}{2}x^2, &\text{se } -1\leq x\leq 1\\
+0, &\text{caso contrário}
+\end{cases}$$
+
+- Verique se esta função caracteriza uma va. contínua
+
+- Calcule $P(0\leq X < 1)$
+--
+
+Assim podemos associar a cada valor de X sua **probabilidade**
+correspondente, como resultado das **frequências relativas**.
+
+- $P(X=1)=0.5$
+
+---
+
+# Função de Distribuição
+
+Dada uma va. X com função densidade de probabilidade $f(x)$, podemos definir a sua ***função de distribuição acumulada***, $F(x)$, do mesmo modo como foi definida para va. discretas
+
+$$F(x)=P(X\leq x)$$
+
+--
+
+Portanto,
+
+$$F(x)=\int_{-\infty}^x f(t)\,dt$$
+
+--
+
+**Exemplo**
+
+.pull-left[
+Retomamos o exemplo anterior
+
+$$f(x)=\begin{cases}
+\frac{3}{2}x^2, &\text{se } -1\leq x\leq 1\\
+0, &\text{caso contrário}
+\end{cases}$$
+]
+
+.pull-right[
+$$\begin{align*}
+F(x)&=\int_{-1}^x f(t)\,dt\\
+&=\frac{1}{2}(x^3+1)
+\end{align*}$$
+]
+
+---
+
+# Função de Distribuição de Probabilidade
+
+Esta função de distribuição do exemplo anterior pode ser assim descrita
+
+$$F(x)=\begin{cases}
+0, &\text{se } x < 0\\
+0.25, &\text{se } 0\leq x < 1\\
+0.75, &\text{se } 1\leq x < 2\\
+1, &\text{se } x \geq 2\\
+\end{cases}$$
+
+---
+# Valor Esperado
+
+- O valor esperado de uma va. discreta é dado pelo seu valor médio
+
+- Dada a v.a. X discreta, assumindo os valores $x_1, \ldots, x_n$, chamamos valor médio ou esperança matemática de X ao valor
+
+$$E[X]=\sum_{i=1}^n x_i\cdot p_i$$
+
+--
+
+**Exemplo**
+
+- Qual o valor esperado de X = número de caras no lançamento de 2 moedas?
+
+--
+
+$E[X]=0\cdot 0.25+ 1\cdot 0.5+2\cdot 0.25=$ `r sum(df$x*df$freq_rel)`
+
+---
+
+# Mediana
+
+A mediana de uma va. discreta é tal que
+
+$$P(X\leq m)\geq 0.5 \text{ e } P(X\geq m)\geq 0.5$$
+
+--
+
+- No nosso exemplo anterior, a mediana será também o valor 1
+
+--
+
+- Esta definição vale para qualquer quantil p
+
+$$P(X\leq q(p))\geq p \text{ e } P(X\geq q(p))\geq 1-p$$
+
+---
+# Propriedades do Valor Esperado
+
+Considere a e b duas constantes quaisquer e X uma variável aleatória
+
+- $E[a]=a$
+
+- $E[aX]=aE[X]$
+
+- $E[aX+b]=aE[X]+b$
+
+--
+
+Seja $Z=h(X)$ uma transformação da variável aleatória X. Então, por definição, o valor esperado de Z é
+
+$$E[Z]=\sum h(x_i)\cdot p_i$$
+
+---
+# Variância
+
+* Mede a dispersão da massa de probabilidade em torno do valor esperado
+
+* Maior variância, mais "achatada" é a distribuição (sua _função de probabilidade_)
+
+[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
+
+---
+# Variância
+
+- Dada a va. X discreta, assumindo os valores $x_1, \ldots, x_n$, chamamos de variância da va. X o valor
+
+$$Var[X]=\sum_{i=1}^n(x_i-E[X])^2\cdot p_i$$
+
+--
+
+**Exemplo**
+
+- Qual a variância de X = número de caras no lançamento de 2 moedas?
+
+--
+
+$Var[X]=(0 - 1)^2\cdot 0.25+ (1-1)^2\cdot 0.5+(2-1)^2\cdot 0.25=$ `r sum((df$x-1)^2*df$freq_rel)`
+
+---
+# Propriedades da Variância
+
+$$Var[X]=E[(X-E[X])^2]$$
+
+--
+
+Podemos expandir e então simplificar esta expressão
+
+$$
+\begin{align*}
+Var[X]&=E[X^2-2XE[X]+(E[X])^2]\\
+&=E[X^2]-2E[X]E[X]+(E[X])^2\\
+&=E[X^2]-(E[X])^2
+\end{align*}
+$$
+
+
+
+---
+# Propriedades da Variância
+
+Sendo $X$ uma variável aleatória e $a$ e $b$ constantes arbitrárias:
+
+- $Var[X+a]=Var[X]$
+
+- $Var[aX]=a^2Var[X]$
+
+- $Var[aX+b]=a^2Var[X]$
+
+--
+
+`r emo::ji("warning")` Variância **não é** um operador linear!
+
+---
+# Variância
+
+## Propriedades
+
+$Var[X+a]=Var[X]$
+
+--
+
+
+\begin{align*}
+E[(X+a)^2]&=E[X^2]+2aE[X]+a^2\\
+(E[X+a])^2&=(E[X])^2+2aE[X]+a^2\\
+Var[X+a]&=E[X^2]-(E[X])^2\\
+&=Var[X]
+\end{align*}
+
+
+---
+# Variância
+
+## Propriedades
+
+$Var[aX]=a^2Var[X]$
+
+--
+
+
+\begin{align*}
+E[(aX)^2]&=E[a^2X^2]\\
+(E[aX])^2&=(aE[X])^2\\
+Var[aX]&=a^2E[X^2]-a^2(E[X])^2\\
+&=a^2\left[E[X^2]-(E[X])^2\right]\\
+&=a^2Var[X]
+\end{align*}
+
+---
+# Variância
+
+## Propriedades
+
+$Var[aX+b]=a^2Var[X]$
+
+\begin{align*}
+E[(aX+b)^2]&=E[a^2X^2+2abX+b^2]\\
+&=a^2E[X^2]+2abE[X]+b^2\tag{1}\\
+(E[aX+b])^2&=(aE[X])^2+2abE[X]+b^2\\
+&=a^2(E[X])^2+2abE[X]+b^2\tag{2}\\
+Var[aX+b]&=(1)-(2)\\
+&=a^2E[X^2]-a^2(E[X])^2\\
+&=a^2Var[X]
+\end{align*}
