@@ -1,0 +1,221 @@
+---
+title: "Estatística I"
+subtitle: "Aula de Exercícios - Distribuições Contínuas"
+author: "Rafael Bressan"
+date: "Esag </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "../../css/scpo.css", "../../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ["../../libs/partials/header.html"]
+---
+
+layout: true
+
+<div class="my-footer"><img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/></div> 
+
+---
+name: exercicios
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    dev = "svg",
+    cache = TRUE,
+    fig.align = "center"
+    #fig.width = 11,
+    #fig.height = 5
+)
+
+library(ggplot2)
+
+```
+
+
+# Exercícios
+
+Seja $X$ uma VA contínua com fdp dada por:
+
+$$f(x)=\begin{cases}
+2Kx,  &\text{se } 0\leq x\leq 1\\
+0, &\text{caso contrário}
+\end{cases}$$
+
+a) Determine o valor de $K$
+
+b) Calcule $E[X]$
+
+c) Calcule $Var[X]$
+
+d) Calcule a função de distribuição acumulada (FDA)
+
+---
+
+# Exercícios
+
+## Solução
+
+a) Determine o valor de $K$
+
+i) $K>0$
+
+ii) $\int_0^1 2Kx\,dx = 1\implies K=1$
+
+--
+
+b) Calcule $E[X]$.
+
+$$\begin{align*}
+E[X]&=\int_0^1 2x^2\,dx\\
+&=\left.\frac{2}{3}x^3\right\rvert_0^1\\
+&=2/3
+\end{align*}$$
+
+---
+
+# Exercícios
+
+## Solução
+
+c) Calcule $Var[X]$
+
+$$\begin{align*}
+E[X^2]&=\int_0^1 2x^3\,dx\\
+&=\left.\frac{1}{2}x^4\right\rvert_0^1\\
+&=1/2
+\end{align*}$$
+
+--
+
+$Var[X]=E[X^2]-(E[X])^2=\frac{1}{2}-\left(\frac{2}{3}\right)^2=\frac{1}{18}$
+
+---
+
+# Exercícios
+
+## Solução
+
+d) Calcule a função de distribuição acumulada (FDA)
+
+$$\begin{align*}
+F(x)&=\int_0^x 2t\,dt\\
+&=\left.t^2\right\rvert_0^x\\
+&=x^2
+\end{align*}$$
+
+---
+
+# Exercícios
+
+A quantidade de óleo contida em cada lata fabricada por uma indústria tem peso **normalmente distribuído** com média 900 g e desvio padrão de 12 g. Uma lata é rejeitada para venda se tiver peso menor que 884 g.
+
+a) Se observarmos uma sequência aleatória de latas em uma linha de produção, qual o percentual esperado de latas serão rejeitadas?
+
+b) Qual a probabilidade de que a 10ª lata observada seja a 1ª a ser rejeitada?
+
+Considere agora que as latas são rejeitadas se o peso delas estiver fora do intervalo $[884, 916]$.
+
+c) Qual o percentual esperado de latas serão rejeitadas agora?
+
+---
+
+# Exercícios
+## Solução
+
+a) $P[X\leq 884]=$ `r emo::ji("question")`
+
+--
+
+$z_c = (884-900) / 12 =$ `r (884-900) / 12`
+
+$P[X\leq 884] = P[Z\leq z_c] =$ `r pnorm((884-900) / 12)`
+
+---
+
+# Exercícios
+## Solução
+
+b) 10ª lata observada seja a 1ª a ser rejeitada?
+
+Agora o item a) passa a ser a probabilidade de sucesso em uma distribuição geométrica (discreta). Sucesso é definido como rejeitar uma lata.
+
+$P[X=k]=(1-p)^{k-1}p$, logo:
+
+--
+
+$P[X=10]=$ `r dgeom(9, pnorm((884-900) / 12))`
+
+---
+
+# Exercícios
+## Solução
+
+c) Latas são rejeitadas se o peso delas estiver fora do intervalo $[884, 916]$. Qual o percentual esperado de latas serão rejeitadas agora?
+
+Probabilidade de rejeitar é o complemento da probabilidade de aceitar a lata. Vamos calcular esta última primeiro.
+
+.pull-left[
+$P[884\leq X\leq 916]=P[z_1\leq Z\leq z_2]$
+
+$z_1=$`r (884-900) / 12`
+
+$z_2=(916-900) / 12=$ `r (916-900) / 12`
+
+$P[z_1\leq Z\leq z_2]=\Phi(z_2)-\Phi(z_1)$
+
+]
+
+--
+
+.pull-right[
+$P[-1.33\leq Z\leq 1.33]=\Phi(1.33)-(1-\Phi(1.33))$
+
+$P[-1.33\leq Z\leq 1.33]=$ `r 2*pnorm((916-900) / 12)-1`
+
+Logo, a probabilidade de rejeição é:
+
+$P[X\leq 884 \cup X\geq 916]=1-$ `r 2*pnorm((916-900) / 12)-1` $=$ `r 1 -(2*pnorm((916-900) / 12)-1)`
+]
+
+---
+
+# Exercícios
+
+A variável aleatória contínua $X$ possui a seguinte função densidade de probabilidade, $f(x)=1/2$ para $0\leq x \leq 2$.
+
+Seja $Y$ uma variável aleatória definida pela seguinte transformação monotônica, $Y=X^2$. Qual é a distribuição de $Y$, $G(y)$, sobre todos os Reais? 
+
+---
+
+# Exercícios
+## Solução
+
+Primeiramente estabelecemos que esta é uma transformação **crescente** no suporte de $X$.
+
+--
+
+O suporte de $Y$ será $0\leq Y\leq 4$.
+
+--
+
+A transformação inversa é $X=h^{-1}(Y)=\sqrt{Y}$.
+
+--
+
+A função de distribuição de $X$ é $F(x)=\frac{1}{2}x$. Portanto, pela fórmula $G(y)=F(h^{-1}(y))$
+
+$$G(y)=\begin{cases}
+0, &\text{se } y < 0\\
+\frac{1}{2}\sqrt{y}, &\text{se } 0\leq y\leq 4\\
+1, &\text{se } y > 4
+\end{cases}$$

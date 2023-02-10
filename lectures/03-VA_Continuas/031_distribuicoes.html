@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estatística I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rafael Bressan" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41584331-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-41584331-6');
+    </script>
+
+    <link rel="stylesheet" href="../../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Estatística I
+]
+.subtitle[
+## Distribuições Contínuas
+]
+.author[
+### Rafael Bressan
+]
+.date[
+### Esag </br> 2023-02-09
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../../img/logo/UdescEsag.jpeg" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+name: indice
+
+
+
+
+# Índice
+
+- [Uniforme](#uniforme)
+
+- [Normal](#normal)
+
+- [Exponencial](#exponencial)
+
+- [Exercícios](#exercicios)
+
+
+---
+name: uniforme
+# Uniforme
+
+Uma variável aleatória `\(X\)` tem distribuição uniforme contínua no intervalo fechado `\([a, b]\)` se sua função densidade de probabilidade é:
+
+`$$f(x)=\begin{cases}
+\frac{1}{b-a}, \text{ se } x\in[a,b]\\
+0, \text{ caso contrário}
+\end{cases}$$`
+
+--
+
+A função de distribuição acumulada é `\(F(x)=\int_a^xf(t)\, dt\)` para `\(x\in[a,b]\)`.
+
+`$$F(x)=\begin{cases}
+0, \text{ se } x&lt;a\\
+\frac{x-a}{b-a}, \text{ se } x\in[a,b]\\
+1, \text{ se x &gt; b}
+\end{cases}$$`
+
+---
+# Uniforme
+
+## Valor Esperado
+
+
+`$$\begin{align*}
+E[X]&amp;=\int_{a}^b x f(x)\, dx\\
+&amp;=\int_{a}^b \frac{x}{b-a}\, dx\\
+&amp;=\left. \frac{1}{b-a}\frac{x^2}{2}\right\rvert_a^b\\
+&amp;=\frac{1}{2}\left[\frac{b^2}{b-a}-\frac{a^2}{b-a}\right]\\
+&amp;=\frac{b+a}{2}
+\end{align*}$$`
+
+
+---
+
+# Uniforme
+
+## Variância
+
+.pull-left[
+`$$\begin{align*}
+Var[X]&amp;=\int_{a}^b \frac{(x-\bar x)^2}{b-a} \, dx\\
+u = (x-\bar x)&amp;\implies du = dx\\
+x = a &amp;\implies u = (a-b)/2\\
+x = b &amp;\implies u = (b-a)/2\\
+Var[X]&amp;=\int_{(a-b)/2}^{(b-a)/2} \frac{u^2}{b-a} \, du\\ 
+&amp;=\left . \frac{1}{(b-a)}\frac{u^3}{3}\right\rvert_{(a-b)/2}^{(b-a)/2}
+\end{align*}$$`
+]
+--
+
+.pull-right[
+`$$\begin{align*}
+Var[X]&amp;=\frac{1}{3(b-a)}\left[\frac{(b-a)^3}{8}-\frac{(a-b)^3}{8}\right] \\
+&amp;=\frac{1}{3(b-a)}\left[\frac{(b-a)^3}{8}-\frac{[-(b-a)]^3}{8}\right] \\
+&amp;=\frac{1}{3(b-a)}\left[\frac{2(b-a)^3}{8}\right] \\
+&amp;=\frac{(b-a)^2}{12} \\
+\end{align*}$$`
+]
+---
+name: normal
+# Normal
+
+A distribuição Normal, também chamada de ***Gaussiana*** é a mais conhecida das distribuições.
+
+* Tratável analiticamente (faz parte da família exponencial)
+
+* **Teorema do Limite Central**. Muitas distribuições convergem para uma Normal
+
+--
+
+`\(f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}\)`, com `\(x\in(-\infty, \infty)\)`
+
+--
+
+`\(F(x)=\int_{-\infty}^x\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(t-\mu)^2}{2\sigma^2}}\,dt\)`
+
+--
+
+Notação: `\(X\sim N(\mu, \sigma^2)\)`
+
+Esperança e variância: `\(E[X] = \mu\)` e `\(Var[X] =\sigma^2\)`
+
+---
+
+# Modelo Normal
+
+.pull-left[
+
+```r
+x &lt;- seq(-4, 4, by = 0.1)
+fx &lt;- dnorm(x)
+
+df &lt;- data.frame(x = x, fx = fx)
+
+p &lt;- ggplot(df, aes(x, fx)) +
+    geom_line() +
+    labs(x = "x",
+         y = "f(x)",
+         title = "Normal Padrão N(0,1)") +
+    theme_clean()
+```
+]
+
+
+.pull-right[
+&lt;img src="031_distribuicoes_files/figure-html/normal-plot-1.svg" style="display: block; margin: auto;" /&gt;
+]
+---
+# Características da Normal
+
+- É **simétrica** em relação à `\(\mu\)`
+
+- O ponto **máximo** (moda) de `\(f(x)\)` é o ponto `\(x = \mu\)`
+
+- Os pontos de **inflexão** da função são `\(\mu − \sigma\)` e `\(\mu + \sigma\)`
+
+- A **área** total sob a curva é 1
+
+- A curva é **assintótica** em relação ao eixo x
+
+- `\(F(x)\)` não possui solução analítica. [**Tabela da Normal**](https://en.wikipedia.org/wiki/Standard_normal_table)
+
+---
+
+# Tabela Normal
+
+- Para obter uma probabilidade do modelo normal, devemos calcular a área entre os pontos a e b
+
+- Essa função **não possui forma fechada**, e o cálculo é feito por aproximações numéricas
+
+- Podemos utilizar a distribuição ***Normal padrão (Z)*** com `\(\mu = 0\)` e `\(\sigma^2 = 1\)`,
+
+`$$Z=\frac{X-\mu}{\sigma}\sim N(0,1)$$`
+
+--
+
+- Denotamos por `\(\phi(z)\)` a função densidade de probabilidade e por `\(\Phi(z)\)` a função distribuição
+
+- Uma importante e útil propriedade da Normal padrão é:
+
+`$$\Phi(-z)=1-\Phi(z)$$`
+---
+
+# Tabela Normal
+
+- Para se obter a probabilidade de Z estar entre a e b
+
+`$$P(a\leq Z\leq b)=\int_a^b \frac{1}{\sqrt{2\pi}}e^{-z^2/2}\,dz$$`
+- Estas probabilidades estão contidas na [Tabela Normal](../../img/Tabela_Normal1.pdf)
+
+- Portanto, para qualquer valor de X entre a e b, podemos calcular a probabilidade correspondente através da **padronização**
+
+`$$P(a\leq X\leq b)=P\left(\frac{X-a}{\sigma}\leq Z \leq \frac{X-b}{\sigma}\right)$$`
+
+---
+
+# Tabela Normal
+
+**Exemplos**
+
+- Calcule as probabilidades:
+  + `\(P(Z\leq 1,68)\)`
+  + `\(P(Z &lt; 0,73)\)`
+  + `\(P(Z&gt;0,84)\)`
+  + `\(P(Z\leq -1,68)\)`
+  + `\(P(Z\geq -0,84)\)`
+  + `\(P(-1,96\leq Z \leq 1,96)\)`
+
+---
+
+# Exemplo
+
+Dada uma variável aleatória X com distribuição normal `\(N(50, 100)\)`, encontre a probabilidade de X assumir valores entre 45 e 62.
+
+--
+
+**Padronização**: `\(z_1=(45-50)/10=-0,5\)` e `\(z_2=(62-50)/10=1,2\)`
+
+--
+
+**Tabela**: `\(P(Z\leq -0,5)=1-P(Z\leq 0,5)=0.3085375\)` e,
+
+`\(P(Z\leq 1,2)=0.8849303\)`
+
+--
+
+**Cálculo**: `\(P(45\leq X\leq 62)=P(Z\leq 1,2)-P(Z\leq -0,5)=0.5763928\)`
+---
+
+# Normal
+
+## Valor Esperado
+
+* Toda `\(X\sim N(\mu, \sigma^2)\)` pode ser reescrita em função de uma VA com distribuição **normal padrão** `\(Z\sim N(0,1)\)` 
+
+* `\(X = \mu + \sigma Z\)`
+
+--
+* Padronização: `\(Z=\frac{X-\mu}{\sigma}\)`
+
+* Basta demonstrar a média e variância da **Normal Padrão** (por quê ❓)
+
+--
+
+* `\(\phi(z)=\frac{1}{\sqrt{2\pi}}e^{\frac{-z^2}{2}}\)`
+
+* `\(\Phi(z)=\int_{-\infty}^z\phi(t)\,dt\)`
+---
+
+# Normal
+
+## Valor Esperado
+
+.pull-left[
+
+* `\(E[Z]=\int_{-\infty}^{\infty} t \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\)`
+* `\(te^{-t^2 / 2}\)` é função ímpar
+* `\(E[Z]=0\)`
+]
+
+.pull-right[
+&lt;img src="031_distribuicoes_files/figure-html/esperado-normal-1.svg" height="450" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# Normal
+
+## Valor Esperado
+
+`$$\begin{align*}
+E[Z]&amp;=\int_{-\infty}^{\infty}t \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\\
+u=-t^2/2&amp;\implies du=-tdt\\
+E[Z]&amp;=\frac{-1}{\sqrt{2\pi}}\int e^u\,du\\
+&amp;=\left . \frac{-1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\right\rvert_{-\infty}^{\infty}\\
+&amp;=\frac{-1}{\sqrt{2\pi}}\left[\lim_{t\rightarrow\infty} e^{\frac{-t^2}{2}} - \lim_{t\rightarrow -\infty} e^{\frac{-t^2}{2}}\right]\\
+&amp;= 0
+\end{align*}$$`
+
+---
+name: var-normal
+# Normal
+
+## Variância
+
+`$$\begin{align*}
+Var[Z]&amp;=E[Z^2]+(E[Z])^2\\
+&amp;=E[Z^2]
+\end{align*}$$`
+--
+
+.pull-left[
+`$$\begin{align*}
+E[Z^2]&amp;=\int_{-\infty}^\infty t^2 \frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}\,dt\\
+u=t &amp;\implies du = dt \\
+dv=te^{-t^2/2}&amp;\implies v=-e^{-t^2/2}\\
+E[Z^2]&amp;=\left . \frac{-te^{-t^2/2}}{\sqrt{2\pi}}\right\rvert_{-\infty}^\infty - \int_{-\infty}^\infty \frac{-e^{-t^2/2}}{\sqrt{2\pi}}\,dt
+\end{align*}$$`
+
+]
+
+--
+
+.pull-right[
+`$$\begin{align*}
+E[Z^2]&amp;=\underbrace{\left . \frac{-te^{-t^2/2}}{\sqrt{2\pi}}\right\rvert_{-\infty}^\infty}_{=0} + \underbrace{\int_{-\infty}^\infty \frac{e^{-t^2/2}}{\sqrt{2\pi}}\,dt}_{=1}\\
+\implies &amp; Var[Z]=1
+\end{align*}$$`
+]
+
+.footnote[&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;[1]: [integral dv](#int-dv)]
+
+---
+name: int-dv
+# Normal
+
+## Variância
+
+
+`$$\begin{align*}
+\int te^{-t^2/2}\,dt&amp;=\\
+u=-t^2/2&amp;\implies du=-t\,dt\\
+&amp;=-\int e^u\,du\\
+&amp;=-e^{-t^2/2}
+\end{align*}$$`
+.footnote[&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;[1]: [variância Normal](#var-normal)]
+
+---
+name: exponencial
+# Exponencial
+
+A distribuição exponencial possui forte relação com a distribuição de Poisson. A exponencial é usada para modelar o intervalo de tempo entre dois eventos que ocorrem com distribuição de Poisson.
+
+--
+
+`$$f(x)=\begin{cases}
+\lambda e^{-\lambda x}, \text{ se } x\geq 0\\
+0, \text{ caso contrário}
+\end{cases}$$`
+
+--
+
+`$$F(x)=\begin{cases}
+1-e^{-\lambda x}, \text{ se } x\geq 0\\
+0, \text{ caso contrário}
+\end{cases}$$`
+
+---
+# Exponencial
+
+## Valor Esperado
+
+`$$\begin{align*}
+E[X]&amp;=\int_0^\infty x\lambda e^{-\lambda x}\,dx\\
+u=x&amp;\implies du = dx\\
+dv=e^{-\lambda x}\,dx &amp;\implies v=-\frac{1}{\lambda}e^{-\lambda x}\\
+E[X]&amp;=\lambda\left[\left. -x \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\infty + \int_0^\infty \frac{1}{\lambda}e^{-\lambda x}\,dx\right]\\
+&amp;=\int_0^\infty e^{-\lambda x}\,dx\\
+&amp;=\left. \frac{1}{\lambda}e^{-\lambda x}\right\rvert_0^\infty\\
+&amp;= 1/\lambda
+\end{align*}$$`
+
+---
+
+# Exponencial
+
+## Variância
+
+$$
+Var[X]=E[X^2]-(E[X])^2
+$$
+.pull-left[
+`$$\begin{align*}
+E[X^2]&amp;=\int_0^\infty x^2\lambda e^{-\lambda x}\,dx\\
+u=x&amp;\implies du=dx\\
+dv=xe^{-\lambda x}&amp;\implies v=\frac{-e^{-\lambda x}}{\lambda}(x+1/\lambda)\\
+E[X^2]&amp;=\lambda\left\lbrace\left. -x(x+1/\lambda)\frac{e^{-\lambda x}}{\lambda}\right\rvert_0^\infty + \int_0^\infty \frac{e^{-\lambda x}}{\lambda}(x+1/\lambda)\,dx \right\rbrace\\
+&amp;=\int_0^\infty e^{-\lambda x}(x+1/\lambda)\,dx
+\end{align*}$$`
+]
+
+---
+# Exponencial
+
+## Variância
+
+`$$\begin{align*}
+E[X^2]&amp;=\underbrace{\int_0^\infty xe^{-\lambda x}\,dx}_{1/\lambda^2} + \underbrace{\int_0^\infty \frac{e^{-\lambda x}}{\lambda}\,dx}_{1/\lambda^2}\\
+&amp;=2/\lambda^2
+\end{align*}$$`
+--
+
+`\(Var[X]=2/\lambda^2 - (1/\lambda^2) = 1/\lambda^2\)`
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

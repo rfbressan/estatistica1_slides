@@ -192,182 +192,153 @@ F(x)&=\int_{-1}^x f(t)\,dt\\
 \end{align*}$$
 ]
 
----
-
-# Função de Distribuição de Probabilidade
-
-Esta função de distribuição do exemplo anterior pode ser assim descrita
-
-$$F(x)=\begin{cases}
-0, &\text{se } x < 0\\
-0.25, &\text{se } 0\leq x < 1\\
-0.75, &\text{se } 1\leq x < 2\\
-1, &\text{se } x \geq 2\\
-\end{cases}$$
 
 ---
 # Valor Esperado
 
-- O valor esperado de uma va. discreta é dado pelo seu valor médio
+- O valor esperado de uma va. contínua é dado pelo seu valor médio
 
-- Dada a v.a. X discreta, assumindo os valores $x_1, \ldots, x_n$, chamamos valor médio ou esperança matemática de X ao valor
+- Dada a va. X contínua, assumindo valores no intervalo $[a,b]$, chamamos valor médio ou esperança matemática de X ao valor
 
-$$E[X]=\sum_{i=1}^n x_i\cdot p_i$$
+$$E[X]=\int_{a}^b x \cdot f(x)\,dx$$
 
 --
 
 **Exemplo**
 
-- Qual o valor esperado de X = número de caras no lançamento de 2 moedas?
+- Qual o valor esperado de X no exemplo anterior?
 
 --
 
-$E[X]=0\cdot 0.25+ 1\cdot 0.5+2\cdot 0.25=$ `r sum(df$x*df$freq_rel)`
-
+$E[X]=\int_{-1}^{1}x\frac{3}{2}x^2\,dx=0$
 ---
 
 # Mediana
 
-A mediana de uma va. discreta é tal que
+A mediana de uma va. contínua é tal que
 
-$$P(X\leq m)\geq 0.5 \text{ e } P(X\geq m)\geq 0.5$$
-
---
-
-- No nosso exemplo anterior, a mediana será também o valor 1
+$$P(X\leq m)\geq 0,5\text{ e }P(X\geq m)\geq 0,5$$
 
 --
 
-- Esta definição vale para qualquer quantil p
+- No nosso exemplo anterior, a mediana será novamente igual a zero, pois
 
-$$P(X\leq q(p))\geq p \text{ e } P(X\geq q(p))\geq 1-p$$
+- $\int_{-1}^0 x\frac{3}{2}x^2\,dx = 0,5$ e;
 
----
-# Propriedades do Valor Esperado
-
-Considere a e b duas constantes quaisquer e X uma variável aleatória
-
-- $E[a]=a$
-
-- $E[aX]=aE[X]$
-
-- $E[aX+b]=aE[X]+b$
-
---
-
-Seja $Z=h(X)$ uma transformação da variável aleatória X. Então, por definição, o valor esperado de Z é
-
-$$E[Z]=\sum h(x_i)\cdot p_i$$
+- $\int_{0}^1 x\frac{3}{2}x^2\,dx = 0,5$
 
 ---
 # Variância
 
-* Mede a dispersão da massa de probabilidade em torno do valor esperado
+- Dada a va. X contínua, assumindo valores em um intervalo $[a, b]$, chamamos de variância da va. X o valor
 
-* Maior variância, mais "achatada" é a distribuição (sua _função de probabilidade_)
-
-[Variância da Normal](https://dsonnerat.shinyapps.io/shinyProject/)
-
----
-# Variância
-
-- Dada a va. X discreta, assumindo os valores $x_1, \ldots, x_n$, chamamos de variância da va. X o valor
-
-$$Var[X]=\sum_{i=1}^n(x_i-E[X])^2\cdot p_i$$
+$$Var[X]=\int_{a}^b \left(x-E[X]\right)^2\cdot f(x)\,dx$$
+- A expressão alternativa também vale: $Var[X]=\int_{a}^b x^2\cdot f(x)\,dx-\left(E[X]\right)^2$
 
 --
 
 **Exemplo**
 
-- Qual a variância de X = número de caras no lançamento de 2 moedas?
+- Qual a variância de X no exemplo anterior?
 
 --
 
-$Var[X]=(0 - 1)^2\cdot 0.25+ (1-1)^2\cdot 0.5+(2-1)^2\cdot 0.25=$ `r sum((df$x-1)^2*df$freq_rel)`
+$Var[X]=\int_{-1}^1 \left(x-0\right)^2\cdot\frac{3}{2}x^2\,dx=\frac{3}{5}$
 
 ---
-# Propriedades da Variância
+name: funcao
 
-$$Var[X]=E[(X-E[X])^2]$$
+# Funções de Variáveis Contínuas
+
+Seja $X$ uma variável aleatória contínua 
+
+- Função densidade de probabilidade dada por $f(x)$ e;
+- Função de distribuição $F(x)$
 
 --
 
-Podemos expandir e então simplificar esta expressão
+Qual é a distribuição de uma variável aleatória $Y=h(X)$?
 
-$$
-\begin{align*}
-Var[X]&=E[X^2-2XE[X]+(E[X])^2]\\
-&=E[X^2]-2E[X]E[X]+(E[X])^2\\
-&=E[X^2]-(E[X])^2
-\end{align*}
-$$
-
-
+- Onde $h(X)$ é uma **transformação monotônica** (estritamente crescente ou decrescente) de $X$
 
 ---
-# Propriedades da Variância
 
-Sendo $X$ uma variável aleatória e $a$ e $b$ constantes arbitrárias:
+# Funções de Variáveis Contínuas
 
-- $Var[X+a]=Var[X]$
-
-- $Var[aX]=a^2Var[X]$
-
-- $Var[aX+b]=a^2Var[X]$
+- Neste caso a inversa $X=h^{-1}(Y)$ é bem definida.
 
 --
 
-`r emo::ji("warning")` Variância **não é** um operador linear!
+- Se $a<x<b$, então:
+    + $h(a)<y<h(b)$, se $h$ for crescente, ou;
+    + $h(b)<y<h(a)$, se $h$ for decrescente.
+--
+
+A ***distribuição de Y*** será:
+
+.pull-left[
+$$\begin{align*}
+G(y)&=P[Y\leq y]\\
+&=P[h(X)\leq y]\\
+&=P[X\leq h^{-1}(y)]
+\end{align*}$$
+]
+
+.pull-right[
+
+$$G(y)=\begin{cases}
+F(h^{-1}(y)), &\text{se h for crescente} \\
+1-F(h^{-1}(y)), &\text{se h for decrescente}
+\end{cases}$$
+
+]
 
 ---
-# Variância
 
-## Propriedades
+# Funções de Variáveis Contínuas
 
-$Var[X+a]=Var[X]$
+A ***função densidade de probabilidade de Y*** será:
+
+$$\begin{align*}
+g(y)&=\frac{d}{dy}G(y)\\
+&=f(h^{-1}(y))\left\lvert\frac{dx}{dy}\right\rvert
+\end{align*}$$
 
 --
 
-
-\begin{align*}
-E[(X+a)^2]&=E[X^2]+2aE[X]+a^2\\
-(E[X+a])^2&=(E[X])^2+2aE[X]+a^2\\
-Var[X+a]&=E[X^2]-(E[X])^2\\
-&=Var[X]
-\end{align*}
+<br>
+**Vejamos um exmplo!**
 
 
 ---
-# Variância
 
-## Propriedades
+# Funções de Variáveis Contínuas
 
-$Var[aX]=a^2Var[X]$
+## Exemplo
+
+Considere $Y = 1/X$ e $f(x)=2x$, com $0< x \leq 1$.
 
 --
+- Identificamos $h(x)=1/x$ e portanto, $h^{-1}(y)=1/y$. Ou seja, $x=1/y$ e, $h(x)$ é ***estritamente decrescente***.
+- Limites da distribuição de $Y$: 
+    + $x\rightarrow 0^+ \implies y\rightarrow \infty$
+    + $x = 1\implies y=1$
+    
+--
+Logo:
 
+.pull-left[
+$$\begin{align*}
+G(y)&=1-F(h^{-1}(y))\\
+&=1-F(1/y)\\
+&=1-\left( \frac{1}{y} \right)^2
+\end{align*}$$
+]
 
-\begin{align*}
-E[(aX)^2]&=E[a^2X^2]\\
-(E[aX])^2&=(aE[X])^2\\
-Var[aX]&=a^2E[X^2]-a^2(E[X])^2\\
-&=a^2\left[E[X^2]-(E[X])^2\right]\\
-&=a^2Var[X]
-\end{align*}
+.pull-right[
+$$\begin{align*}
+g(y)&=f(h^{-1}(y))\left\lvert \frac{dx}{dy}\right\rvert\\
+&=\frac{1}{y^2}f(1/y)=\frac{2}{y^3}
+\end{align*}$$
 
----
-# Variância
-
-## Propriedades
-
-$Var[aX+b]=a^2Var[X]$
-
-\begin{align*}
-E[(aX+b)^2]&=E[a^2X^2+2abX+b^2]\\
-&=a^2E[X^2]+2abE[X]+b^2\tag{1}\\
-(E[aX+b])^2&=(aE[X])^2+2abE[X]+b^2\\
-&=a^2(E[X])^2+2abE[X]+b^2\tag{2}\\
-Var[aX+b]&=(1)-(2)\\
-&=a^2E[X^2]-a^2(E[X])^2\\
-&=a^2Var[X]
-\end{align*}
+]
