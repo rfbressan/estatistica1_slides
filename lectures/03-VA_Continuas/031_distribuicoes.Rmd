@@ -75,6 +75,10 @@ $$F(x)=\begin{cases}
 1, \text{ se x > b}
 \end{cases}$$
 
+--
+
+Notação: $X\sim U(a,b)$
+
 ---
 # Uniforme
 
@@ -375,6 +379,51 @@ $$F(x)=\begin{cases}
 1-e^{-\lambda x}, \text{ se } x\geq 0\\
 0, \text{ caso contrário}
 \end{cases}$$
+--
+
+Notação: $X\sim Exp(\lambda)$
+
+---
+
+# Exponencial
+
+.pull-left[
+```{r exp-densidade, echo=TRUE}
+x <- seq(0, 4, by = 0.1)
+fx <- dexp(x)
+
+df <- data.frame(x = x, fx = fx)
+
+p <- ggplot(df, aes(x, fx)) +
+    geom_line() +
+    labs(x = "x",
+         y = "f(x)",
+         title = "Exponencial") +
+    theme_clean()
+```
+]
+
+
+.pull-right[
+```{r exp-plot}
+p
+```
+]
+
+---
+
+# Exemplo
+
+Uma indústria fabrica lâmpadas especiais que ficam em operação
+continuamente. A empresa oferece a seus clientes a garantia de reposição, caso a lâmpada dure **menos de 50 horas**. A vida útil dessas lâmpadas é modelada através da distribuição Exponencial com parâmetro $\lambda = 1/8000$.
+
+Determine a proporção de troca por defeito de fabricação.
+
+--
+
+- Queremos encontrar $P(X<50)$ sendo que $X\sim Exp(1/8000)$
+
+- $P(X<50)=\int_0^{50} \lambda e^{-\lambda x}\,dx = 1-e^{-\lambda 50}= `r pexp(50, 1/8000)`$
 
 ---
 # Exponencial

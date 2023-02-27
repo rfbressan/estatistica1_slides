@@ -26,7 +26,7 @@ Observe que várias dessas aulas se estendem por duas ou mais sessões.
 | Aula 8: Variáveis Aleatórias Contínuas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/03-VA_Continuas/030_va_continuas.html) |
 | Aula 9: Distribuições Contínuas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/03-VA_Continuas/031_distribuicoes.html) |
 | Aula 10: Revisao | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/03-VA_Continuas/032_revisao.html) |
-
+| Aula 11: Variáveis Aleatórias Conjuntas | [HTML](https://raw.githack.com/rfbressan/estatistica1_slides/master/lectures/04-VA_Conjuntas/041_va_conjuntas.html) |
 
 
 

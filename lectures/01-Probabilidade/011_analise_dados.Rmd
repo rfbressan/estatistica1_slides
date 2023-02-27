@@ -2,7 +2,7 @@
 title: "Estatística I"
 subtitle: "Análise Exploratória de Dados"
 author: "Rafael Bressan"
-date: "Esag </br> `r Sys.Date()`"
+date: "Esag </br> 27/02/2023"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -50,15 +50,9 @@ load("../../dados/dados.RData")
 
 - [Resumo de Dados](#resumo)
 
-- [Exercícios 1](#exercicios1)
-
 - [Medidas-Resumo](#medidas)
 
-- [Exercícios 2](#exercicios2)
-
 - [Análise Bidimensional](#analise)
-
-- [Exercícios 3](#exercicios3)
 
 ---
 name: resumo

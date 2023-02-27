@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2023-02-09
+### Esag </br> 2023-02-14
 ]
 
 ---
@@ -82,6 +82,10 @@ A função de distribuição acumulada é `\(F(x)=\int_a^xf(t)\, dt\)` para `\(x
 \frac{x-a}{b-a}, \text{ se } x\in[a,b]\\
 1, \text{ se x &gt; b}
 \end{cases}$$`
+
+--
+
+Notação: `\(X\sim U(a,b)\)`
 
 ---
 # Uniforme
@@ -371,6 +375,50 @@ A distribuição exponencial possui forte relação com a distribuição de Pois
 1-e^{-\lambda x}, \text{ se } x\geq 0\\
 0, \text{ caso contrário}
 \end{cases}$$`
+--
+
+Notação: `\(X\sim Exp(\lambda)\)`
+
+---
+
+# Exponencial
+
+.pull-left[
+
+```r
+x &lt;- seq(0, 4, by = 0.1)
+fx &lt;- dexp(x)
+
+df &lt;- data.frame(x = x, fx = fx)
+
+p &lt;- ggplot(df, aes(x, fx)) +
+    geom_line() +
+    labs(x = "x",
+         y = "f(x)",
+         title = "Exponencial") +
+    theme_clean()
+```
+]
+
+
+.pull-right[
+&lt;img src="031_distribuicoes_files/figure-html/exp-plot-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Exemplo
+
+Uma indústria fabrica lâmpadas especiais que ficam em operação
+continuamente. A empresa oferece a seus clientes a garantia de reposição, caso a lâmpada dure **menos de 50 horas**. A vida útil dessas lâmpadas é modelada através da distribuição Exponencial com parâmetro `\(\lambda = 1/8000\)`.
+
+Determine a proporção de troca por defeito de fabricação.
+
+--
+
+- Queremos encontrar `\(P(X&lt;50)\)` sendo que `\(X\sim Exp(1/8000)\)`
+
+- `\(P(X&lt;50)=\int_0^{50} \lambda e^{-\lambda x}\,dx = 1-e^{-\lambda 50}= 0.0062305\)`
 
 ---
 # Exponencial

@@ -37,8 +37,11 @@ knitr::opts_chunk$set(
     #fig.height = 5
 )
 
+library(tidyr)
+library(dplyr)
 library(ggplot2)
-
+library(ggthemes)
+library(kableExtra)
 ```
 
 
@@ -67,23 +70,168 @@ name: dist-conjunta
 
 # Distribuição Conjunjta
 
+- Interesse no comportamento conjunto de várias variáveis.
+
+- O principal objetivo é explorar relações (similaridades) entre as variáveis
+
+- Determinar se existe associação entre as variáveis.
+
+--
+
+- existe associação se existe uma mudança no comportamento de uma variável na presença de outra
+  + Frequência esperada de pessoas com mais de 170 cm de altura
+  + Frequência esperada de pessoas com mais de 170 cm de altura por gênero
+
+- Se a resposta for a mesma, dizemos que não há associação
+
+---
+
+# Distribuição Conjunjta
+
+Uma amostra de 20 alunos do primeiro ano de uma faculdade foi escolhida. Perguntou-se aos alunos se trabalhavam, variável que foi representada por X, e o número de vestibulares prestados, variável representada por Y . Os dados obtidos estão na tabela abaixo.
+
+```{r exemp-conjunta-tbl,results='asis'}
+df <- data.frame(
+    x = rep(c("SIM", "NAO"), 3),
+    y = rep(c(1, 2, 3), each = 2),
+    freq = c(5, 6, 3, 4, 8, 8)
+)
+
+nobs <- sum(df$freq)
+
+kbl(df, col.names = c("X", "Y", "Frequência")) |> 
+    kable_classic(full_width = FALSE)
+```
+
+---
+
+# Tabela de Contingência
+
+- Distribuições bi-dimensionais são melhor descritas através de uma ***tabela de contingência*** (ou de dupla entrada) 
+
+.pull-left[
+```{r exemp-contingencia, results='asis'}
+dupla_df <- pivot_wider(df, id_cols = x, names_from = y, values_from = freq)
+
+kbl(dupla_df, col.names = c("X", 1, 2, 3),
+    caption = "Frequência") |> 
+    kable_classic(full_width = FALSE) |> 
+    add_header_above(c(" " = 1, "Y" = 3))
+
+```
+]
+
+--
+
+.pull-right[
+```{r exemp-prob-cont, results='asis'}
+dupla_prob_df <- dupla_df |> 
+    mutate(across(2:4, function(x) {x / nobs}))
+
+freq_rel_kbl <- kbl(dupla_prob_df, col.names = c("X", 1, 2, 3),
+                    caption = "Frequências Relativas") |> 
+    kable_classic(full_width = FALSE) |> 
+    add_header_above(c(" " = 1, "Y" = 3))
+freq_rel_kbl
+```
+]
+
+---
+
+# Função de Probabilidade Conjunta
+
+Sejam X e Y duas VAs discretas originárias do mesmo fenômeno aleatório, com valores atribuídos a partir do mesmo espaço amostral.
+
+A ***função de probabilidade conjunta*** é definida, para todos os possíveis pares de valores $(X, Y)$, da seguinte forma:
+
+$p(x, y) = P[(X = x) \cap (Y = y )] = P(X = x, Y = y)$
+
+--
+
+Ou seja, $p(x,y)$ representa a probabilidade de $X=x$ **e** $Y=y$ ao mesmo tempo (i.e. conjuntamente)
+
+--
+
+- Uma entrada de uma tabela de contingência representa $p(x,y)$
+
+```{r cont-tbl, results='asis'}
+freq_rel_kbl |> 
+    column_spec(2, background = c("darkgreen", "white"))
+```
+
+$$P(X=SIM, Y=1)$$
 
 ---
 name: dist-marginal
 
 # Distribuição Marginal
 
+Da função de probabilidade conjunta $p(x, y)$, é possível então obter as funções de ***probabilidade marginais*** de X e Y , através da soma sobre a outra variável:
+
+$$P(X=x)=\sum_y p(x,y)$$
+
+--
+
+- As probabilidades marginais definem a distribuição da variável aleatória
+
+- Por exemplo, dado $p(x,y)$ encontramos $P(X=x)=p(x)$. Esta é a distribuição de X
+
+---
+
+# Distribuição Marginal
+
+Do exemplo anterior temos a distribuição conjunta
+
+```{r exemp-marg, results='asis'}
+dupla_prob_df <- dupla_prob_df |> 
+    mutate(px = rowSums(dupla_prob_df[, 2:4]))
+
+total_df <- dupla_prob_df |> 
+    select(where(is.numeric)) |> 
+    summarise(across(everything(), sum)) |> 
+    mutate(x = "Py", .before = 1)
+
+dupla_prob_df <- bind_rows(dupla_prob_df, total_df)
+
+kbl(dupla_prob_df, col.names = c("X", 1, 2, 3, "Px"),
+    caption = "Probabilidaes Marginais") |> 
+    kable_classic(full_width = FALSE) |> 
+    add_header_above(c(" " = 1, "Y" = 4)) |> 
+    column_spec(5, background = "lightgrey") |> 
+    row_spec(3, background = "lightgrey")
+
+```
 
 ---
 name: dist-condicional
 
 # Distribuição Condicional
 
+A probabilidade condicional de $X = x$, **dado que** $Y = y$ ocorreu, é dada pela expressão
+
+$P(X=x\mid Y=y)=\frac{p(x,y)}{p(y)}$, se $P(Y=y)> 0$.
+
+--
+
+- Podemos então reescrever a probabilidade conjunta
+
+$$P(X=x,Y=y)=P(X=x\mid Y=y)\cdot P(Y=y)$$
+
+conhecida como a regra do produto
 
 ---
 name: independencia
 # Independência
 
+- Duas va. discretas são ***independentes***, se a ocorrência de qualquer valor de uma delas não altera a probabilidade de valores da outra. Em termos matemáticos
+
+$$P(X=x\mid Y=y)=P(X=x)$$
+
+--
+
+- Independência entre as variáveis aleatórias implica que a probabilidade conjunta é o produto das probabilidades marginais
+
+$$P(X=x,Y=y)=P(X=x)\cdot P(Y=y), \quad\forall(x,y).$$
 
 ---
 name: exercicios1
@@ -253,12 +401,7 @@ name: ve-condicional
 
 Sejam $X$ e $Y$ variáveis aleatórias distribuídas conjuntamente. Denominamos de ***valor esperado condicional*** de $X$ dado $Y=y$ por:
 
-$$
-\begin{align*}
-E[X|Y=y]&=\sum_x x P[X=x|Y=y], &\text{caso discreto}\\
-E[X|Y=y]&=\int_x x f_{X|Y}(x|y)\,dx, &\text{caso contínuo}
-\end{align*}
-$$
+$$E[X|Y=y]=\sum_x x P[X=x|Y=y]$$
 --
 
 - `r emo::ji("warning")` Note que $E[X|Y=y]$ é uma função de $y$! Para cada valor $Y=y$ irá corresponder um valor esperado.
@@ -298,9 +441,43 @@ $$
 
 ---
 
-# Valor Esperado Condicional
+---
 
-## Exemplo
+# Distribuições Contínuas Conjuntas
+
+- Até o momento apresentamos apenas as definições e exemplos de va. discretas
+
+- O caso contínuo é análogo ao discreto
+
+--
+
+- Somatório é substituído por uma integral
+
+- Função de probabilidade é substituída por um função densidade de probabilidades
+
+---
+
+# Distribuições Contínuas Conjuntas
+
+- Distribuição conjunta de duas variáveis é caracterizada por uma função $f(x,y)$, chamada ***função de densidade conjunta*** de X e Y, satisfazendo:
+
+1. $f(x,y)\geq 0$
+1. $\int_{-\infty}^\infty\int_{-\infty}^\infty f(x,y)\,dx\,dy = 1$
+1. $P(a\leq X\leq b, c\leq Y\leq d)=\int_{a}^b\int_{c}^d f(x,y)\,dx\,dy$
+
+--
+
+- Densidade Marginal: $f(x)=\int_{-\infty}^\infty f(x,y)\,dy$
+
+- Distribuição Condicional: $f(X=x\mid Y=y)=\frac{f(x,y)}{f(y)}$
+
+- Independência: $f(x,y)=f(x)\cdot f(y)$
+
+- Valor Esperado Condicional: $E[X\mid Y=y]=\int_x x\cdot f(X=x\mid Y=y)\,dx$
+
+---
+
+# Exemplo
 
 $$
 f(x,y)=
@@ -343,19 +520,19 @@ p
 
 --
 
-$$E[Y|X] = \int_y y f_{Y|X}(y|x)\,dy$$
+$$E[Y|X] = \int_y y f(Y|X)\,dy$$
 
 --
 
-- Precisamos da densidade condicional $f_{X|Y}$, que por sua vez depende das densidades marginais!
+- Precisamos da densidade condicional $f(Y|X)$, que por sua vez depende das densidades marginais!
 
 --
 
-- $f_X(x)=\int_0^xf(x,y)\,dy = 1/2\cdot y|_0^x = x/2$
+- $f(x)=\int_0^xf(x,y)\,dy = 1/2\cdot y|_0^x = x/2$
 
 --
 
-- $f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)}=\frac{1/2}{x/2}=1/x$
+- $f(Y|X) = \frac{f(x,y)}{f(x)}=\frac{1/2}{x/2}=1/x$
 
 ---
 
@@ -363,7 +540,7 @@ $$E[Y|X] = \int_y y f_{Y|X}(y|x)\,dy$$
 
 ## Exemplo
 
-- Agora podemos calcular a expressão $E[Y|X] = \int_y y f_{Y|X}(y|x)\,dy$
+- Agora podemos calcular a expressão $E[Y|X] = \int_y y\cdot f(Y|X)\,dy$
 
 - $E[Y|X] = \int_0^x y \frac{1}{x} \,dy= \left.\frac{1}{x}\frac{y^2}{2}\right\lvert_0^x = \frac{x}{2}$
 
