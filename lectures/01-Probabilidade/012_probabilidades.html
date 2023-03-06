@@ -39,7 +39,7 @@ class: center, middle, inverse, title-slide
 ### Rafael Bressan
 ]
 .date[
-### Esag </br> 2023-01-23
+### Esag </br> 06/03/2023
 ]
 
 ---
@@ -61,19 +61,11 @@ name: indice
 
 - [Introdução](#introducao)
 
-- [Exercícios 1](#exercicios1)
-
 - [Probabilidade Condicional](#condicional)
-
-- [Exercícios 2](#exercicios2)
 
 - [Independência](#independencia)
 
-- [Exercícios 3](#exercicios3)
-
 - [Teorema de Bayes](#bayes)
-
-- [Exercícios 4](#exercicios4)
 
 
 ---
@@ -246,6 +238,29 @@ Uma forma gráfica simples de representar conjuntos e suas operações
 - `\(S\backslash(A\cup B)\)` ? (mesmo que `\((A\cup B)^c\)`)
 ]
 
+---
+
+# Exercício Conjuntos
+
+Considere o lançamento de 2 dados. Considere os eventos: A = soma dos números igual a 9; B = número no primeiro dado maior ou igual a 4. **Enumere os elementos de A e B**.
+
+--
+
+`\(A=\{(3,6); (4,5); (5,4); (6,3)\}\)`
+
+`\(B=\{(x,y)\mid 4\leq x\leq 6; 1\leq y\leq 6\}\)`
+
+--
+
+- Defina o evento E como _"ocorre o evento A ou B, mas não ambos"_. Enumere os elementos de E
+
+--
+
+`\(E=(A\cap B^c)\cup (B \cap A^c)\)`
+
+`\(A\cap B^c=\{(3,6)\}\)` e `\((B \cap A^c)=B\backslash\{(4,5); (5,4); (6,3)\}\)`
+
+Logo, `\(E=(B\cup \{(3,6)\})\backslash\{(4,5); (5,4); (6,3)\}\)`
 ---
 
 # Axiomas de Probabilidade

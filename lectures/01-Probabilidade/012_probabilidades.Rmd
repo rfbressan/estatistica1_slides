@@ -2,7 +2,7 @@
 title: "Estatística I"
 subtitle: "Probabilidades"
 author: "Rafael Bressan"
-date: "Esag </br> `r Sys.Date()`"
+date: "Esag </br> 06/03/2023"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -233,6 +233,29 @@ plt
 - $S\backslash(A\cup B)$ ? (mesmo que $(A\cup B)^c$)
 ]
 
+---
+
+# Exercício Conjuntos
+
+Considere o lançamento de 2 dados. Considere os eventos: A = soma dos números igual a 9; B = número no primeiro dado maior ou igual a 4. **Enumere os elementos de A e B**.
+
+--
+
+$A=\{(3,6); (4,5); (5,4); (6,3)\}$
+
+$B=\{(x,y)\mid 4\leq x\leq 6; 1\leq y\leq 6\}$
+
+--
+
+- Defina o evento E como _"ocorre o evento A ou B, mas não ambos"_. Enumere os elementos de E
+
+--
+
+$E=(A\cap B^c)\cup (B \cap A^c)$
+
+$A\cap B^c=\{(3,6)\}$ e $(B \cap A^c)=B\backslash\{(4,5); (5,4); (6,3)\}$
+
+Logo, $E=(B\cup \{(3,6)\})\backslash\{(4,5); (5,4); (6,3)\}$
 ---
 
 # Axiomas de Probabilidade
