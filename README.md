@@ -46,6 +46,17 @@ DEGROOT, Morris H.; SCHERVISH, Mark J. Probability and statistics. Pearson Educa
 
 LARSEN, Richard J.; MARX, Morris L. An introduction to mathematical statistics and its applications. (4th edition). Hoboken, NJ: Prentice Hall, 2005.
 
+## Vídeos
+
+* [Probabilidade e Estatística](https://youtube.com/playlist?list=PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm) Vídeo aulas do prof. Douglas Maioli
+
+* [Introdução a Probabilidade](https://www.youtube.com/watch?v=Hy4zUSrVgVQ&list=PLSMHA74lM-x2VglhXkdbHEH80T2a_XgRr&index=1) Introdução a Probabilidade com prof. Thiago Marques (Estatidados)
+
+* [Economia e Ciência de Dados](https://www.youtube.com/watch?v=6Q3SXs5agaU&list=PLSMHA74lM-x2VglhXkdbHEH80T2a_XgRr&index=2&t=4765s) Economia e Ciência de Dados com prof. Rafael Martins de Souza (FGV/EPGE)
+
+* [Carreira e Aplicações de Econometria](https://www.youtube.com/watch?v=VKZe49nNtxw&list=PLSMHA74lM-x2VglhXkdbHEH80T2a_XgRr&index=3&t=2182s) Carreira e Aplicações de Econometria com Luiz A. Esteves (Economista chefe do Banco do Nordeste)
+
+
 ## Outros Recursos
 
 * [Aproximação Binomial](https://shiny.psy.lmu.de/felix/TK/2/) by Tobias Kächele
